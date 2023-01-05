@@ -48,7 +48,7 @@ shpm="${shpm_c}"'%(40l.
 
 function get_user_host() {
 	if [ $(git rev-parse --show-toplevel &>/dev/null; echo "${?}") -eq "0" ]; then
-		echo "$(git config --get remote.origin.url)"
+		echo "$(git remote get-url origin)"
 	else
 		echo '%n@%m'
 	fi
