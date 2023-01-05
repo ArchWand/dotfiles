@@ -1,3 +1,3 @@
 git add .
-git commit -m "Update dotfiles"
+git commit -m "Add dotfiles"
 git push
