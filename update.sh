@@ -1,3 +1,8 @@
+# if first parameter is empty, default message
 git add .
-git commit -m "Add zsh theme"
+if [ -z "$1" ]; then
+	git commit -m "Update dotfiles"
+else
+	git commit -m "$1"
+fi
 git push
