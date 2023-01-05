@@ -92,6 +92,8 @@ export EDITOR='nvim'
 
 # Add scripts directory to PATH
 export PATH="$HOME/.scripts:$PATH"
+# Add local bin to path
+export PATH="$HOME/.local/bin:$PATH"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
