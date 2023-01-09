@@ -146,9 +146,16 @@ function WinTextWidth()
     endif
     return winwidth
 endfunction
+function WhitespaceLen()
+	let out=strdisplaywidth(getline('.')[:match(getline('.'),'\S')-1])
+	if out == strdisplaywidth(getline('.'))
+		let out=0
+	endif
+	return out
+endfunction
 function GoBoL()
     let winwidth = WinTextWidth()
-    let whitelen = strdisplaywidth(getline('.')[:match(getline('.'),'\S')-1])
+    let whitelen = WhitespaceLen()
 
     if virtcol('.') % winwidth - whitelen == 1
         return virtcol('.') > winwidth ? '^' : '0'

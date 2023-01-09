@@ -137,6 +137,10 @@ super + ctrl + {m,x,y,z}
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
+# Swap a node to another monitor
+super + ctrl + shift + {h,j,k,l}
+	bspc node -m {west,south,north,east} --follow
+
 # focus the node for the given path jump
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
@@ -192,10 +196,6 @@ super + ctrl + shift + space
 #
 # move/resize
 #
-
-# Move a node to another monitor
-super + ctrl + shift + {h,j,k,l}
-	bspc node -m {west,south,north,east} --follow
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}

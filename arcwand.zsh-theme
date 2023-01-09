@@ -47,11 +47,7 @@ shpm="${shpm_c}"'%(40l.
 .)%(!.#.»)${PR_RST}' # shell privilege marker
 
 function get_user_host() {
-	if [ $(git rev-parse --show-toplevel &>/dev/null; echo "${?}") -eq "0" ]; then
-		echo "$(git remote get-url origin)"
-	else
-		echo '%n@%m'
-	fi
+	echo "$(git remote get-url origin 2>/dev/null || echo '%n@%m')"
 }
 
 user_host="${user_host_c}"'$(get_user_host)${PR_RST}'
