@@ -135,7 +135,7 @@ super + ctrl + {m,x,y,z}
 
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+	bspc node -{f,s} {west,south,north,east} --follow
 
 # Swap a node to another monitor
 super + ctrl + shift + {h,j,k,l}

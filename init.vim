@@ -207,7 +207,7 @@ vnoremap x "0x
 vnoremap X "0X
 
 " Visual paste fix
-vnoremap p p:<C-u>let @1=@0<CR>:<C-u>let @+=@0<CR>:<C-u>let @0=@"<CR>
+vmap p dP
 
 
 

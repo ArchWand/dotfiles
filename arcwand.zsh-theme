@@ -60,7 +60,7 @@ return_code="${return_code_c}%(?..%? ↵ )${PR_RST}"
 # primary prompt: dashed separator, directory and vcs info
 PROMPT="${separator}
 ${current_path}${current_workdir}${gitpr} ${shpm}${PR_RST} "
-PS2='%B%F{8}%_%b>${PR_RST} '
+PS2='%B%F{8}%_%b>'"${PR_RST} "
 
 # right prompt: return code, virtualenv and context (user@host)
 RPROMPT="${return_code}${user_host}${PR_RST}"
