@@ -1,4 +1,10 @@
-case $(autorandr --current) in
+ar_conf=$(autorandr --current)
+# If there is no manually selected autorandr config, use the autodetected one
+if [ -z "$ar_conf" ]; then
+	ar_conf=$(autorandr | grep detected | cut -d' ' -f 1)
+fi
+
+case $ar_conf in
 	laptop) # Name of the two-screen config
 		# Reset the names of the desktops
 		# This is necessary since we will use a name based method to 
