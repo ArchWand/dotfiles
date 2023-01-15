@@ -103,14 +103,11 @@ export PATH="$HOME/.local/bin:$PATH"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-alias ranger=". ranger"
-alias la="ls -a"
-alias lc="ls -rc"
-alias reload-zsh="source ~/.zshrc"
-alias py=python
-alias clip="xsel -b"
+if [ -f ~/.scripts/cdb ]; then
+    source ~/.scripts/cdb
+fi 
 
-function rmcwd {
+function rmcd {
 	dir="$(pwd)"
 	cd ..
 	rm "$dir" -rf
@@ -120,3 +117,13 @@ function mcd {
 	mkdir -p "$1"
 	cd "$1"
 }
+
+alias icat="kitty +icat"
+
+alias ranger=". ranger"
+alias la="ls -a"
+alias lc="ls -rc"
+alias reload-zsh="source ~/.zshrc"
+alias py=python
+alias clip="xsel -b"
+

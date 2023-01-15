@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# using:
+# /usr/bin/openconnect
+
+# if [ "$state" == "Disconnected" ]; then
+kitty --class=floating_kitty -- bash -c 'sudo -v && printf "zhur7\n$(bw get password e86da553-b4c9-49aa-b6e7-aea500b48dd6 || kitty --class=floating_kitty "Invalid Master Password")""\npush" | sudo openconnect vpn.stu.rpi.edu || kitty --class=floating_kitty "VPN Connection Failed"'
+# elif [ "$state" == "Connected" ]; then
+   # /opt/cisco/anyconnect/bin/vpn disconnect && notify-send "VPN Disconnected"
+# fi

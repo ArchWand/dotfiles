@@ -1,4 +1,14 @@
-# if first parameter is empty, default message
+# Update directories that cannot be hard linked
+function up_dir {
+	echo "Updating $1"
+	rsync -a --delete $1 .
+}
+
+up_dir ~/.config/bspwm
+up_dir ~/.config/sxhkd
+up_dir ~/.scripts
+
+# If first parameter is empty, default message
 git add .
 if [ -z "$1" ]; then
 	git commit -m "Update dotfiles"

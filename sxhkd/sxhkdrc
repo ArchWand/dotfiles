@@ -6,10 +6,10 @@ super + F1
 	firefox
 
 super + F2
-	kitty nvim
+	discord
 
 super + F3
-	discord
+	kitty nvim
 
 #
 # wm independent hotkeys
@@ -41,7 +41,11 @@ super + Escape
 
 # Help menu
 super + slash
-	/home/arcwand/.scripts/sxhkd-help
+	~/.config/sxhkd/sxhkd-help
+
+# Hide Polybar
+super + shift + p
+	polybar-msg cmd toggle
 
 # Clipboard history
 super + alt + v
@@ -146,8 +150,6 @@ super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
-super + {_,shift + }c
-	bspc node -f {next,prev}.local.!hidden.window
 super + {_,shift + }q
 	bspc node -f {next,prev}.local.!hidden.window
 
@@ -159,19 +161,21 @@ super + bracket{left,right}
 super + {grave,Tab}
 	bspc {node,desktop} -f last
 
-# focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
-
 # Move current window to a pre-selected space
 super + shift + m
     bspc node -n last.!automatic
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} focused:'^{1-9,10}'
+
+# Focus the other monitor
+super + alt + Tab
+	bspc monitor -f next
+
+# Swap two desktops
+super + {_,shift + }alt + {1-9,0}
+	bspc desktop -s {focused, next}:'^{1-9,10}' --follow
 
 #
 # preselect

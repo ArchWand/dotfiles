@@ -1,8 +1,18 @@
-#! /bin/sh
+#!/bin/sh
 
+# Check if bspwm is running:
+pgrep bspwm > /dev/null || exit 0
+
+# Start sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+# Create the desktops with names based on the monitor
+for m in $(bspc query -M); do
+	bspc monitor "$m" -d $(for i in {01..10}; do
+		echo "$(bspc query -M -m "$m" --names):$i"
+	done)
+done
+
 
 xsetroot -cursor_name left_ptr &
 bspc config border_width         1
@@ -33,7 +43,7 @@ bspc rule -a 'firefox:Places:*' state=floating
 nitrogen --restore &
 
 # Top bar
-$HOME/.config/polybar/launch.sh --shapes
+$HOME/.config/polybar/launch.sh
 
 # Clipboard history
 greenclip daemon &
