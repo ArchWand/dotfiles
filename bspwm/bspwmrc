@@ -6,13 +6,10 @@ pgrep bspwm > /dev/null || exit 0
 # Start sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-# Create the desktops with names based on the monitor
-for m in $(bspc query -M); do
-	bspc monitor "$m" -d $(for i in {01..10}; do
-		echo "$(bspc query -M -m "$m" --names):$i"
-	done)
-done
-
+# Setup the monitors
+# This resets the monitors properly every time bspwm is reloaded
+# And also creates the desktops with names based on the monitor
+~/.config/bspwm/monitor_setup.sh
 
 xsetroot -cursor_name left_ptr &
 bspc config border_width         1
