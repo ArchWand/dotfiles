@@ -8,6 +8,11 @@ up_dir ~/.config/bspwm
 up_dir ~/.config/sxhkd
 up_dir ~/.scripts
 
+if [ "$1" = "-d" ]; then
+	git diff
+	exit
+fi
+
 # If first parameter is empty, default message
 git add .
 if [ -z "$1" ]; then
