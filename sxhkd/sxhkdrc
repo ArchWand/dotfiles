@@ -24,7 +24,7 @@ super + shift + Return
 	kitty --class floating_kitty
 
 # program launcher
-super + @space
+super + d
 	rofi -show drun -theme "~/.config/rofi/launchers/type-7/style-8.rasi"
 
 # File launcher
@@ -48,7 +48,7 @@ super + shift + p
 	polybar-msg cmd toggle
 
 # Clipboard history
-super + alt + v
+super + v
 	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # Lock screen
@@ -144,6 +144,10 @@ super + {_,shift + }{h,j,k,l}
 # Swap a node to another monitor
 super + ctrl + shift + {h,j,k,l}
 	bspc node -m {west,south,north,east} --follow
+
+# Swap node to the next monitor
+super + alt + shift + Tab
+	bspc node -m next --follow
 
 # focus the node for the given path jump
 super + {p,b,comma,period}

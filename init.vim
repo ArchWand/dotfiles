@@ -1,30 +1,41 @@
 " ArcWand's neovim vimrc
 call plug#begin()
 
+" Autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/fzf.vim'
-Plug 'lervag/vimtex'
-Plug 'preservim/nerdcommenter'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'github/copilot.vim'
-Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Rendering
+Plug 'lervag/vimtex'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+" Utility
+Plug 'preservim/nerdcommenter'
 Plug 'gcmt/taboo.vim'
 
+" Visual
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'KeitaNakamura/tex-conceal.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'EdenEast/nightfox.nvim'
 
 call plug#end()
 
 " ##### THEME #####
 
-syntax on
 colorscheme carbonfox
 
 " ##### SETTINGS #####
+syntax enable
 filetype plugin on
 
 """ Buffer settings
+" Mouse
+set mouse=a
+
 " Indenting
 set autoindent smarttab
 set tabstop=4 shiftwidth=4 softtabstop=4
@@ -36,6 +47,7 @@ set lbr
 
 " Set the leader as space
 let mapleader=" "
+let maplocalleader=" "
 nnoremap <Space> <Nop>
 
 " Line numbers
@@ -135,16 +147,16 @@ imap <Up> <C-o>k
 
 " Convenient BoL EoL
 function WinTextWidth()
-    let winwidth = winwidth(0)
-    let winwidth -= (max([len(line('$')), &numberwidth]) * (&number || &relativenumber))
-    let winwidth -= &foldcolumn
-    redir => signs
-    execute 'silent sign place buffer=' . bufnr('%')
-    redir END
-    if signs !~# '^\n---[^\n]*\n$'
-        let winwidth -= 2
-    endif
-    return winwidth
+	let winwidth = winwidth(0)
+	let winwidth -= (max([len(line('$')), &numberwidth]) * (&number || &relativenumber))
+	let winwidth -= &foldcolumn
+	redir => signs
+	execute 'silent sign place buffer=' . bufnr('%')
+	redir END
+	if signs !~# '^\n---[^\n]*\n$'
+		let winwidth -= 2
+	endif
+	return winwidth
 endfunction
 function WhitespaceLen()
 	let out=strdisplaywidth(getline('.')[:match(getline('.'),'\S')-1])
@@ -154,23 +166,23 @@ function WhitespaceLen()
 	return out
 endfunction
 function GoBoL()
-    let winwidth = WinTextWidth()
-    let whitelen = WhitespaceLen()
+	let winwidth = WinTextWidth()
+	let whitelen = WhitespaceLen()
 
-    if virtcol('.') % winwidth - whitelen == 1
-        return virtcol('.') > winwidth ? '^' : '0'
-    else
-        return 'g^'
-    endif
+	if virtcol('.') % winwidth - whitelen == 1
+		return virtcol('.') > winwidth ? '^' : '0'
+	else
+		return 'g^'
+	endif
 endfunction
 function GoEoL()
-    let winwidth = WinTextWidth()
+	let winwidth = WinTextWidth()
 
-    if virtcol('.') % winwidth == 0
-        return '$'
-    else
-        return 'g$'
-    endif
+	if virtcol('.') % winwidth == 0
+		return '$'
+	else
+		return 'g$'
+	endif
 endfunction
 
 noremap <expr> H v:count ? 'H' : GoBoL()
@@ -206,13 +218,46 @@ vnoremap S "0S
 vnoremap x "0x
 vnoremap X "0X
 
-" Visual paste fix
-vmap p dP
-
 
 
 " ##### PLUGINS #####
 
+" --- Autocompletion ---
+" CoC
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : "<Tab>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "<CR>"
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Copilot
+let g:copilot_enabled = v:false
+nnoremap <C-A-p> :Copilot disable<CR>
+imap <C-A-p> <C-o><C-A-p>
+
+
+" --- Rendering ---
+let g:tex_flavor = "latex"
+" VimTex
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+
+" Markdown Preview
+let g:mkdp_auto_start = 0
+
+
+" --- Utility ---
 " NerdCommenter
 " Create default mappings
 let g:NERDCreateDefaultMappings = 1
@@ -225,72 +270,13 @@ let g:NERDCommentEmptyLines = 1
 " Remember tab names
 set sessionoptions+=tabpages,globals
 
-" Copilot
-let g:copilot_enabled = v:false
-nnoremap <C-A-p> :Copilot disable<CR>
-imap <C-A-p> <C-o><C-A-p>
 
-" VimTex
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-let g:tex_conceal='abdmg'
+" --- Visual ---
+" Tex-Conceal
+set conceallevel=1
+let g:texconceal='abdmg'
 
 " Vim-Airline
 let g:airline_theme='violet'
 let g:airline_powerline_fonts = 1
-
-" Markdown Preview
-let g:mkdp_auto_start = 0
-
-" CoC
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: There's always complete item selected by default, you may want to enable
-" no select by `"suggest.noselect": true` in your configuration file.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call ShowDocumentation()<CR>
-
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
 

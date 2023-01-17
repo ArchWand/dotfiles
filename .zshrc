@@ -107,14 +107,21 @@ if [ -f ~/.scripts/cdb ]; then
     source ~/.scripts/cdb
 fi 
 
-function rmcd {
-	dir="$(pwd)"
-	cd ..
+function cdrm {
+	dir="$(pwd)" &&\
+	cd .. &&\
 	rm "$dir" -rf
 }
 
 function mcd {
-	mkdir -p "$1"
+	mkdir -p "$1" &&\
+	cd "$1"
+}
+
+function mvcwd {
+	dir="$(pwd)" &&\
+	cd .. &&\
+	mv "$dir" "$1" &&\
 	cd "$1"
 }
 
@@ -126,4 +133,6 @@ alias lc="ls -rc"
 alias reload-zsh="source ~/.zshrc"
 alias py=python
 alias clip="xsel -b"
+
+alias latex_template="cp ~/.local/share/latex_template/* ."
 

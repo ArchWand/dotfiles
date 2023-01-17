@@ -7,6 +7,7 @@ function up_dir {
 up_dir ~/.config/bspwm
 up_dir ~/.config/sxhkd
 up_dir ~/.scripts
+rm -rf ./.scripts/.cd_bookmarks
 
 if [ "$1" = "-d" ]; then
 	git diff
