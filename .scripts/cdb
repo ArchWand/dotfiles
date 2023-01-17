@@ -34,7 +34,7 @@ function cdb() {
 			;;
 		*)
 			if [ -f "$dir"/.cd_bookmarks/"${1%%/*}" ] ; then
-				cd "$(cat "$dir"/.cd_bookmarks/"${1%%/*}")/${1#*/}"
+				cd "$(cat "$dir"/.cd_bookmarks/"${1%%/*}")/${1##${1%%/*}}"
 			else
 				echo "Hmm...it looks like this bookmark does not exist"
 			fi
