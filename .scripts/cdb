@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/zsh
 
-function cdb () {
+function cdb() {
 	local dir=~/.scripts
 
 	if  [ ! -e "$dir"/.cd_bookmarks ] ; then
@@ -10,7 +10,7 @@ function cdb () {
 	local cwd="${PWD##*/}"
 	if (( $# == 0 )); then
 		if [ ! -f "$dir"/.cd_bookmarks/"$cwd" ] ; then
-			echo "cd `pwd`" > "$dir"/.cd_bookmarks/"$cwd"
+			echo "`pwd`" > "$dir"/.cd_bookmarks/"$cwd"
 		else
 			echo "Try again! Looks like there is already a bookmark '$cwd'"
 		fi
@@ -19,24 +19,31 @@ function cdb () {
 
 	case $1 in
 		-d) shift
-			if [ -f "$dir"/.cd_bookmarks/$1 ] ; then
-				rm "$dir"/.cd_bookmarks/"$1"
+			local to_rm="$1"
+			if (($# == 0)); then
+				to_rm=$cwd
+			fi
+			if [ -f "$dir"/.cd_bookmarks/"$to_rm" ] ; then
+				rm "$dir"/.cd_bookmarks/"$to_rm"
 			else
-				echo "Oops, forgot to specify the bookmark"
+				echo "Hmm...it looks like this bookmark does not exist"
 			fi
 			;;
 		-l)
 			ls "$dir"/.cd_bookmarks -A
 			;;
-		-n)
-			echo "cd `pwd`" > "$dir"/.cd_bookmarks/"$cwd"
-			;;
 		*)
-			if [ -f "$dir"/.cd_bookmarks/"$1" ] ; then
-				source "$dir"/.cd_bookmarks/"$1"
+			if [ -f "$dir"/.cd_bookmarks/"${1%%/*}" ] ; then
+				cd "$(cat "$dir"/.cd_bookmarks/"${1%%/*}")/${1#*/}"
 			else
 				echo "Hmm...it looks like this bookmark does not exist"
 			fi
 			;;
 	esac
+}
+
+# Autocomplete
+_cdb () {
+	local bookmark_dir=~/.scripts
+	echo hi
 }
