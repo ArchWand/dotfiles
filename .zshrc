@@ -136,3 +136,4 @@ alias clip="xsel -b"
 
 alias latex_template="cp ~/.local/share/latex_template/* ."
 
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

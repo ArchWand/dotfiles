@@ -44,6 +44,7 @@ function cdb() {
 
 # Autocomplete
 _cdb () {
-	local bookmark_dir=~/.scripts
-	echo hi
+	# undefined
+	builtin autoload -XUz /usr/share/zsh/site-functions
 }
+
