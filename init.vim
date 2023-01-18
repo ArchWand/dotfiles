@@ -76,7 +76,7 @@ set scroll=1
 
 """ Utility
 " Reload vimrc
-command Rvrc source $MYVIMRC
+command R source $MYVIMRC
 
 
 """ Ease of Use
@@ -223,24 +223,24 @@ vnoremap X "0X
 " ##### PLUGINS #####
 
 " --- Autocompletion ---
-" Copilot
-let g:copilot_enabled = v:false
-nnoremap <C-A-p> :Copilot disable<CR>
-imap <C-A-p> <C-o><C-A-p>
-imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
-
 " CoC
 " Use tab for trigger completion with characters ahead and navigate
 " NOTE: There's always complete item selected by default, you may want to enable
 " no select by `"suggest.noselect": true` in your configuration file
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config
-inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr><TAB> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "<CR>"
+
+" Use <c-space> to trigger completion
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -248,6 +248,18 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Copilot
+let g:copilot_enabled = v:false
+nnoremap <C-A-p> :Copilot disable<CR>
+imap <C-A-p> <C-o><C-A-p>
+imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<C-p>"
+" let g:UltiSnipsJumpForwardTrigger="<C-f>"
+" let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+" let g:UltiSnipsEditSplit="vertical"
 
 " --- Rendering ---
 let g:tex_flavor = "latex"

@@ -1,8 +1,6 @@
-ar_conf=$(autorandr --current)
-# If there is no manually selected autorandr config, use the autodetected one
-if [ -z "$ar_conf" ]; then
-	ar_conf=$(autorandr | grep detected | cut -d' ' -f 1)
-fi
+ar_conf=$(autorandr | grep detected | cut -d' ' -f 1)
+# Always use detected autorandr config
+autorandr --change $ar_conf
 
 case $ar_conf in
 	laptop) # Name of the two-screen config
@@ -22,7 +20,9 @@ case $ar_conf in
 		done
 
 		# And finally, delete the monitor
-		bspc monitor -f "HDMI-1" && bspc monitor -r
+		while bspc monitor -f "HDMI-1"; do
+			bspc monitor -r
+		done
 		;;
 	monitor) # Name of the one-screen config
 		bspc monitor -f "HDMI-1" || bspc wm --add-monitor "HDMI-1" 2560x1080+1920+0
