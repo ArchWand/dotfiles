@@ -10,6 +10,7 @@ Plug 'honza/vim-snippets'
 " Rendering
 Plug 'lervag/vimtex'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'jalvesaq/Nvim-R'
 
 " Utility
 Plug 'preservim/nerdcommenter'
@@ -47,7 +48,7 @@ set lbr
 
 " Set the leader as space
 let mapleader=" "
-let maplocalleader=" "
+" let maplocalleader="\"
 nnoremap <Space> <Nop>
 
 " Line numbers
@@ -66,7 +67,7 @@ set nobackup nowritebackup
 set splitbelow splitright
 
 " Code folding
-set foldmethod=syntax
+set foldmethod=manual
 set foldlevel=20
 
 " Scrolling
@@ -117,6 +118,12 @@ imap <A-j> <C-o><A-j>
 imap <A-k> <C-o><A-k>
 imap <A-Down> <C-o><A-j>
 imap <A-Up> <C-o><A-k>
+
+" Move characters
+nnoremap <A-h> xhP
+nnoremap <A-l> xp
+imap <A-h> <C-o><A-h>
+imap <A-l> <C-o><A-l>
 
 " Auto-bracketing
 vnoremap <leader>s( x<Esc>i()<Esc>P
@@ -269,6 +276,10 @@ let g:vimtex_quickfix_mode=0
 
 " Markdown Preview
 let g:mkdp_auto_start = 0
+
+" RStudio
+let R_objbr_auto_start = 1
+let R_assign = 0
 
 
 " --- Utility ---

@@ -1,56 +1,48 @@
-#
-# Quick Open
-#
-
+# ===== Quick Open =====
 super + F1
 	firefox
-
 super + F2
 	discord
-
 super + F3
 	kitty nvim
 
-#
-# wm independent hotkeys
-#
 
-# terminal emulator
-super + Return
-	exo-open --launch TerminalEmulator
+# ===== Notifications =====
+super + v ; x
+	dunstctl close-all
+super + v ; p
+	dunstctl history-pop
 
-# Floating terminal
-super + shift + Return
-	kitty --class floating_kitty
 
-# program launcher
-super + d
-	rofi -show drun -theme "~/.config/rofi/launchers/type-7/style-8.rasi"
-
-# File launcher
-super + shift + @space
-	rofi -show file-browser-extended -theme "~/.config/rofi/launchers/type-7/style-8.rasi"
-
-# # Alt + tab for windows
-# alt + Tab
-	# rofi -show window -theme "~/.config/rofi/launchers/type-7/style-8.rasi"
-
-# make sxhkd reload its configuration files:
-super + Escape
-	pkill -USR1 -x sxhkd
-
-# Help menu
-super + slash
-	~/.config/sxhkd/sxhkd-help
-
+# ===== Top bar =====
 # Hide Polybar
 super + shift + p
 	polybar-msg cmd toggle
 
-# Clipboard history
-super + v
-	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+# Toggle Polybar date
+super + alt + d
+	polybar-msg action "#date.toggle"
 
+# Network menu
+super + alt + n
+	$HOME/.config/rofi/rofi-network-manager/rofi-network-manager.sh
+
+
+# ===== Rofi Bindings =====
+# program launcher
+super + d
+	rofi -show drun -hover-select -me-select-entry '' -me-accept-entry MousePrimary
+
+# Clipboard history
+super + alt + v
+	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -m -3 -theme "Arc-Dark" -theme-str '#window \{anchor: north; location: north west; x-offset: 400; \}' -hover-select -me-select-entry '' -me-accept-entry MousePrimary
+
+# Emoji picker
+super + period
+	rofi -modi "emoji:/usr/bin/rofimoji" -show emoji -theme "Arc-Dark" -hover-select -me-select-entry '' -me-accept-entry MousePrimary
+
+
+# ===== Desktop Environment =====
 # Lock screen
 super + shift + x
 	betterlockscreen -l
@@ -59,10 +51,139 @@ super + shift + x
 super + shift + s
 	flameshot gui
 
-#
-# Multimedia Keys
-#
 
+# ===== Terminal =====
+# Terminal emulator
+super + Return
+	exo-open --launch TerminalEmulator
+
+# Floating terminal
+super + shift + Return
+	kitty --class floating_kitty
+
+
+# ===== Bspwm Hotkeys =====
+# Quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# Close and kill
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# Alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+
+# ===== Sxhkd =====
+# Make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Help menu
+super + slash
+	~/.config/sxhkd/sxhkd-help
+
+
+# ===== Special Focus/Swap =====
+# Swap the current node and the biggest window
+super + g
+	bspc node -s biggest.local.window
+
+# Focus the node for the given path jump
+super + {p,comma}
+	bspc node -f @{parent,first}
+
+
+# ===== Focus/Swap =====
+# Focus/swap the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east} --follow
+
+# Focus the next/previous window in the current desktop
+super + {_,shift + }q
+	bspc node -f {next,prev}.local.!hidden.window
+# Focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+# Focus the last node
+alt + Tab
+	bspc node -f last
+
+# Focus or send to adjacent desktop
+super +{_, shift +} bracket{left,right}
+	bspc {desktop -f,node -d} {prev,next}.local --follow
+# Focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} focused:'^{1-9,10}'
+
+# Swap two desktops
+super + {_,shift + }alt + {1-9,0}
+	bspc desktop -s {focused, next}:'^{1-9,10}' --follow
+
+# Focus the next monitor
+super + alt + Tab
+	bspc monitor -f next
+# Swap node to the next monitor
+super + alt + shift + Tab
+	bspc node -m next --follow
+
+# Rotate tree
+super + shift + {d,a}
+    bspc node @/ -C {forward,backward}
+
+
+# ===== Move/Resize =====
+# Expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+# Contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Move the current window to the next monitor
+super + ctrl + shift + {h,j,k,l}
+	bspc node -m {west,wouth,north,east} --follow
+
+# Move current window to a pre-selected space
+super + shift + m
+    bspc node -n last.!automatic
+
+
+# ===== State/Flags =====
+# set the window state
+super + {t,shift + t,f,s}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+
+# ===== Preselect =====
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+
+# ===== Multimedia Keys =====
 # Calculator
 XF86Calculator
 	galculator
@@ -97,130 +218,4 @@ shift + XF86AudioLowerVolume
 shift + XF86AudioRaiseVolume
 	playerctl next
 
-#
-# bspwm hotkeys
-#
 
-# quit/restart bspwm
-super + alt + {q,r}
-	bspc {quit,wm -r}
-
-# close and kill
-super + {_,shift + }w
-	bspc node -{c,k}
-
-# alternate between the tiled and monocle layout
-super + m
-	bspc desktop -l next
-
-# send the newest marked node to the newest preselected node
-super + y
-	bspc node newest.marked.local -n newest.!automatic.local
-
-# swap the current node and the biggest window
-super + g
-	bspc node -s biggest.local.window
-
-#
-# state/flags
-#
-
-# set the window state
-super + {t,shift + t,f,s}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
-# set the node flags
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
-
-#
-# focus/swap
-#
-
-# focus the node in the given direction
-super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east} --follow
-
-# Swap a node to another monitor
-super + ctrl + shift + {h,j,k,l}
-	bspc node -m {west,south,north,east} --follow
-
-# Swap node to the next monitor
-super + alt + shift + Tab
-	bspc node -m next --follow
-
-# focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
-
-# focus the next/previous window in the current desktop
-super + {_,shift + }q
-	bspc node -f {next,prev}.local.!hidden.window
-
-# focus the next/previous desktop in the current monitor
-super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
-
-# focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
-
-# Move current window to a pre-selected space
-super + shift + m
-    bspc node -n last.!automatic
-
-# focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} focused:'^{1-9,10}'
-
-# Focus the other monitor
-super + alt + Tab
-	bspc monitor -f next
-
-# Swap two desktops
-super + {_,shift + }alt + {1-9,0}
-	bspc desktop -s {focused, next}:'^{1-9,10}' --follow
-
-#
-# preselect
-#
-
-# preselect the direction
-super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
-
-# preselect the ratio
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
-
-# cancel the preselection for the focused node
-super + ctrl + space
-	bspc node -p cancel
-
-# cancel the preselection for the focused desktop
-super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
-#
-# move/resize
-#
-
-# expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-
-# contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-
-# move a floating window
-super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-# Move the current window to the next monitor
-super + ctrl + shift + {h,j,k,l}
-	bspc node -m "${west,wouth,north,east}" --follow
-
-# Rotate tree
-super + shift + {d,a}
-    bspc node @/ -C {forward,backward}

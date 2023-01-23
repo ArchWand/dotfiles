@@ -10,7 +10,7 @@ print_pre_prompt () {
     if [[ $PS1L/ = "$HOME"/* ]]; then PS1L=\~${PS1L#$HOME}; fi
     PS1R=$USER@$HOSTNAME
 	
-	dash_len=$(($COLUMNS- ${#PS1L} - 9 - ${#PS1R}))
+	local dash_len=$(($COLUMNS- ${#PS1L} - 9 - ${#PS1R}))
 
 	printf "$PS1L    "
 	if [ $dash_len -gt 1 ] ; then
@@ -22,8 +22,12 @@ print_pre_prompt () {
 PROMPT_COMMAND=print_pre_prompt
 PS1='\n$ '
 
+export EDITOR='nvim'
+
 # Add scripts directory to PATH
 export PATH="$HOME/.scripts:$PATH"
+# Add local bin to path
+export PATH="$HOME/.local/bin:$PATH"
 . "$HOME/.cargo/env"
 
 function cdrm {

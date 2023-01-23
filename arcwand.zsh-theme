@@ -23,8 +23,12 @@ return_code_c='%F{red}'
 PR_RST='%b%f%k'
 
 
-# ----- End Constants ----- #
+# ----- End Colors ----- #
 
+
+# Helper variables
+cpath='%~'
+cwdir='%1~'
 
 # separator dashes size function from aamnah
 function dashed_line {
@@ -33,9 +37,12 @@ function dashed_line {
 		|| echo $COLUMNS
 }
 
-# Helper variables
-cpath='%~'
-cwdir='%1~'
+function path_split {
+	# The constant at the end of the math expression determines how much space is left
+	local out=$(( COLUMNS - ${#VIRTUAL_ENV} - ${#cpath} - 25))
+	[ "$out" -lt 0 ] && out=0
+	echo $out
+}
 
 
 # Define prompt strings
@@ -43,8 +50,7 @@ separator="${separator_c}"'${(l.$(dashed_line)..-.)}${PR_RST}'
 current_path="${current_path_c}"'${${(%)cpath}%%${(%)cwdir}}${PR_RST}'
 current_workdir="${current_workdir_c}"'%1~${PR_RST}'
 gitpr="${gitpr_c}"'$(git_prompt_info)${PR_RST}'
-shpm="${shpm_c}"'%(40l.
-.)%(!.#.»)${PR_RST}' # shell privilege marker
+shpm="${shpm_c}"'%($(path_split)l.'$'\n''.)%(!.#.»)${PR_RST}' # shell privilege marker
 
 function get_user_host() {
 	echo "$(git remote get-url origin 2>/dev/null || echo '%n@%m')"

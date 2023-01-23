@@ -1,9 +1,9 @@
-ar_conf=$(autorandr | grep detected | cut -d' ' -f 1)
 # Always use detected autorandr config
-autorandr --change $ar_conf
+autorandr --change
+ar_conf=$(autorandr | grep detected | cut -d' ' -f 1)
 
 case $ar_conf in
-	laptop) # Name of the two-screen config
+	laptop) # Name of the one-screen config
 		# Reset the names of the desktops
 		# This is necessary since we will use a name based method to 
 		# move all the windows
@@ -15,6 +15,8 @@ case $ar_conf in
 			bspc desktop -f "$d" &&\
 				bspc node -f @/ &&\
 				bspc node -d "eDP_$(echo "$d" | cut -d'_' -f 2)"
+			# Return focus
+			bspc node -f last
 
 			bspc desktop -r
 		done
@@ -23,10 +25,12 @@ case $ar_conf in
 		while bspc monitor -f "HDMI-1"; do
 			bspc monitor -r
 		done
+		~/.config/bspwm/desktops.sh
 		;;
-	monitor) # Name of the one-screen config
+	monitor) # Name of the two-screen config
 		bspc monitor -f "HDMI-1" || bspc wm --add-monitor "HDMI-1" 2560x1080+1920+0
 		~/.config/bspwm/desktops.sh
+		bspc monitor -f "eDP-1"
 		;;
 	*)	;;
 esac

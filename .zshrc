@@ -107,7 +107,7 @@ if [ -f ~/.scripts/cdb ]; then
     source ~/.scripts/cdb
 fi 
 
-function cdrm {
+function rmcd {
 	dir="$(pwd)" &&\
 	cd .. &&\
 	rm "$dir" -rf

@@ -45,3 +45,6 @@ $HOME/.config/polybar/launch.sh
 # Clipboard history
 greenclip daemon &
 
+# Notifications
+pkill -9 dunst && dunst &
+
