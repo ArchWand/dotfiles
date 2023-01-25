@@ -125,7 +125,7 @@ nnoremap <A-l> xp
 imap <A-h> <C-o><A-h>
 imap <A-l> <C-o><A-l>
 
-" Auto-bracketing
+" Auto-surround
 vnoremap <leader>s( x<Esc>i()<Esc>P
 vmap <leader>s) <leader>s(
 vnoremap <leader>s[ x<Esc>i[]<Esc>P
@@ -137,6 +137,7 @@ vmap <leader>s> <leader>s<
 vnoremap <leader>s' x<Esc>i''<Esc>P
 vnoremap <leader>s" x<Esc>i""<Esc>P
 vnoremap <leader>s` x<Esc>i``<Esc>P
+vnoremap <leader>s$ x<Esc>i$$<Esc>P
 
 
 """ Movement

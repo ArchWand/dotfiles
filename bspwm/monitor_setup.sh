@@ -15,10 +15,6 @@ case $ar_conf in
 			bspc desktop -f "$d" &&\
 				bspc node -f @/ &&\
 				bspc node -d "eDP_$(echo "$d" | cut -d'_' -f 2)"
-			# Return focus
-			bspc node -f last
-
-			bspc desktop -r
 		done
 
 		# And finally, delete the monitor
@@ -26,6 +22,7 @@ case $ar_conf in
 			bspc monitor -r
 		done
 		~/.config/bspwm/desktops.sh
+		bspc node -f first
 		;;
 	monitor) # Name of the two-screen config
 		bspc monitor -f "HDMI-1" || bspc wm --add-monitor "HDMI-1" 2560x1080+1920+0
