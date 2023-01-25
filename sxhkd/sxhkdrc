@@ -45,7 +45,7 @@ super + period
 # ===== Desktop Environment =====
 # Lock screen
 super + shift + x
-	betterlockscreen --lock blur --off 30
+	betterlockscreen --lock dimblur --off 20
 
 # Screenshot
 super + shift + s
