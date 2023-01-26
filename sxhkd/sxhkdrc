@@ -4,7 +4,7 @@ super + F1
 super + F2
 	discord
 super + F3
-	thunderbird
+	kitty nvim
 
 
 # ===== Notifications =====

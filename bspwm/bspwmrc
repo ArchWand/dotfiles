@@ -48,3 +48,6 @@ greenclip daemon &
 # Notifications
 pkill -9 dunst && dunst &
 
+# Compositor
+picom &
+
