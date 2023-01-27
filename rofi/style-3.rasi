@@ -32,9 +32,9 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @selected;
+    border:                      1px solid;
+    border-radius:               10px;
+    border-color:                @bordercolor;
     background-color:            @background;
     cursor:                      "default";
 }
@@ -61,7 +61,7 @@ inputbar {
     border:                      0px solid;
     border-radius:               0px;
     border-color:                @selected;
-    background-color:            #B9CFCAFF;
+    background-color:            @top-bar;
     text-color:                  @background;
     children:                    [ "prompt", "entry" ];
 }
@@ -134,9 +134,13 @@ element normal.normal {
     background-color:            @background;
     text-color:                  @foreground;
 }
+element alternate.normal {
+    background-color:            @background;
+    text-color:                  @foreground;
+}
 element selected.normal {
     background-color:            @selected;
-    text-color:                  @background;
+    text-color:                  #000000;
 }
 element-icon {
     background-color:            transparent;

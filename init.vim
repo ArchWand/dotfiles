@@ -14,6 +14,7 @@ Plug 'jalvesaq/Nvim-R'
 
 " Utility
 Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'gcmt/taboo.vim'
 
 " Visual
