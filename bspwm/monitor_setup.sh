@@ -27,7 +27,7 @@ case $ar_conf in
 	monitor) # Name of the two-screen config
 		bspc monitor -f "HDMI-1" || bspc wm --add-monitor "HDMI-1" 2560x1080+1920+0
 		~/.config/bspwm/desktops.sh
-		bspc monitor -f "eDP-1"
+		bspc node -f first
 		;;
 	*)	;;
 esac
