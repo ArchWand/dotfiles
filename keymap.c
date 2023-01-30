@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	* |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
 	* |        |        |        |        |        |        | 1      | 2      | 3      | DEL    |        |        |        |        |        |
 	* |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
-	* |        |        |        |        | LAYER  | SPACE  | 0      | .      | .      | BACKSP | LAYER  |        |        |        |        |
+	* |        |        |        |        | LAYER  | BACKSP | 0      | .      | .      | BACKSP | LAYER  |        |        |        |        |
 	* '--------------------------------------------------------------------------------------------------------------------------------------'
 	*/
    [_NP] = LAYOUT( /* NUMPAD */
@@ -136,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, 
 	   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_PEQL, KC_PENT, XXXXXXX, XXXXXXX, XXXXXXX, KC_ENT,  
 	   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_P1,   KC_P2,   KC_P3,   KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, 
-	   _______, _______, _______, _______, LAYER,   KC_SPC,  KC_P0,   KC_PDOT, KC_PDOT, KC_BSPC, LAYER,   _______, _______, _______, _______  
+	   _______, _______, _______, _______, LAYER,   KC_BSPC, KC_P0,   KC_PDOT, KC_PDOT, KC_BSPC, LAYER,   _______, _______, _______, _______  
    ),
 
    /* APPKEYS

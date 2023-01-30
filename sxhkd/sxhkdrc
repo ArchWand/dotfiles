@@ -75,15 +75,9 @@ super + {_,shift + }w
 super + m
 	bspc desktop -l next
 
-
-# ===== Sxhkd =====
 # Make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
-
-# Help menu
-super + slash
-	~/.config/sxhkd/sxhkd-help
 
 
 # ===== Movement =====
