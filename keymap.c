@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
      * |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
      * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
-     * |        |        |        |        | LAYER  |        |        |        |        |        | LAYER  |        |        |        |        |
+     * |        |        |        |        | LAYER  |        |        |        |        |        | LAYER  | MENU   |        |        |        |
      * '--------------------------------------------------------------------------------------------------------------------------------------'
      */
 	[_GT] = LAYOUT_ortho_5x15( /* GOTO */
@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		_______, _______, TO(_GM), TO(_KB), TO(_MD), _______, _______, _______, _______, _______, TO(_MD), TO(_KB), TO(_GM), _______, _______, 
 		_______, _______, TO(_AP), TO(_NP), TO(_MV), _______, _______, TO(_PL), _______, _______, TO(_MV), TO(_NP), TO(_AP), _______, _______, 
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
-		_______, _______, _______, _______, LAYER,   _______, _______, _______, _______, _______, LAYER,   _______, _______, _______, _______  
+		_______, _______, _______, _______, LAYER,   _______, _______, _______, _______, _______, LAYER,   KC_APP,  _______, _______, _______  
 	),
 
    /* MOVEMENT
@@ -175,7 +175,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	*/
    [_MD] = LAYOUT( /* MEDIA */
 	   KC_ESC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SLEP, KC_PWR,  QK_BOOT, XXXXXXX, KC_WH_L, XXXXXXX, KC_WH_R, XXXXXXX, KC_CALC, 
-	   _______, KC_VOLD, KC_MUTE, KC_VOLU, _______, XXXXXXX, KC_CAPS, KC_NUM,  KC_SCRL, KC_WH_U, _______, KC_MS_U, XXXXXXX, XXXXXXX, XXXXXXX, 
+	   _______, KC_VOLD, KC_MUTE, KC_VOLU, _______, XXXXXXX, KC_CAPS, KC_NUM,  KC_SCRL,KC_WH_U,KC_MS_BTN1,KC_MS_U,KC_MS_BTN2,XXXXXXX,XXXXXXX, 
 	   _______, KC_MPRV, KC_MPLY, KC_MNXT, KC_PSCR, XXXXXXX, XXXXXXX, XXXXXXX, KC_PAUS, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, _______, 
 	   _______, XXXXXXX, KC_BRID, KC_BRIU, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, 
 	   _______, _______, _______, _______, LAYER,   _______, XXXXXXX, XXXXXXX, XXXXXXX, _______, LAYER,   _______, _______, _______, _______  

@@ -26,11 +26,21 @@ function cdb() {
 			if [ -f "$dir"/.cd_bookmarks/"$to_rm" ] ; then
 				rm "$dir"/.cd_bookmarks/"$to_rm"
 			else
-				echo "Hmm...it looks like this bookmark does not exist"
+				echo "Can't find the bookmark to delete"
 			fi
 			;;
 		-l)
 			ls "$dir"/.cd_bookmarks -A
+			;;
+		-e)
+			cd "$dir"/.cd_bookmarks
+			;;
+		-m) shift
+			if (($# == 2)); then
+				mv "$dir"/.cd_bookmarks/"$1" "$dir"/.cd_bookmarks/"$2"
+			else
+				echo "Can't move this bookmark, try again"
+			fi
 			;;
 		*)
 			if [ -f "$dir"/.cd_bookmarks/"${1%%/*}" ] ; then

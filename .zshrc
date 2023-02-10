@@ -121,11 +121,11 @@ function mcd {
 function mvcwd {
 	dir="$(pwd)" &&\
 	cd .. &&\
-	mv "$dir" "$1" &&\
+	mv "$dir" "$1" ;\
 	cd "$1"
 }
 
-alias icat="kitty +icat"
+alias icat="kitty +kitten icat"
 
 alias ranger=". ranger"
 alias la="ls -a"
@@ -136,4 +136,7 @@ alias clip="xsel -b"
 
 alias latex_template="cp ~/.local/share/latex_template/* ."
 
+alias startx11vnc="x11vnc -display :0 -usepw"
+
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+

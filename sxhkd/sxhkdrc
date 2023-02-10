@@ -6,6 +6,9 @@ super + F2
 super + F3
 	kitty nvim
 
+super + e
+	thunar
+
 
 # ===== Notifications =====
 super + v ; x
@@ -35,11 +38,17 @@ super + d
 
 # Clipboard history
 super + alt + v
-	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -m -3 -theme "Arc-Dark" -theme-str '#window \{anchor: north; location: north west; x-offset: 400; \}' -hover-select -me-select-entry '' -me-accept-entry MousePrimary
+	rofi -modi "clipboard:greenclip print" -show clipboard -theme-str '#window \{y-offset: 200; \}'
 
 # Emoji picker
 super + period
-	rofi -modi "emoji:/usr/bin/rofimoji" -show emoji -theme "Arc-Dark" -hover-select -me-select-entry '' -me-accept-entry MousePrimary
+	/usr/bin/rofimoji
+super + semicolon
+	/usr/bin/rofimoji
+
+# Unicode picker
+super + shift + u
+	/usr/bin/rofimoji --files all --action copy-unicode
 
 
 # ===== Desktop Environment =====
@@ -49,6 +58,8 @@ super + shift + x
 
 # Screenshot
 super + shift + s
+	flameshot gui
+Print
 	flameshot gui
 
 
@@ -110,9 +121,10 @@ super + {_,shift + }q
 # Focus the last node/desktop
 super + {grave,Tab}
 	bspc {node,desktop} -f last
-# Focus the last node
+# Focus the last node on current desktop
 alt + Tab
 	bspc node -f last
+	# bspc node -f last.local
 
 # Rotate tree
 super + shift + {d,a}

@@ -123,8 +123,8 @@ imap <A-Up> <C-o><A-k>
 " Move characters
 nnoremap <A-h> xhP
 nnoremap <A-l> xp
-imap <A-h> <C-o><A-h>
-imap <A-l> <C-o><A-l>
+imap <A-h> <Esc><A-h>a
+imap <A-l> <Esc><A-l>a
 
 " Auto-surround
 vnoremap <leader>s( x<Esc>i()<Esc>P

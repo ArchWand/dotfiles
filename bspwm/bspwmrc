@@ -16,39 +16,43 @@ bspc config border_width         1
 bspc config window_gap           6
 bspc config focused_window_color #FFFFFF
 
-bspc config split_ratio          0.52
+bspc config split_ratio          0.50
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-# Floating terminal
+# Floating rules
+# Terminal
 function half_dimension() {
 	local width=$(($(bspc query -T -m "$1" | jq -r '.rectangle | .width')/2))
 	local height=$(($(bspc query -T -m "$1" | jq -r '.rectangle | .height')/2))
 	echo "${width}x${height}"
 }
 bspc rule -a floating_kitty state=floating rectangle=$(half_dimension $(bspc query -M --names | head -n 1))+0+0 center=true
-
-# Floating calculator
+# Calculator
 bspc rule -a Galculator state=floating
-
 # Firefox rules
-# Picture-in-picture floating
+# Picture-in-picture
 bspc rule -a 'firefox:Toolkit:Picture-in-Picture' state=floating
-# Downloads floating
+# Downloads
 bspc rule -a 'firefox:Places:*' state=floating
+# Thunderbird message compose
+bspc rule -a 'thunderbird:Msgcompose' state=floating
 
+# Tiling rules
+# Zathura
+bspc rule -a Zathura state=tiled
+
+# Autostart
 # Wallpaper
 nitrogen --restore &
-
 # Top bar
 $HOME/.config/polybar/launch.sh
-
 # Clipboard history
 greenclip daemon &
-
 # Notifications
 pkill -9 dunst && dunst &
-
+# Gestures
+libinput-gestures-setup stop start &
 # Compositor
 picom &
 
