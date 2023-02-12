@@ -1,6 +1,9 @@
 # Always use detected autorandr config
 autorandr --change
 ar_conf=$(autorandr | grep detected | cut -d' ' -f 1 | head -n 1)
+if [ -z "$ar_conf" ]; then
+	ar_conf=$(autorandr --list | head -n 1)
+fi
 
 case $ar_conf in
 	laptop) # Name of the one-screen config

@@ -43,6 +43,9 @@ set autoindent smarttab
 set tabstop=4 shiftwidth=4 softtabstop=4
 set breakindent
 
+" Visualize whitespace
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
 " Ensure word wrap does not split words
 set formatoptions=l
 set lbr
@@ -79,6 +82,12 @@ set scroll=1
 """ Utility
 " Reload vimrc
 command R source $MYVIMRC
+
+" Visualize whitespace
+nnoremap <leader>w :set list!<CR>
+
+" Toggle relative numbering
+nnoremap <leader>n :NumberToggle<CR>
 
 
 """ Ease of Use
@@ -246,9 +255,9 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "<CR>"
 
 " Use <c-space> to trigger completion
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+	inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+	inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
 " GoTo code navigation.
@@ -256,6 +265,12 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
+" Apply the most preferred quickfix action to fix diagnostic on the current line
+nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Copilot
 let g:copilot_enabled = v:false
@@ -306,4 +321,6 @@ let g:texconceal='abdmg'
 " Vim-Airline
 let g:airline_theme='violet'
 let g:airline_powerline_fonts = 1
+" Allow spaces for alignment
+let g:airline#extensions#whitespace#mixed_indent_algo = 2
 
