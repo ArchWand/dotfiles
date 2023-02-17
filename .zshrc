@@ -1,3 +1,5 @@
+echo source
+date +%M.%S.%N
 # ArcWand's zshrc
 
 # If you come from bash you might have to change your $PATH.
@@ -44,6 +46,10 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
+
+# Allow loading from insecure directories
+# Probably don't do this?
+# ZSH_DISABLE_COMPFIX="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -108,35 +114,35 @@ if [ -f ~/.scripts/cdb ]; then
 fi
 
 function rmcd {
-	dir="$(pwd)" &&\
-		cd .. &&\
-		rm "$dir" -rf
-	}
+	dir="$(pwd)" && cd .. && rm "$dir" -rf
+}
 
-	function mcd {
-		mkdir -p "$1" &&\
-			cd "$1"
-		}
+function mcd {
+	mkdir -p "$1" && cd "$1"
+}
 
-		function mvcwd {
-			dir="$(pwd)" &&\
-				cd .. &&\
-				mv "$dir" "$1" ;\
-				cd "$1"
-			}
+function mvcwd {
+	dir="$(pwd)" && cd .. && mv "$dir" "$1" ;
+	cd "$1"
+}
 
-			alias icat="kitty +kitten icat"
+alias icat="kitty +kitten icat"
 
-			alias ranger=". ranger"
-			alias la="ls -A"
-			alias lc="ls -rc"
-			alias reload-zsh="source ~/.zshrc"
-			alias py=python
-			alias clip="xsel -b"
+alias ranger=". ranger"
+alias la="ls -A"
+alias lc="ls -rc"
+alias reload-zsh="source ~/.zshrc"
+alias py=python
+alias clip="xsel -b"
 
-			alias latex_template="cp ~/.local/share/latex_template/* ."
+alias latex_template="cp ~/.local/share/latex_template/* ."
 
-			alias startx11vnc="x11vnc -display :0 -usepw"
+alias startx11vnc="x11vnc -display :0 -usepw"
 
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+echo end
+date +%M.%S.%N
+
+echo line 1>&2
 

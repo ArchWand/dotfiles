@@ -23,10 +23,20 @@ function cdb() {
 			if (($# == 0)); then
 				to_rm=$cwd
 			fi
-			if [ -f "$dir"/.cd_bookmarks/"$to_rm" ] ; then
-				rm "$dir"/.cd_bookmarks/"$to_rm"
-			else
+			if [[ ! -f "$dir"/.cd_bookmarks/"$to_rm" ]] ; then
+				to_rm=
+				for f in `ls "$dir"/.cd_bookmarks -A`; do
+					if [[ `cat "$dir"/.cd_bookmarks/"$f"` == "`pwd`" ]]; then
+						to_rm="$f"
+						break
+					fi
+				done
+			fi
+			if [[ -z $to_rm ]]; then
 				echo "Can't find the bookmark to delete"
+			else
+				echo "Deleting: $to_rm"
+				rm "$dir"/.cd_bookmarks/"$to_rm"
 			fi
 			;;
 		-l)
@@ -38,13 +48,24 @@ function cdb() {
 		-m) shift
 			if (($# == 2)); then
 				mv "$dir"/.cd_bookmarks/"$1" "$dir"/.cd_bookmarks/"$2"
+			elif (($# == 1)); then
+				mv "$dir"/.cd_bookmarks/"$cwd" "$dir"/.cd_bookmarks/"$1"
 			else
 				echo "Can't move this bookmark, try again"
 			fi
 			;;
+		-n) shift
+			if (($# == 1)); then
+				echo "`pwd`" > "$dir"/.cd_bookmarks/"$1"
+			elif (($# == 0)); then
+				echo "`pwd`" > "$dir"/.cd_bookmarks/"$cwd"
+			else
+				echo "Failed to make a bookmark"
+			fi
+			;;
 		*)
 			if [ -f "$dir"/.cd_bookmarks/"${1%%/*}" ] ; then
-				cd "$(cat "$dir"/.cd_bookmarks/"${1%%/*}")/${1##${1%%/*}}"
+				cd "`cat "$dir"/.cd_bookmarks/"${1%%/*}"`/${1##${1%%/*}}"
 			else
 				echo "Hmm...it looks like this bookmark does not exist"
 			fi

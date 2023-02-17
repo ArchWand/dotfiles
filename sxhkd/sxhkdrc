@@ -48,6 +48,8 @@ super + semicolon
 
 # Unicode picker
 super + shift + u
+	/usr/bin/rofimoji --files all
+super + alt + u
 	/usr/bin/rofimoji --files all --action copy-unicode
 
 

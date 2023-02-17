@@ -4,13 +4,6 @@ call plug#begin()
 " Autocompletion
 Plug 'github/copilot.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-" Rendering
-Plug 'lervag/vimtex'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-Plug 'jalvesaq/Nvim-R'
 
 " Utility
 Plug 'preservim/nerdcommenter'
@@ -19,8 +12,8 @@ Plug 'gcmt/taboo.vim'
 
 " Visual
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'EdenEast/nightfox.nvim'
 
 call plug#end()
@@ -33,21 +26,14 @@ colorscheme carbonfox
 syntax enable
 filetype plugin on
 
-""" Indentation
-set autoindent smarttab
-set noexpandtab
-set tabstop=4 shiftwidth=4 softtabstop=4
-set breakindent
-
-" .R - R script
-autocmd FileType R setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-
-" .s - ASM
-autocmd FileType asm setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-
 """ Buffer settings
 " Mouse
 set mouse=a
+
+" Indenting
+set autoindent smarttab
+set tabstop=4 shiftwidth=4 softtabstop=4
+set breakindent
 
 " Visualize whitespace
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
@@ -83,9 +69,6 @@ set foldlevel=20
 " Scrolling
 set scrolloff=4
 set scroll=1
-
-" Default conceal level
-set conceallevel=2
 
 
 """ Utility
@@ -287,25 +270,6 @@ nnoremap <C-A-p> :Copilot disable<CR>
 imap <C-A-p> <C-o><C-A-p>
 imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
-
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<C-p>"
-" let g:UltiSnipsJumpForwardTrigger="<C-f>"
-" let g:UltiSnipsJumpBackwardTrigger="<C-z>"
-" let g:UltiSnipsEditSplit="vertical"
-
-" --- Rendering ---
-let g:tex_flavor = "latex"
-" VimTex
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-
-" Markdown Preview
-let g:mkdp_auto_start = 0
-
-" RStudio
-let R_objbr_auto_start = 1
-let R_assign = 0
 
 
 " --- Utility ---

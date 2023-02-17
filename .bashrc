@@ -35,30 +35,32 @@ function cdrm {
 	dir="$(pwd)" &&\
 		cd .. &&\
 		rm "$dir" -rf
-	}
+}
 
-	function mcd {
-		mkdir -p "$1" &&\
-			cd "$1"
-		}
+function mcd {
+	mkdir -p "$1" &&\
+		cd "$1"
+}
 
-		function mvcwd {
-			dir="$(pwd)" &&\
-				cd .. &&\
-				mv "$dir" "$1" &&\
-				cd "$1"
-			}
+function mvcwd {
+	dir="$(pwd)" &&\
+		cd .. &&\
+		mv "$dir" "$1" &&\
+		cd "$1"
+}
 
-			alias icat="kitty +icat"
+alias icat="kitty +icat"
 
-			alias ranger=". ranger"
-			alias py=python
-			alias clip="xsel -b"
-			alias reload-bash="source ~/.bashrc"
+alias ranger=". ranger"
+alias py=python
+alias clip="xsel -b"
+alias reload-bash="source ~/.bashrc"
 
-			alias latex_template="cp ~/.local/share/latex_template/* ."
+alias latex_template="cp ~/.local/share/latex_template/* ."
 
-			alias ls='ls --color=auto'
-			alias la="ls -A"
-			alias lc="ls -rc"
+alias ls='ls --color=auto'
+alias la="ls -A"
+alias lc="ls -rc"
+
+echo line
 

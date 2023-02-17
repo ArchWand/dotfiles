@@ -4,21 +4,15 @@
 export EDITOR='nvim'
 
 function rmcd {
-	dir="`pwd`" &&\
-	cd .. &&\
-	rm "$dir" -rf
+	dir="`pwd`" && cd .. && rm "$dir" -rf
 }
 
 function mcd {
-	mkdir -p "$1" &&\
-	cd "$1"
+	mkdir -p "$1" && cd "$1"
 }
 
 function mvcwd {
-	dir="`pwd`" &&\
-	cd .. &&\
-	mv "$dir" "$1" &&\
-	cd "$1"
+	dir="`pwd`" && cd .. && mv "$dir" "$1" && cd "$1"
 }
 
 alias py=python
