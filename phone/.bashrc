@@ -16,7 +16,7 @@ function mvcwd {
 }
 
 alias py=python
-alias reload-bash="source ~/.bashrc"
+alias reload-bash="exec bash"
 
 alias ls='ls --color=auto'
 alias la="ls -A"

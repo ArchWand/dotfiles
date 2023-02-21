@@ -98,6 +98,9 @@ nnoremap <leader>w :set list!<CR>
 " Toggle relative numbering
 nnoremap <leader>n :NumberToggle<CR>
 
+" Toggle word wrap
+nnoremap <leader>o :set wrap!<CR>
+
 
 """ Ease of Use
 " Close all windows

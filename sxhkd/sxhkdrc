@@ -20,7 +20,7 @@ super + v ; p
 # ===== Top bar =====
 # Hide Polybar
 super + shift + p
-	polybar-msg cmd toggle
+	/home/arcwand/.scripts/toggle_focused_polybar.sh
 
 # Toggle Polybar date
 super + alt + d

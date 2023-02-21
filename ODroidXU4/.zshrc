@@ -66,7 +66,7 @@ alias py=python3
 alias updatedb="sudo echo 'Updating DB' && sudo updatedb && echo 'DB updated'"
 
 #Utility
-alias reload-zsh="source ~/.zshrc"
+alias reload-zsh="exec zsh"
 
 
 export NVM_DIR="$HOME/.nvm"

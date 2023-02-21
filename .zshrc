@@ -1,5 +1,4 @@
-echo source
-date +%M.%S.%N
+zmodload zsh/zprof
 # ArcWand's zshrc
 
 # If you come from bash you might have to change your $PATH.
@@ -131,7 +130,7 @@ alias icat="kitty +kitten icat"
 alias ranger=". ranger"
 alias la="ls -A"
 alias lc="ls -rc"
-alias reload-zsh="source ~/.zshrc"
+alias reload-zsh="exec zsh"
 alias py=python
 alias clip="xsel -b"
 
@@ -140,9 +139,4 @@ alias latex_template="cp ~/.local/share/latex_template/* ."
 alias startx11vnc="x11vnc -display :0 -usepw"
 
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-echo end
-date +%M.%S.%N
-
-echo line 1>&2
 
