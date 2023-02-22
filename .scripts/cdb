@@ -9,11 +9,7 @@ function cdb() {
 
 	local cwd="${PWD##*/}"
 	if (( $# == 0 )); then
-		if [ ! -f "$dir"/.cd_bookmarks/"$cwd" ] ; then
-			echo "`pwd`" > "$dir"/.cd_bookmarks/"$cwd"
-		else
-			echo "Try again! Looks like there is already a bookmark '$cwd'"
-		fi
+		echo "`pwd`" > "$dir"/.cd_bookmarks/"$cwd"
 		return
 	fi
 

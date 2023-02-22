@@ -130,7 +130,6 @@ alias icat="kitty +kitten icat"
 alias ranger=". ranger"
 alias la="ls -A"
 alias lc="ls -rc"
-alias reload-zsh="exec zsh"
 alias py=python
 alias clip="xsel -b"
 
