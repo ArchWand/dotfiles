@@ -1,4 +1,5 @@
-zmodload zsh/zprof
+# zmodload zsh/zprof
+
 # ArcWand's zshrc
 
 # If you come from bash you might have to change your $PATH.
@@ -126,9 +127,11 @@ function mvcwd {
 }
 
 alias icat="kitty +kitten icat"
+alias ssh="kitty +kitten ssh"
 
 alias ranger=". ranger"
 alias la="ls -A"
+alias ll="ls -lAh"
 alias lc="ls -rc"
 alias py=python
 alias clip="xsel -b"

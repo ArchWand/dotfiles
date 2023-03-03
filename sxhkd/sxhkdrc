@@ -5,6 +5,12 @@ super + F2
 	discord
 super + F3
 	kitty nvim
+alt + F1
+	firefox
+alt + F2
+	discord
+alt + F3
+	kitty nvim
 
 super + e
 	thunar

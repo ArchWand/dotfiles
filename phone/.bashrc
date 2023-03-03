@@ -16,12 +16,11 @@ function mvcwd {
 }
 
 alias py=python
-alias reload-bash="exec bash"
 
 alias ls='ls --color=auto'
 alias la="ls -A"
 alias lc="ls -rc"
 
-alias laptop_ip='ssh arcwand@128.113.148.164 "tail -n 1 laptop_ip.txt"'
+alias laptop_ip='ssh arcwand@128.113.148.173 "tail -n 1 laptop_ip.txt"'
 alias startx11vnc='ssh arcwand@`laptop_ip` "x11vnc -usepw -display :0"'
 

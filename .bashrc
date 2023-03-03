@@ -60,6 +60,7 @@ alias latex_template="cp ~/.local/share/latex_template/* ."
 
 alias ls='ls --color=auto'
 alias la="ls -A"
+alias ll="ls -lAh"
 alias lc="ls -rc"
 
 echo line

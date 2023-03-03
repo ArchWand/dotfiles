@@ -40,7 +40,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4
 set breakindent
 
 " .R - R script
-autocmd FileType R setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType r setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " .s - ASM
 autocmd FileType asm setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
@@ -63,9 +63,10 @@ nnoremap <Space> <Nop>
 
 " Line numbers
 set number relativenumber
-autocmd BufReadPre,FileReadPre,WinEnter,FocusGained * :setlocal number relativenumber
-autocmd WinLeave,FocusLost * :setlocal number norelativenumber
 command NumberToggle :setlocal relativenumber!
+" Switch to not relative when focus lost
+" autocmd BufReadPre,FileReadPre,WinEnter,FocusGained * :setlocal number relativenumber
+" autocmd WinLeave,FocusLost * :setlocal number norelativenumber
 
 " Clipboard
 set clipboard=unnamedplus
