@@ -63,5 +63,3 @@ alias la="ls -A"
 alias ll="ls -lAh"
 alias lc="ls -rc"
 
-echo line
-
