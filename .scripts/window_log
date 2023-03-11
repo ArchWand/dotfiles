@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# This script is meant to run via crontab
+# This ensures it can send notifications for debugging
+# export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+# This allows it to find windows
+export DISPLAY=:0
+
+timestamp="$(date +"%F %H:%M")"
+window_name="$(xdotool getactivewindow getwindowname)"
+
+echo "$timestamp | $window_name" >> /home/arcwand/.window_log
+
+unset timestamp window_name
+

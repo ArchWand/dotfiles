@@ -1,3 +1,6 @@
+# Make sure script is run from the directory it is in
+cd "$(dirname "$0")"
+
 # Update directories that cannot be hard linked
 function up_dir {
 	echo "Updating $1"

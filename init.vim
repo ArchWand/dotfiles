@@ -176,6 +176,12 @@ vmap <Up> k
 imap <Down> <C-o>j
 imap <Up> <C-o>k
 
+" Provide a method for unwrapped movement
+nnoremap gj j
+nnoremap gk k
+vnoremap gj j
+vnoremap gk k
+
 " Convenient BoL EoL
 function WinTextWidth()
 	let winwidth = winwidth(0)
