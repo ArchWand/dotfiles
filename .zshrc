@@ -48,7 +48,6 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # ENABLE_CORRECTION="true"
 
 # Allow loading from insecure directories
-# Probably don't do this?
 # ZSH_DISABLE_COMPFIX="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -116,25 +115,25 @@ fi
 function rmcd {
 	dir="$(pwd)" && cd .. && rm "$dir" -rf
 }
-
 function mcd {
 	mkdir -p "$1" && cd "$1"
 }
-
 function mvcwd {
 	dir="$(pwd)" && cd .. && mv "$dir" "$1" ;
 	cd "$1"
 }
+alias cdnew='cd $(ls -rcd */ | tail -n 1)'
 
-alias icat="kitty +kitten icat"
-alias ssh="kitty +kitten ssh"
-
-alias ranger=". ranger"
 alias la="ls -A"
 alias ll="ls -lAh"
 alias lc="ls -rc"
+
+alias ranger=". ranger"
 alias py=python
 alias clip="xsel -b"
+
+alias icat="kitty +kitten icat"
+alias ssh="kitty +kitten ssh"
 
 alias latex_template="cp ~/.local/share/latex_template/* ."
 

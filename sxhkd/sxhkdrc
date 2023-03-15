@@ -1,3 +1,27 @@
+# ===== Tabbed =====
+# super + t             base chord for all tabbed manipulation
+#   t                   (create) create new tabbed container on focused window
+#   r                   (detach) remove focused window from tabbed container
+#   shift + r           (detach --all) remove all windows from tabbed container
+#   e                   (embed) attach next opened window to focused window
+#   z                   (embed terminal) attach a terminal to focused window
+#   {h,j,k,l}           (create) merge focused tabbed/window with target tabbed/window
+#   arrows              (transfer) attach focused window with target tabbed/window
+
+super + t; t
+	bsptab-rs create focused
+super + t; r
+	bsptab-rs detach focused
+super + t; shift + r
+	bsptab-rs detach --all focused
+super + t; e
+	bsptab-rs embed focused
+super + t; {h,j,k,l}
+	bsptab-rs create focused {west,south,north,east}
+super + t; {Left,Down,Up,Right}
+	bsptab-rs transfer focused {west,south,north,east}
+
+
 # ===== Quick Open =====
 super + F1
 	firefox
@@ -126,13 +150,15 @@ super + g
 super + {_,shift + }q
 	bspc node -f {next,prev}.local.!hidden.window
 
-# Focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
+# Focus the last desktop
+super + Tab
+	bspc desktop -f last
+# Focus the last node
+super + grave
+	bspc node -f last
 # Focus the last node on current desktop
 alt + Tab
-	bspc node -f last
-	# bspc node -f last.local
+	bspc node -f last.local
 
 # Rotate tree
 super + shift + {d,a}
@@ -177,9 +203,17 @@ super + alt + {h,j,k,l}
 super + alt + shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-# Set the window state
-super + {t,shift + t,f,s}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+# Toggle floating/tiled
+super + f
+	bspc query -N -n focused.floating &&\
+		bspc node -t tiled ||\
+		bspc node -t floating
+
+# Toggle fullscreen/tiled
+F11
+	bspc query -N -n focused.fullscreen &&\
+		bspc node -t tiled ||\
+		bspc node -t fullscreen
 
 # Set the node flags
 super + ctrl + {m,x,y,z}
@@ -203,7 +237,7 @@ super + ctrl + shift + space
 # ===== Multimedia Keys =====
 # Calculator
 XF86Calculator
-	galculator
+	kitty --class=floating_kitty -- python3
 
 # Brightness
 XF86MonBrightnessDown
