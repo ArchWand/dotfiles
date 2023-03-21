@@ -210,6 +210,12 @@ super + f
 		bspc node -t floating
 
 # Toggle fullscreen/tiled
+super + s
+	bspc query -N -n focused.fullscreen &&\
+		bspc node -t tiled ||\
+		bspc node -t fullscreen
+
+# Toggle fullscreen/tiled
 F11
 	bspc query -N -n focused.fullscreen &&\
 		bspc node -t tiled ||\
