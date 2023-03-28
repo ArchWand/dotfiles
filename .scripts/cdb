@@ -17,11 +17,11 @@ function cdb() {
 		-d) shift
 			local to_rm="$1"
 			if (($# == 0)); then
-				to_rm=$cwd
+				to_rm="$(basename `pwd`)"
 			fi
 			if [[ ! -f "$dir"/.cd_bookmarks/"$to_rm" ]] ; then
 				to_rm=
-				for f in `ls "$dir"/.cd_bookmarks -A`; do
+				for f in "$dir/.cd_bookmarks/*" "$dir/.cd_bookmarks/.*" ; do
 					if [[ `cat "$dir"/.cd_bookmarks/"$f"` == "`pwd`" ]]; then
 						to_rm="$f"
 						break

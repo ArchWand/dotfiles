@@ -13,24 +13,35 @@ case $ar_conf in
 		~/.config/bspwm/desktops.sh
 
 		# Then move all windows to the primary monitor
-		# Deleting the desktops as we go
 		for d in $(bspc query -D --names | grep "HDMI"); do
 			bspc desktop -f "$d" &&\
 				bspc node -f @/ &&\
 				bspc node -d "eDP_$(echo "$d" | cut -d'_' -f 2)"
 		done
 
-		# And finally, delete the monitor
+		# Finally, delete the monitor
 		while bspc monitor -f "HDMI-1"; do
 			bspc monitor -r
 		done
 		~/.config/bspwm/desktops.sh
-		bspc node -f first
+		bspc node -f @first
 		;;
 	desk) # Name of the two-screen config
 		bspc monitor -f "HDMI-1" || bspc wm --add-monitor "HDMI-1" 2560x1080+1920+0
 		~/.config/bspwm/desktops.sh
-		bspc node -f first
+
+		# Move all nodes to external monitor upon first connecting
+		# (personal preference) 
+		for d in $(bspc query -D --names | grep "eDP"); do
+			bspc desktop -f "$d" &&\
+				bspc node -f @/
+				bspc node -d "HDMI_$(echo "$d" | cut -d'_' -f 2)"
+		done
+
+		bspc node -f @first
+		# End with focus on main monitor, first desktop
+		bspc desktop -f eDP_01
+		bspc desktop -f HDMI_01
 		;;
 	monitor) # Name of the external monitor only config
 		# Reset the names of the desktops
@@ -39,20 +50,21 @@ case $ar_conf in
 		~/.config/bspwm/desktops.sh
 
 		# Then move all windows to the external monitor
-		# Deleting the desktops as we go
 		for d in $(bspc query -D --names | grep "eDP"); do
 			bspc desktop -f "$d" &&\
 				bspc node -f @/ &&\
 				bspc node -d "HDMI_$(echo "$d" | cut -d'_' -f 2)"
 		done
 
-		# And finally, delete the monitor
+		# Finally, delete the monitor
 		while bspc monitor -f "eDP-1"; do
 			bspc monitor -r
 		done
 		~/.config/bspwm/desktops.sh
-		bspc node -f first
+		bspc node -f @first
 		;;
 	*)	;;
 esac
 
+# Just in case, adopt orphans
+bspc wm -o

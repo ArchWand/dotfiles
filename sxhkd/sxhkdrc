@@ -21,14 +21,7 @@ super + t; {h,j,k,l}
 super + t; {Left,Down,Up,Right}
 	bsptab-rs transfer focused {west,south,north,east}
 
-
 # ===== Quick Open =====
-super + F1
-	firefox
-super + F2
-	discord
-super + F3
-	kitty nvim
 alt + F1
 	firefox
 alt + F2
@@ -138,7 +131,7 @@ super + ctrl + shift + {h,j,k,l}
 
 # Move current window to a pre-selected space
 super + shift + m
-    bspc node -n last.!automatic
+	bspc node -n last.!automatic
 
 # Swap the current node and the biggest window
 super + g
@@ -162,7 +155,7 @@ alt + Tab
 
 # Rotate tree
 super + shift + {d,a}
-    bspc node @/ -C {forward,backward}
+	bspc node @/ -C {forward,backward}
 
 # Focus the next monitor
 super + alt + Tab
@@ -253,11 +246,11 @@ XF86MonBrightnessUp
 
 # Volume Control
 XF86AudioLowerVolume
-    amixer set Master unmute; \
-    amixer set Master 5%-
+	amixer set Master unmute; \
+	amixer set Master 5%-
 XF86AudioRaiseVolume
-    amixer set Master unmute; \
-    amixer set Master 5%+
+	amixer set Master unmute; \
+	amixer set Master 5%+
 XF86AudioMute
 	amixer set Master toggle
 

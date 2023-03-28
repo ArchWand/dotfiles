@@ -124,6 +124,8 @@ function mvcwd {
 }
 alias cdnew='cd $(ls -rcd */ | tail -n 1)'
 
+alias hardclear='echo -e "\033c" && clear'
+
 alias la="ls -A"
 alias ll="ls -lAh"
 alias lc="ls -rc"

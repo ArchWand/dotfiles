@@ -10,6 +10,9 @@ case $1 in
 	-u) # Show only unique windows from the last day
 		tail -n 86400 /home/arcwand/.window_log | sed 's/^....-..-.. ..:.. | //' | sort | uniq -c | sort -n
 		;;
+	-w) # Show only unique windows from the last week
+		tail -n 604800 /home/arcwand/.window_log | sed 's/^....-..-.. ..:.. | //' | sort | uniq -c | sort -n
+		;;
 	*) # Default behavior
 		cat /home/arcwand/.window_log
 		;;
