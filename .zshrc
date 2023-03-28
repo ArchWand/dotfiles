@@ -83,6 +83,10 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Options
+# Expand glob to empty string when no matches are found
+setopt null_glob
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -124,7 +128,8 @@ function mvcwd {
 }
 alias cdnew='cd $(ls -rcd */ | tail -n 1)'
 
-alias hardclear='echo -e "\033c" && clear'
+alias hardclear='echo -ne "\ec"'
+alias reset="tput reset"
 
 alias la="ls -A"
 alias ll="ls -lAh"
