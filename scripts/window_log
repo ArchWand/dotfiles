@@ -7,10 +7,12 @@
 # This allows it to find windows
 export DISPLAY=:0
 
+log_file="/home/arcwand/.window_log"
+
 timestamp="$(date +"%F %H:%M")"
 window_name="$(xdotool getactivewindow getwindowname)"
 
-echo "$timestamp | $window_name" >> /home/arcwand/.window_log
+echo "$timestamp | $window_name" >> "$log_file"
 
-unset timestamp window_name
+unset log_file timestamp window_name
 

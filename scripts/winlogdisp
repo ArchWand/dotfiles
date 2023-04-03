@@ -1,0 +1,158 @@
+#!/bin/zsh
+
+log_file="/home/arcwand/.window_log"
+
+# Usage: winlogdisp [-c | -f] [-h] [-i <keywords> | -k <keywords>] [-n <days>]
+#  -c: Show the total time and percentage of computer time, and the counts of any keywords
+#  -f: Show sorted by frequency
+#  -h: Show this help
+#  -i: Show only lines not containing the keywords
+#  -k: Show only lines containing the keywords
+#  -n: Show the full log for the last number of days (default: 1)
+
+# Set the default values
+days=1
+keywords=( )
+max_key_width=8 # due to header
+computer_time=0
+total_time=$(( $days * 24 * 60 ))
+
+# Output vars
+data=""
+
+# Set mode; can be "disp" "freq" "count"
+mode="disp"
+invert_keywords=false
+
+# Parse the command line arguments
+skip=false
+for arg in $@; do
+	if [[ $skip == true ]]; then
+		skip=false
+		continue
+	fi
+	case $arg in
+		-c)
+			if [[ $mode != "disp" ]]; then
+				echo "Cannot use -c and -f together"
+				exit 1
+			fi
+			mode="count"
+			shift
+			;;
+		-f)
+			if [[ $mode != "disp" ]]; then
+				echo "Cannot use -c and -f together"
+				exit 1
+			fi
+			mode="freq"
+			shift
+			;;
+		-h)
+			# Show the help and exit
+			echo "Usage: winlogdisp [-c | -f] [-h] [-i <keywords> | -k <keywords>] [-n <days>]"
+			echo " -c: Show the total time and percentage of computer time, and the counts of any keywords"
+			echo " -f: Show sorted by frequency"
+			echo " -h: Show this help"
+			echo " -i: Show only lines not containing the keywords"
+			echo " -k: Show only lines containing the keywords"
+			echo " -n: Show the full data for the last number of days (default: 1)"
+			exit 0
+			;;
+		-i)
+			invert_keywords=true
+			for keyword in $(echo $2 | tr " " "\n"); do
+				keywords+=( $keyword )
+				max_key_width=$(( $max_key_width > ${#keyword} ? $max_key_width : ${#keyword} ))
+			done
+			shift 2
+			skip=true
+			;;
+		-k)
+			for keyword in $(echo $2 | tr " " "\n"); do
+				keywords+=( $keyword )
+				max_key_width=$(( $max_key_width > ${#keyword} ? $max_key_width : ${#keyword} ))
+			done
+			shift 2
+			skip=true
+			;;
+		-n)
+			days=$2
+			shift 2
+			skip=true
+			;;
+		*)
+			echo "Unknown argument: $arg"
+			if [[ $arg != -* ]]; then
+				echo "Only single-character arguments are supported"
+			fi
+			exit 1
+			;;
+	esac
+done
+
+# Search forward until we find a date with data
+total_time=$(echo "scale=0; $days * 24 * 60 / 1" | bc)
+look "$(date -d "$total_time minutes ago" +"%F %H:%M") | " $log_file > /dev/null
+while [[ $? != 0 ]]; do
+	total_time=$(( $total_time - 1 ))
+	if [[ $total_time == 0 ]]; then
+		echo "No data found"
+		exit 1
+	fi
+	look "$(date -d "$total_time minutes ago" +"%F %H:%M") | " $log_file > /dev/null
+done
+
+# Get the data
+data=$(grep -A $total_time "^$(date -d "$total_time minutes ago" +"%F %H:%M") | " $log_file)
+
+# Filter for the keywords
+if [[ ! -z $keywords ]]; then
+	if [[ $invert_keywords == true ]]; then
+		data=$(echo "$data" | grep -iv ${keywords[@]/#/-e })
+	else
+		data=$(echo "$data" | grep -i ${keywords[@]/#/-e })
+	fi
+fi
+
+# Find the usage
+computer_time=$(echo "$data" | wc -l)
+
+case $mode in
+
+	"disp") # Display the log
+		echo "$data"
+		;;
+	"freq") # Show the log sorted by frequency
+		echo $data
+		# Use sed to replace the prefix, which is of the form "yyyy-mm-dd hh:mm | "
+		echo "$data" | sed 's/^[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} [0-9]\{2\}:[0-9]\{2\} | //' |\
+			# Sort the lines by frequency
+			sort | uniq -c | sort -n
+		;;
+	"count") # Show the total time and percentage of computer time, and the counts of any keywords
+		printf "Usage: (%02.2f%%) %d:%02d:%02d\n"\
+			$(echo "scale=5; $computer_time * 100 / $total_time" | bc)\
+			$(( $computer_time / 60 / 24 )) $(( $computer_time / 60 % 24 )) $(( $computer_time % 60 ))
+		printf "Out of:         %d:%02d:%02d\n" $(( $total_time / 60 / 24 )) $(( $total_time / 60 % 24 )) $(( $total_time % 60 ))
+
+		# Print the keyword stats if there are keywords and they are not inverted
+		if [[ ! -z $keywords ]] && [[ $invert_keywords == false ]]; then
+			echo
+			echo "Keywords: $keywords"
+			printf "  %-${max_key_width}s	Count	| CPU Time	| Share %%	| Total %%\n" "Keyword:"
+			for keyword in $keywords; do
+				count=$(echo "$data" | grep -i $keyword | wc -l)
+				cpu_per=$(echo "scale=5; $count / $computer_time * 100" | bc)
+				tot_per=$(echo "scale=5; $count / $total_time    * 100" | bc)
+				printf "  %-${max_key_width}s	%d	| (%d:%02d:%02d)	| %.2f%%	| %.2f%%\n"\
+					$keyword $count\
+					$(( $count / 60 / 24 )) $(( $count / 60 % 24 )) $(( $count % 60 ))\
+					$cpu_per $tot_per
+			done
+		fi
+		;;
+esac
+
+unset days invert_keywords keywords max_key_width mode total_time computer_time data count cpu_per tot_per keyword
+

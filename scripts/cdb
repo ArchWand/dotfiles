@@ -47,8 +47,8 @@ function cdb() {
 			# If there is no bookmark with the current directory name,
 			# or the bookmark with the current directory name does not
 			# point to the current directory, try and find a bookmark
-			if [[ ! -f "$CD_BOOKMARKS_DIR/$to_rm" ||\
-				"$(cat "$CD_BOOKMARKS_DIR/$to_rm")" != "$PWD" ]]; then
+			if [[ ! -f "$CD_BOOKMARKS_DIR/$to_rm" ]] ||\
+				[[ "$(cat "$CD_BOOKMARKS_DIR/$to_rm")" != "$PWD" ]]; then
 				to_rm=
 				setopt null_glob # Don't error when there are no bookmarks
 				# Linear search
@@ -60,7 +60,7 @@ function cdb() {
 				done
 			fi
 
-			if [[ -z $to_rm || -e "$CD_BOOKMARKS_DIR/$to_rm" ]]; then
+			if [[ -z $to_rm ]]; then
 				echo "Can't find the bookmark to delete"
 			else
 				echo "Deleting: $to_rm"
@@ -107,7 +107,7 @@ function cdb() {
 			;;
 		*)
 			if [[ -f "$CD_BOOKMARKS_DIR/${1%%/*}" ]]; then
-				cd "$(cat "$CD_BOOKMARKS_DIR/${1%%/*}")/${1#*/}"
+				cd "$(cat "$CD_BOOKMARKS_DIR/${1%%/*}")/${1#${1%%/*}}"
 			else
 				echo "Hmm...it looks like this bookmark does not exist"
 			fi

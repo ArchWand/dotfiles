@@ -29,14 +29,17 @@ case $ar_conf in
 		~/.config/bspwm/desktops.sh
 		;;
 	desk) # Name of the two-screen config
-		added=1
-		bspc monitor -f "HDMI-1" && added=0 ||\
-			bspc wm --add-monitor "HDMI-1" 2560x1080+1920+0
+		bspc monitor -f "HDMI-1" || bspc wm --add-monitor "HDMI-1" 2560x1080+1920+0
 		~/.config/bspwm/desktops.sh
 
-		# Move all nodes to external monitor upon first connecting
-		# but only if the monitor was not newly added
-		[ $added -eq 1 ] &&\
+		# Remember which desktop we started on
+		start_desk=$(bspc query -D -d focused --names)
+
+		# Move all nodes to external monitor
+		# but only if there are no nodes already on the external monitor
+		[[ -z "$(bspc query -N -m "HDMI-1")" ]] &&\
+		# Update the name of the desktop to match the monitor
+		start_desk="HDMI_$(echo "$start_desk" | cut -d'_' -f 2)" &&\
 		# Loop through all desktops on the primary monitor
 		for d in $(bspc query -D --names | grep "eDP"); do
 			# Move all nodes to the external monitor
@@ -46,6 +49,10 @@ case $ar_conf in
 			# Deselect all nodes
 			bspc node -f @first
 		done
+
+
+		# Make sure to finish on the same desktop
+		bspc desktop -f "$start_desk"
 		;;
 	monitor) # Name of the external monitor only config
 		# Reset the names of the desktops
