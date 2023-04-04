@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-CD_BOOKMARKS_DIR=~/.scripts/.cd_bookmarks
+CD_BOOKMARKS_DIR=~/scripts/.cd_bookmarks
 
 # cd bookmarks
 # Usage:
@@ -17,7 +17,8 @@ CD_BOOKMARKS_DIR=~/.scripts/.cd_bookmarks
 # cdb -n <bookmark> - make a bookmark with the name <bookmark>
 function cdb() {
 	if  [ ! -e "$CD_BOOKMARKS_DIR" ]; then
-		mkdir "$CD_BOOKMARKS_DIR"
+		echo "No bookmarks directory found"
+		return
 	fi
 
 	local cwd="${PWD##*/}"
