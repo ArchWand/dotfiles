@@ -12,24 +12,30 @@ Plug 'lervag/vimtex'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'jalvesaq/Nvim-R'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'chrisbra/Colorizer'
 
 " Utility
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-commentary'
 Plug 'gcmt/taboo.vim'
 Plug 'nvim-tree/nvim-tree.lua'
+Plug 'rhysd/vim-clang-format'
 
 " Visual
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
+Plug 'navarasu/onedark.nvim'
 Plug 'EdenEast/nightfox.nvim'
 
 call plug#end()
 
 " ##### THEME #####
 
-colorscheme carbonfox
+set termguicolors
+let g:onedark_config = { 'style': 'darker' }
+colorscheme duskfox
 
 " ##### SETTINGS #####
 syntax enable
@@ -340,13 +346,14 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
 
-    disable = function(lang, buf)
-        local max_filesize = 1024 * 1024 -- 1 GB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-            return true
-        end
-    end,
+	disable = { "latex", "ini" },
+    -- disable = function(lang, buf)
+    --     local max_filesize = 1024 * 1024 -- 1 GB
+    --     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+    --     if ok and stats and stats.size > max_filesize then
+    --         return true
+    --     end
+    -- end,
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -356,6 +363,9 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+" Colorizer
+nnoremap <leader>l :ColorToggle<CR>
 
 
 " --- Utility ---
@@ -386,4 +396,6 @@ let g:airline_theme='violet'
 let g:airline_powerline_fonts = 1
 " Allow spaces for alignment
 let g:airline#extensions#whitespace#mixed_indent_algo = 2
+" But also no one cares about errant spaces
+let g:airline#extensions#whitespace#enabled = 0
 

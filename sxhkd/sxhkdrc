@@ -151,7 +151,8 @@ super + grave
 	bspc node -f last
 # Focus the last node on current desktop
 alt + Tab
-	bspc node -f last.local
+	bspc node last.local -g marked=on; bspc node any.active.\!local -g marked=on &&\
+	bspc node -f last.marked; bspc node any.marked -g marked=off
 
 # Rotate tree
 super + shift + {d,a}

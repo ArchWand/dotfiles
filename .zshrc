@@ -100,7 +100,7 @@ export EDITOR='nvim'
 # fi
 
 # Add scripts directory to PATH
-export PATH="$HOME/.scripts:$PATH"
+export PATH="$HOME/scripts:$PATH"
 # Add local bin to path
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -112,8 +112,8 @@ export PATH="$HOME/.local/bin:$PATH"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-if [ -f ~/.scripts/cdb ]; then
-	source ~/.scripts/cdb
+if [ -f ~/scripts/cdb ]; then
+	source ~/scripts/cdb
 fi
 
 function rmcd {

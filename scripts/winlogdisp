@@ -1,6 +1,8 @@
 #!/bin/zsh
 
 log_file="/home/arcwand/.window_log"
+# log intervals, in minutes
+interval=1
 
 # Usage: winlogdisp [-c | -f] [-h] [-i <keywords> | -k <keywords>] [-n <days>]
 #  -c: Show the total time and percentage of computer time, and the counts of any keywords
@@ -117,6 +119,7 @@ fi
 
 # Find the usage
 computer_time=$(echo "$data" | wc -l)
+computer_time=$(( $computer_time * $interval ))
 
 case $mode in
 
@@ -143,16 +146,19 @@ case $mode in
 			printf "  %-${max_key_width}s	Count	| CPU Time	| Share %%	| Total %%\n" "Keyword:"
 			for keyword in $keywords; do
 				count=$(echo "$data" | grep -i $keyword | wc -l)
-				cpu_per=$(echo "scale=5; $count / $computer_time * 100" | bc)
-				tot_per=$(echo "scale=5; $count / $total_time    * 100" | bc)
+				cpu_per=$(echo "scale=5; $count * $interval * 100 / $computer_time" | bc)
+				tot_per=$(echo "scale=5; $count * $interval * 100 / $total_time"    | bc)
 				printf "  %-${max_key_width}s	%d	| (%d:%02d:%02d)	| %.2f%%	| %.2f%%\n"\
 					$keyword $count\
-					$(( $count / 60 / 24 )) $(( $count / 60 % 24 )) $(( $count % 60 ))\
+					$(( $count * $interval / 60 / 24 )) $(( $count * $interval / 60 % 24 )) $(( $count * $interval % 60 ))\
 					$cpu_per $tot_per
 			done
 		fi
 		;;
 esac
 
-unset days invert_keywords keywords max_key_width mode total_time computer_time data count cpu_per tot_per keyword
+unset log_file intervals
+unset days keywords max_key_width computer_time total_time
+unset data mode invert_keywords
+unset skip arg keyword count cpu_per tot_per
 

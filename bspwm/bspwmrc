@@ -12,9 +12,11 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 ~/.config/bspwm/monitor_setup.sh
 
 xsetroot -cursor_name left_ptr &
-bspc config border_width         1
-bspc config window_gap           6
-bspc config focused_window_color #FFFFFF
+bspc config border_width         2
+bspc config window_gap           4
+bspc config active_border_color  "#877D72"
+bspc config focused_border_color "#F6BD60"
+bspc config normal_border_color  "#30302F"
 
 bspc config split_ratio          0.50
 bspc config borderless_monocle   true
@@ -37,6 +39,10 @@ bspc rule -a 'firefox:Toolkit:Picture-in-Picture' state=floating
 bspc rule -a 'firefox:Places:*' state=floating
 # Thunderbird message compose
 bspc rule -a 'thunderbird:Msgcompose' state=floating
+# Bluetooth Manager
+bspc rule -a Blueman-manager state=floating
+# Pavucontrol
+bspc rule -a Pavucontrol state=floating
 
 # Tiling rules
 # Zathura
