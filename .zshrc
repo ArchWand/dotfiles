@@ -100,7 +100,7 @@ export EDITOR='nvim'
 # fi
 
 # Add scripts directory to PATH
-export PATH="$HOME/scripts:$PATH"
+export PATH="$HOME/scripts/.path:$PATH"
 # Add local bin to path
 export PATH="$HOME/.local/bin:$PATH"
 
