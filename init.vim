@@ -263,6 +263,9 @@ vnoremap S "0S
 vnoremap x "0x
 vnoremap X "0X
 
+" Visual paste
+xnoremap <silent> p p:let @+=@0<CR>:let @0=@"<CR>
+
 
 
 " ##### PLUGINS #####
