@@ -42,8 +42,8 @@ super + v ; p
 
 # ===== Top bar =====
 # Hide Polybar
-super + shift + p
-	/home/arcwand/.scripts/toggle_focused_polybar.sh
+super + alt + p
+	/home/arcwand/scripts/toggle_focused_polybar.sh
 
 # Toggle Polybar date
 super + alt + d
@@ -151,7 +151,7 @@ super + grave
 	bspc node -f last
 # Focus the last node on current desktop
 alt + Tab
-	bspc node last.local -g marked=on; bspc node any.active.\!local -g marked=on &&\
+	bspc node last.local -g marked=on; bspc node any.active.\!local -g marked=on;\
 	bspc node -f last.marked; bspc node any.marked -g marked=off
 
 # Rotate tree
@@ -247,11 +247,9 @@ XF86MonBrightnessUp
 
 # Volume Control
 XF86AudioLowerVolume
-	amixer set Master unmute; \
-	amixer set Master 5%-
+	~/scripts/volume.sh "5%-"
 XF86AudioRaiseVolume
-	amixer set Master unmute; \
-	amixer set Master 5%+
+	~/scripts/volume.sh "5%+"
 XF86AudioMute
 	amixer set Master toggle
 
