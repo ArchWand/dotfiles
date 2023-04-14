@@ -4,7 +4,6 @@ cd "$(dirname "$0")"
 
 # Update directories that cannot be hard linked
 function up_dir {
-	echo "Updating $1"
 	rsync -a --delete $1 .
 }
 
