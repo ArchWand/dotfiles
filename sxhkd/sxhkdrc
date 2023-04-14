@@ -145,7 +145,7 @@ super + {_,shift + }q
 
 # Focus the last desktop
 super + Tab
-	bspc desktop -f last
+	bspc desktop -f last.local
 # Focus the last node
 super + grave
 	bspc node -f last
@@ -247,9 +247,9 @@ XF86MonBrightnessUp
 
 # Volume Control
 XF86AudioLowerVolume
-	~/scripts/volume.sh "5%-"
+	~/scripts/volume.sh -5
 XF86AudioRaiseVolume
-	~/scripts/volume.sh "5%+"
+	~/scripts/volume.sh +5
 XF86AudioMute
 	amixer set Master toggle
 
