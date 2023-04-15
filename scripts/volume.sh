@@ -1,10 +1,15 @@
 #!/bin/sh
+amixer set Master unmute
+
 vfl=$(amixer get Master | grep "Front Left:" | awk -F'[][ %]' '{printf $8}')
 vfr=$(amixer get Master | grep "Front Right:" | awk -F'[][ %]' '{printf $8}')
+v=$(( ($vfl+$vfr)/2 ))
 
-v=$((($vfl+$vfr)/2))
-v=$(($v/5*5 + $1))
+if [[ $v -eq $v/$1*$1 ]]; then
+	v=$(($v + $1))
+else
+	v=$(($v + ($1+${1#-})/2))
+fi
 
-amixer set Master unmute
 amixer set Master $v%
-
+unset vfl vfr v
