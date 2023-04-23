@@ -12,44 +12,44 @@ case $ar_conf in
 		# move all the windows
 		~/.config/bspwm/desktops.sh
 
-		# Loop through all desktops on the external monitor
-		for d in $(bspc query -D --names | grep "HDMI"); do
-			# Move all nodes to the primary monitor
-			bspc desktop -f "$d" &&\
-				bspc node -f @/ &&\
-				bspc node -d "eDP_$(echo "$d" | cut -d'_' -f 2)"
-			# Deselect all nodes
-			bspc node -f @first
+		start_desk="eDP_$(bspc query -D -d focused --names | cut -d'_' -f 2)"
+
+		# Swap all desktops to the primary monitor
+		for d in {01..10}; do
+			bspc desktop HDMI_$d -s eDP_$d
 		done
+		~/.config/bspwm/desktops.sh
 
 		# Finally, delete the unused monitor
 		while bspc monitor -f "HDMI-1"; do
 			bspc monitor -r
 		done
-		~/.config/bspwm/desktops.sh
+		# And finish on the same desktop
+		bspc desktop -f "$start_desk"
 		;;
 	desk) # Name of the two-screen config
-		bspc monitor -f "HDMI-1" || bspc wm --add-monitor "HDMI-1" 2560x1080+1920+0
 		~/.config/bspwm/desktops.sh
 
 		# Remember which desktop we started on
 		start_desk=$(bspc query -D -d focused --names)
 
+		# Add new monitor if it didn't already exist
+		bspc monitor -f "HDMI-1" || bspc wm --add-monitor "HDMI-1" 2560x1080+1920+0
+
 		# Move all nodes to external monitor
 		# but only if there are no nodes already on the external monitor
-		[[ -z "$(bspc query -N -m "HDMI-1")" ]] &&\
-		# Update the name of the desktop to match the monitor
-		start_desk="HDMI_$(echo "$start_desk" | cut -d'_' -f 2)" &&\
-		# Loop through all desktops on the primary monitor
-		for d in $(bspc query -D --names | grep "eDP"); do
-			# Move all nodes to the external monitor
-			bspc desktop -f "$d" &&\
-				bspc node -f @/ &&\
-				bspc node -d "HDMI_$(echo "$d" | cut -d'_' -f 2)"
-			# Deselect all nodes
-			bspc node -f @first
-		done
-
+		if [[ -z "$(bspc query -N -m "HDMI-1")" ]]; then
+			# Update the start desktops
+			start_desk="HDMI_$(echo "$start_desk" | cut -d'_' -f 2)"
+			# Swap all desktops to the external monitor
+			for d in {01..10}; do
+				bspc desktop eDP_$d -s HDMI_$d
+			done
+			# Reset the desktop names
+			~/.config/bspwm/desktops.sh
+			# Set active for primary monitor
+			bspc desktop -f "eDP_01"
+		fi
 
 		# Make sure to finish on the same desktop
 		bspc desktop -f "$start_desk"
@@ -60,21 +60,21 @@ case $ar_conf in
 		# move all the windows
 		~/.config/bspwm/desktops.sh
 
-		# Loop through all desktops on the primary monitor
-		for d in $(bspc query -D --names | grep "eDP"); do
-			# Move all nodes to the external monitor
-			bspc desktop -f "$d" &&\
-				bspc node -f @/ &&\
-				bspc node -d "HDMI_$(echo "$d" | cut -d'_' -f 2)"
-			# Deselect all nodes
-			bspc node -f @first
+		# Remember which desktop we started on
+		start_desk="HDMI_$(bspc query -D -d focused --names | cut -d'_' -f 2)"
+
+		# Swap all desktops to the external monitor
+		for d in {01..10}; do
+			bspc desktop eDP_$d -s HDMI_$d
 		done
+		~/.config/bspwm/desktops.sh
 
 		# Finally, delete the unused monitor
 		while bspc monitor -f "eDP-1"; do
 			bspc monitor -r
 		done
-		~/.config/bspwm/desktops.sh
+		# And finish on the same desktop
+		bspc desktop -f "$start_desk"
 		;;
 	*)	;;
 esac
