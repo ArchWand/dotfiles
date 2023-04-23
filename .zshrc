@@ -128,6 +128,8 @@ function mvcwd {
 }
 alias cdnew='cd $(ls -rcd */ | tail -n 1)'
 
+alias cmd='command'
+
 alias hardclear='echo -ne "\ec"'
 alias reset="tput reset"
 
