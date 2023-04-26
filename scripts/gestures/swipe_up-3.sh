@@ -13,7 +13,7 @@ case "$app" in
 		if [[ -z $(xprop -id $(xdotool getactivewindow) WM_NAME | grep "nvim") ]]; then
 			xdotool key ctrl+d
 		else
-			xdotool key g g
+			xdotool key shift+z shift+z
 		fi
 		;;
 	*)

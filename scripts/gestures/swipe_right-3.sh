@@ -7,12 +7,10 @@ case "$app" in
 		xdotool key ctrl+Page_Down
 		;;
 	discord)
-		xdotool key ctrl+Tab
 		;;
 	*kitty)
 		if [[ -z $(xprop -id $(xdotool getactivewindow) WM_NAME | grep "nvim") ]]; then
 		else
-			xdotool key Escape colon n Return
 		fi
 		;;
 	*)
