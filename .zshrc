@@ -128,6 +128,10 @@ function mvcwd {
 }
 alias cdnew='cd $(ls -rcd */ | tail -n 1)'
 
+function superkill {
+	while killall $1; do done
+}
+
 alias cmd='command'
 
 alias hardclear='echo -ne "\ec"'
