@@ -148,6 +148,7 @@ alias clip="xsel -b"
 alias icat="kitty +kitten icat"
 alias ssh="kitty +kitten ssh"
 
+alias init-nvm='source /usr/share/nvm/init-nvm.sh'
 
 alias startx11vnc="x11vnc -display :0 -usepw"
 
