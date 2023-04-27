@@ -148,7 +148,6 @@ alias clip="xsel -b"
 alias icat="kitty +kitten icat"
 alias ssh="kitty +kitten ssh"
 
-alias latex_template="cp ~/.local/share/latex_template/* ."
 
 alias startx11vnc="x11vnc -display :0 -usepw"
 
