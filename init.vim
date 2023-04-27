@@ -126,6 +126,12 @@ inoremap <C-A-s> <C-O>:wa<CR>
 nnoremap ]b :n<CR>
 nnoremap [b :N<CR>
 
+" Move to window
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " Single insertion/append
 function SingleInsert(type, char, count)
 	return "normal " . a:type . repeat(a:char, a:count)
