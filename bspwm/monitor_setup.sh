@@ -78,6 +78,3 @@ case $ar_conf in
 		;;
 	*)	;;
 esac
-
-# Just in case, adopt orphans
-bspc wm -o
