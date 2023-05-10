@@ -4,8 +4,6 @@ call plug#begin()
 " Autocompletion
 Plug 'github/copilot.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 " Rendering
 Plug 'lervag/vimtex'
@@ -47,9 +45,10 @@ set noexpandtab
 set tabstop=4 shiftwidth=4 softtabstop=4
 set breakindent
 
+" .py - python script
+autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 " .R - R script
 autocmd FileType r setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-
 " .s - ASM
 autocmd FileType asm setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
@@ -63,6 +62,9 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 " Ensure word wrap does not split words
 set formatoptions=l
 set lbr
+
+" Search settings
+set ignorecase smartcase
 
 " Set the leader as space
 let mapleader=" "
