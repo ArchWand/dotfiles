@@ -255,6 +255,7 @@ XF86AudioMute
 
 # Play/Pause
 XF86AudioPlay
+	~/.config/mpv/pause-play.sh ||\
 	playerctl play-pause
 
 # Next/Previous
