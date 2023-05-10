@@ -9,6 +9,7 @@ function up_dir {
 
 up_dir ~/.config/bspwm
 up_dir ~/.config/sxhkd
+up_dir ~/.config/mpv
 up_dir ~/scripts
 rm -rf ./scripts/.cd_bookmarks
 
