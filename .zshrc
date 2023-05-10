@@ -117,7 +117,10 @@ if [ -f ~/scripts/cdb ]; then
 fi
 
 function rmcd {
-	dir="$(pwd)" && cd .. && rm "$dir" -rf
+	dir="$(pwd)" && cd .. && rm "$dir" -rf || cd "$dir"
+}
+function rdcd {
+	dir="$(pwd)" && cd .. && rd "$dir" || cd "$dir"
 }
 function mcd {
 	mkdir -p "$1" && cd "$1"
