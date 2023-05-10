@@ -260,11 +260,15 @@ XF86AudioPlay
 
 # Next/Previous
 XF86AudioPrev
+	~/.config/mpv/playlist-prev.sh ||\
 	playerctl previous
 XF86AudioNext
+	~/.config/mpv/playlist-next.sh ||\
 	playerctl next
 shift + XF86AudioLowerVolume
+	~/.config/mpv/playlist-prev.sh ||\
 	playerctl previous
 shift + XF86AudioRaiseVolume
+	~/.config/mpv/playlist-next.sh ||\
 	playerctl next
 
