@@ -3,11 +3,13 @@ export DISPLAY=:0
 app=$(xprop -id $(xdotool getactivewindow) WM_CLASS | awk -F '"' '{print $4}')
 
 case "$app" in
+	Blueman-manager)
+		xdotool key ctrl+w
+		;;
 	firefox)
 		xdotool key ctrl+w
 		;;
 	discord)
-		xdotool key alt+shift+Up
 		;;
 	*kitty)
 		if [[ -z $(xprop -id $(xdotool getactivewindow) WM_NAME | grep "nvim") ]]; then
@@ -15,6 +17,9 @@ case "$app" in
 		else
 			xdotool key shift+z shift+z
 		fi
+		;;
+	thunderbird)
+		xdotool key ctrl+w
 		;;
 	*)
 		;;
