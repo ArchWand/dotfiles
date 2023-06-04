@@ -43,7 +43,7 @@ super + n ; {super + ,_}p
 # ===== Top bar =====
 # Show/hide polybar
 super + p; {super + ,_}h
-	/home/arcwand/scripts/toggle_focused_polybar.sh
+	polybar-msg cmd toggle && bspc config top_padding 0
 
 # Toggle Polybar date
 super + p; {super + ,_}d
