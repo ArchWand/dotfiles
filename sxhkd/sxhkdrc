@@ -34,23 +34,25 @@ super + e
 
 
 # ===== Notifications =====
-super + v ; x
+super + n ; {super + ,_}x
 	dunstctl close-all
-super + v ; p
+super + n ; {super + ,_}p
 	dunstctl history-pop
 
 
 # ===== Top bar =====
-# Hide Polybar
-super + alt + p
+# Show/hide polybar
+super + p; {super + ,_}h
 	/home/arcwand/scripts/toggle_focused_polybar.sh
 
 # Toggle Polybar date
-super + alt + d
+super + p; {super + ,_}d
 	polybar-msg action "#date.toggle"
 
 # Network menu
-super + alt + n
+super + p; n
+	$HOME/.config/rofi/rofi-network-manager/rofi-network-manager.sh
+super + p; super + n
 	$HOME/.config/rofi/rofi-network-manager/rofi-network-manager.sh
 
 
@@ -60,12 +62,10 @@ super + d
 	~/.config/rofi/launch.sh
 
 # Clipboard history
-super + alt + v
+super + v
 	rofi -modi "clipboard:greenclip print" -show clipboard -theme-str '#window \{y-offset: 200; \}'
 
 # Emoji picker
-super + period
-	/usr/bin/rofimoji
 super + semicolon
 	/usr/bin/rofimoji
 
