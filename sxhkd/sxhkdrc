@@ -59,7 +59,15 @@ super + p; super + n
 # ===== Rofi Bindings =====
 # program launcher
 super + d
-	~/.config/rofi/launch.sh
+	~/.config/rofi/launcher.sh
+
+# Window switcher
+super + i
+	~/.config/rofi/windows.sh
+
+# Window switcher (local)
+super + alt + i
+	~/.config/rofi/windowcd.sh
 
 # Clipboard history
 super + v
@@ -74,6 +82,10 @@ super + shift + u
 	/usr/bin/rofimoji --files all
 super + alt + u
 	/usr/bin/rofimoji --files all --action copy-unicode
+
+# Show help
+super + slash
+    ~/.config/sxhkd/sxhkd-help
 
 
 # ===== Desktop Environment =====
@@ -167,7 +179,7 @@ super + alt + shift + Tab
 	bspc node -m next --follow
 
 # Focus the node for the given path jump
-super + {p,comma}
+super + {period,comma}
 	bspc node -f @{parent,first}
 
 
@@ -218,6 +230,10 @@ F11
 # Set the node flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
+
+# Always on screen
+super + alt + p
+	bspc node -g sticky
 
 
 # ===== Preselect =====
