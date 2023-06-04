@@ -3,12 +3,6 @@ export DISPLAY=:0
 app=$(xprop -id $(xdotool getactivewindow) WM_CLASS | awk -F '"' '{print $4}')
 
 case "$app" in
-	Blueman-manager)
-		xdotool key ctrl+w
-		;;
-	firefox)
-		xdotool key ctrl+w
-		;;
 	discord)
 		;;
 	*kitty)
@@ -18,10 +12,8 @@ case "$app" in
 			xdotool key shift+z shift+z
 		fi
 		;;
-	thunderbird)
-		xdotool key ctrl+w
-		;;
 	*)
+		xdotool key ctrl+w
 		;;
 esac
 
