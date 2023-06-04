@@ -112,10 +112,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-if [ -f ~/scripts/cdb ]; then
-	source ~/scripts/cdb
-fi
-
 function rmcd {
 	dir="$(pwd)" && cd .. && rm "$dir" -rf || cd "$dir"
 }
