@@ -38,6 +38,8 @@ super + n ; {super + ,_}x
 	dunstctl close-all
 super + n ; {super + ,_}p
 	dunstctl history-pop
+super + n; {super + ,_}Return
+	dunstctl action
 
 
 # ===== Top bar =====
