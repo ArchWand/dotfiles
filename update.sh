@@ -4,14 +4,14 @@ cd "$(dirname "$0")"
 
 # Update directories that cannot be hard linked
 function up_dir {
-	rsync -a --delete $1 .
+	rsync -a --delete $1 ./$2
 }
 
 up_dir ~/.config/bspwm
 up_dir ~/.config/sxhkd
 up_dir ~/.config/mpv
 up_dir ~/scripts
-rm -rf ./scripts/.cd_bookmarks
+up_dir ~/Applications/qmk_firmware/keyboards/xiudi/xd75/keymaps/arcwand xd75
 
 # If the script is called without parameters,
 # allow for manual committing
