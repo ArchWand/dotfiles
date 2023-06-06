@@ -11,7 +11,7 @@ up_dir ~/.config/bspwm
 up_dir ~/.config/sxhkd
 up_dir ~/.config/mpv
 up_dir ~/scripts
-up_dir ~/Applications/qmk_firmware/keyboards/xiudi/xd75/keymaps/arcwand xd75
+up_dir ~/Applications/qmk_firmware/keyboards/xiudi/xd75/keymaps/arcwand qmk/xd75
 
 # If the script is called without parameters,
 # allow for manual committing
