@@ -15,6 +15,7 @@ up_dir ~/.config/sxhkd
 up_dir ~/.config/mpv
 up_dir ~/scripts
 up_dir ~/Applications/qmk_firmware/keyboards/xiudi/xd75/keymaps/arcwand qmk/xd75
+up_dir /etc/X11/xorg.conf.d
 up_file ~/.config/X11/xinitrc
 
 # If the script is called without parameters,
