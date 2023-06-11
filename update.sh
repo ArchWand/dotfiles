@@ -6,12 +6,16 @@ cd "$(dirname "$0")"
 function up_dir {
 	rsync -a --delete $1 ./$2
 }
+function up_file {
+	cp $1 ./$2
+}
 
 up_dir ~/.config/bspwm
 up_dir ~/.config/sxhkd
 up_dir ~/.config/mpv
 up_dir ~/scripts
 up_dir ~/Applications/qmk_firmware/keyboards/xiudi/xd75/keymaps/arcwand qmk/xd75
+up_file ~/.config/X11/xinitrc
 
 # If the script is called without parameters,
 # allow for manual committing
