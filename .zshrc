@@ -152,14 +152,16 @@ function superkill {
 	while pkill -9 "$1" && killall "$1"; do done
 }
 
-alias cmd='command'
-
-alias hardclear='echo -ne "\ec"'
-alias reset="tput reset"
-
+autoload zmv
+alias zcp='zmv -C'
+alias zln='zmv -L'
 alias la="ls -A"
 alias ll="ls -lAh"
 alias lc="ls -rc"
+
+alias cmd='command'
+alias hardclear='echo -ne "\ec"'
+alias reset="tput reset"
 
 alias ranger=". ranger"
 alias py=python
