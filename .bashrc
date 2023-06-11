@@ -26,10 +26,10 @@ PS1='\[\e[00m\]\n$ '
 export EDITOR='nvim'
 
 # Add scripts directory to PATH
-export PATH="$HOME/.scripts:$PATH"
+export PATH="$HOME/scripts:$PATH"
 # Add local bin to path
 export PATH="$HOME/.local/bin:$PATH"
-. "$HOME/.cargo/env"
+. "$HOME/.local/share/cargo/env"
 
 function cdrm {
 	dir="$(pwd)" &&\
