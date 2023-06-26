@@ -14,9 +14,16 @@ case $ar_conf in
 
 		start_desk="eDP_$(bspc query -D -d focused --names | cut -d'_' -f 2)"
 
-		# Swap all desktops to the primary monitor
+		# Move all nodes to the primary monitor
 		for d in {01..10}; do
-			bspc desktop HDMI_$d -s eDP_$d
+			# Focus next desktop
+			bspc desktop HDMI_$d -f &&\
+			# Select all nodes
+			bspc node -f @/ &&\
+			# Move the nodes
+			bspc node -m eDP_$d --follow &&\
+			# Unselect the nodes
+			bspc node -f @first
 		done
 		~/.config/bspwm/desktops.sh
 
@@ -45,11 +52,9 @@ case $ar_conf in
 			for d in {01..10}; do
 				bspc desktop eDP_$d -s HDMI_$d
 			done
-			# Reset the desktop names
-			~/.config/bspwm/desktops.sh
-			# Set active for primary monitor
-			bspc desktop -f "eDP_01"
 		fi
+		# Reset the desktop names
+		~/.config/bspwm/desktops.sh
 
 		# Make sure to finish on the same desktop
 		bspc desktop -f "$start_desk"
@@ -63,9 +68,16 @@ case $ar_conf in
 		# Remember which desktop we started on
 		start_desk="HDMI_$(bspc query -D -d focused --names | cut -d'_' -f 2)"
 
-		# Swap all desktops to the external monitor
+		# Move all nodes to the external monitor
 		for d in {01..10}; do
-			bspc desktop eDP_$d -s HDMI_$d
+			# Focus next desktop
+			bspc desktop eDP_$d -f &&\
+			# Select all nodes
+			bspc node -f @/ &&\
+			# Move the nodes
+			bspc node -m HDMI_$d --follow &&\
+			# Unselect the nodes
+			bspc node -f @first
 		done
 		~/.config/bspwm/desktops.sh
 
