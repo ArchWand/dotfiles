@@ -8,6 +8,9 @@
 #   {h,j,k,l}           (create) merge focused tabbed/window with target tabbed/window
 #   arrows              (transfer) attach focused window with target tabbed/window
 
+F24
+	notify-send hi
+
 super + t; t
 	bsptab-rs create focused
 super + t; r
@@ -43,9 +46,18 @@ super + n; {super + ,_}Return
 
 
 # ===== Top bar =====
+# Toggle polybar visibility
+{@,_}{Super_L,Super_R}
+	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --{hide,show}; done
+
+# Lock polybar in place
+super +{ shift +,_} b
+	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --{hide,show}; $HOME/scripts/hideIt.sh --id $id --toggle-override; done
+
 # Show/hide polybar
 super + p; {super + ,_}h
 	polybar-msg cmd toggle && bspc config top_padding 0
+
 
 # Toggle Polybar date
 super + p; {super + ,_}d
@@ -72,7 +84,7 @@ super + alt + i
 	~/.config/rofi/windowcd.sh
 
 # Clipboard history
-super + v
+super + alt + v
 	rofi -modi "clipboard:greenclip print" -show clipboard -theme-str '#window \{y-offset: 200; \}'
 
 # Emoji picker
@@ -218,16 +230,16 @@ super + f
 		bspc node -t floating
 
 # Toggle fullscreen/tiled
-super + s
+{super + s,F11}
 	bspc query -N -n focused.fullscreen &&\
 		bspc node -t tiled ||\
 		bspc node -t fullscreen
 
-# Toggle fullscreen/tiled
-F11
-	bspc query -N -n focused.fullscreen &&\
+# Toggle pseudo-tiled/tiled
+super + ctrl + f
+	bspc query -N -n focused.pseudo_tiled &&\
 		bspc node -t tiled ||\
-		bspc node -t fullscreen
+		bspc node -t pseudo_tiled
 
 # Set the node flags
 super + ctrl + {m,x,y,z}
@@ -258,18 +270,18 @@ XF86Calculator
 	kitty --class=floating_kitty -- python3
 
 # Brightness
-XF86MonBrightnessDown
-	xbacklight -dec 5
-XF86MonBrightnessUp
-	xbacklight -inc 5
+{super + ,_}XF86MonBrightnessDown
+	~/scripts/brightness.sh dec
+{super + ,_}XF86MonBrightnessUp
+	~/scripts/brightness.sh inc
 
 # Volume Control
-XF86AudioLowerVolume
+{super + ,_}XF86AudioLowerVolume
 	~/scripts/volume.sh -5
-XF86AudioRaiseVolume
+{super + ,_}XF86AudioRaiseVolume
 	~/scripts/volume.sh +5
-XF86AudioMute
-	amixer set Master toggle
+{super + ,_}XF86AudioMute
+	~/scripts/volume.sh mute
 
 # Play/Pause
 XF86AudioPlay
@@ -289,4 +301,16 @@ shift + XF86AudioLowerVolume
 shift + XF86AudioRaiseVolume
 	~/.config/mpv/playlist-next.sh ||\
 	playerctl next
+
+# ===== Script keys =====
+# Plover resume
+super + ctrl + alt + shift + F12; ctrl+p; ctrl+r
+	~/Applications/plover-4.0.0.dev12-x86_64_1117a3034f0a02c8898a2bccdcb0a905.AppImage -g none &&\
+	notify-send "Plover" "Started"
+	# ~/Applications/plover-4.0.0.dev12-x86_64_1117a3034f0a02c8898a2bccdcb0a905.AppImage -s plover_send_command resume &&\
+	# notify-send "Plover" "Resumed"
+# Plover suspend
+super + ctrl + alt + shift + F12; ctrl+p; ctrl+s
+	~/Applications/plover-4.0.0.dev12-x86_64_1117a3034f0a02c8898a2bccdcb0a905.AppImage -s plover_send_command quit &&\
+	notify-send "Plover" "Stopped"
 
