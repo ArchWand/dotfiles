@@ -12,11 +12,11 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 ~/.config/bspwm/monitor_setup.sh &
 
 xsetroot -cursor_name left_ptr &
-bspc config border_width         2
+bspc config border_width         3
 bspc config window_gap           4
-bspc config active_border_color  "#877D72"
-bspc config focused_border_color "#F6BD60"
-bspc config normal_border_color  "#30302F"
+bspc config active_border_color  "#585b70"
+bspc config focused_border_color "#cce8aa"
+bspc config normal_border_color  "#1e1e2e"
 
 bspc config split_ratio          0.50
 bspc config borderless_monocle   false
@@ -27,6 +27,7 @@ function half_dimension() {
 	local height=$(($(bspc query -T -m "$1" | jq -r '.rectangle | .height')/2))
 	echo "${width}x${height}"
 }
+
 # Floating rules
 bspc rule -a floating_kitty state=floating rectangle=$(half_dimension $(bspc query -M --names | head -n 1))+0+0 center=true
 bspc rule -a '*:Toolkit:Picture-in-Picture' state=floating sticky=on focus=on
@@ -52,3 +53,4 @@ pkill -9 dunst && dunst &
 libinput-gestures-setup stop start &
 # Compositor
 picom &
+

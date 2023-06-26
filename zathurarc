@@ -50,3 +50,5 @@ set render-loading-bg           "#18191E"
 
 set recolor-lightcolor          "#21252D" 
 set recolor-darkcolor           "#FFFADE" 
+
+include catppuccin-mocha

@@ -154,5 +154,7 @@ alias init-nvm='source /usr/share/nvm/init-nvm.sh'
 
 alias startx11vnc="x11vnc -display :0 -usepw"
 
+# ZSH Syntax Highlighting with Catpuccin theme
+# source ~/.local/share/oh-my-zsh/custom/plugins/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

@@ -26,18 +26,18 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
 Plug 'navarasu/onedark.nvim'
 Plug 'EdenEast/nightfox.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 call plug#end()
 
 " ##### THEME #####
 
 set termguicolors
-let g:onedark_config = { 'style': 'darker' }
-colorscheme duskfox
+colorscheme catppuccin-mocha
 
 " ##### SETTINGS #####
 syntax enable
-filetype plugin on
+filetype plugin indent on
 
 """ Indentation
 set autoindent smarttab

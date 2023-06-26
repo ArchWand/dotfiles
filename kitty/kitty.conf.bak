@@ -852,7 +852,7 @@ window_margin_width 0
 #: The second number is the margin between the tab bar and the
 #: contents of the current tab.
 
-tab_bar_style separator
+# tab_bar_style separator
 
 #: The tab bar style, can be one of:
 
@@ -905,7 +905,7 @@ tab_bar_style separator
 #: can change the number of cells used by adding/removing entries to
 #: this list.
 
-tab_separator " ┇ "
+# tab_separator " ┇ "
 
 #: The separator between tabs in the tab bar when using separator as
 #: the tab_bar_style.
@@ -924,6 +924,13 @@ tab_separator " ┇ "
 #: tab_title_template for how this is rendered.
 
 # tab_title_template "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{title}"
+
+# Catppuccin tab bar
+tab_bar_min_tabs            2
+tab_bar_edge                bottom
+tab_bar_style               powerline
+tab_powerline_style         slanted
+tab_title_template          {title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}
 
 #: A template to render the tab title. The default just renders the
 #: title with optional symbols for bell and activity. If you wish to
