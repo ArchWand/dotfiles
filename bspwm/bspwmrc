@@ -9,7 +9,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 # Setup the monitors
 # This resets the monitors properly every time bspwm is reloaded
 # And also creates the desktops with names based on the monitor
-~/.config/bspwm/monitor_setup.sh
+~/.config/bspwm/monitor_setup.sh &
 
 xsetroot -cursor_name left_ptr &
 bspc config border_width         2
@@ -22,25 +22,17 @@ bspc config split_ratio          0.50
 bspc config borderless_monocle   false
 bspc config gapless_monocle      true
 
-# Floating rules
-# Terminal
 function half_dimension() {
 	local width=$(($(bspc query -T -m "$1" | jq -r '.rectangle | .width')/2))
 	local height=$(($(bspc query -T -m "$1" | jq -r '.rectangle | .height')/2))
 	echo "${width}x${height}"
 }
+# Floating rules
 bspc rule -a floating_kitty state=floating rectangle=$(half_dimension $(bspc query -M --names | head -n 1))+0+0 center=true
-# Calculator
-bspc rule -a Galculator state=floating
-# Picture-in-picture
 bspc rule -a '*:Toolkit:Picture-in-Picture' state=floating sticky=on focus=on
-# Firefox Downloads
-bspc rule -a 'firefox:Places:*' state=floating
-# Thunderbird message compose
+bspc rule -a 'firefox:Places:*' state=floating # Firefox Downloads
 bspc rule -a 'thunderbird:Msgcompose' state=floating
-# Bluetooth Manager
 bspc rule -a Blueman-manager state=floating
-# Pavucontrol
 bspc rule -a Pavucontrol state=floating
 
 # Tiling rules
@@ -51,7 +43,7 @@ bspc rule -a Zathura state=tiled
 # Wallpaper
 nitrogen --restore &
 # Top bar
-$HOME/.config/polybar/launch.sh
+$HOME/.config/polybar/launch.sh &
 # Clipboard history
 greenclip daemon &
 # Notifications
