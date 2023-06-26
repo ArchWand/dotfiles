@@ -55,4 +55,6 @@ libinput-gestures-setup stop start &
 fcitx5 &
 # Compositor
 picom &
+# Auto-suspend
+pkill -9 xautolock && xautolock -time 30 -locker 'systemctl suspend' -detectsleep &
 
