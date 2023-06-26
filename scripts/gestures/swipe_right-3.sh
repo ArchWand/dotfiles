@@ -20,5 +20,3 @@ case "$app" in
 	*)
 		;;
 esac
-
-unset app

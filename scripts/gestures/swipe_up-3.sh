@@ -16,5 +16,3 @@ case "$app" in
 		xdotool key ctrl+w
 		;;
 esac
-
-unset app
