@@ -2,7 +2,6 @@
 # Make sure script is run from the directory it is in
 cd "$(dirname "$0")"
 
-# Update directories that cannot be hard linked
 function up_dir {
 	rsync -a --delete $1 ./$2
 }
@@ -10,14 +9,27 @@ function up_file {
 	cp $1 ./$2
 }
 
-up_dir ~/.config/bspwm
-up_dir ~/.config/sxhkd
-up_dir ~/.config/mpv
 up_dir ~/scripts
+up_dir ~/.config/bspwm
+up_dir ~/.config/kitty
+up_dir ~/.config/mpv
+up_dir ~/.config/nvim
+up_dir ~/.config/sxhkd
+up_dir ~/.config/zathura
 up_dir /etc/X11/xorg.conf.d
-up_file ~/.config/BetterDiscord/themes/nocturnal.theme.css
-up_file ~/.config/X11/xinitrc
+
+up_file ~/.bashrc
+up_file ~/.bash_profile
+up_file ~/.zprofile
+up_file ~/.zshrc
+up_file ~/.zshenv
+up_file ~/.config/betterlockscreenrc
+up_file ~/.config/libinput-gestures.conf
+up_file ~/.config/dunst/dunstrc
+up_file ~/.config/picom/picom.conf
 up_file ~/.config/tridactyl/tridactylrc
+up_file ~/.config/X11/xinitrc
+up_file ~/.config/BetterDiscord/themes/nocturnal.theme.css
 
 # If the script is called without parameters,
 # allow for manual committing
