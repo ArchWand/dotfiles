@@ -2,28 +2,6 @@
 
 # ArcWand's zshrc
 
-# XDG DIRS
-export ANDROID_HOME="$XDG_DATA_HOME/android"
-export HISTFILE="${XDG_STATE_HOME}"/bash/history
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
-export LESSHISTFILE="$XDG_STATE_HOME"/less/history
-export TERMINFO="$XDG_DATA_HOME"/terminfo
-export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
-export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
-export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
-export NVM_DIR="$XDG_DATA_HOME"/nvm
-export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
-export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-export W3M_DIR="$XDG_DATA_HOME"/w3m
-export WINEPREFIX="$XDG_DATA_HOME"/wine
-export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
-export _Z_DATA="$XDG_DATA_HOME"/z
-
-alias minecraft-launcher="minecraft-launcher --workDir $XDG_DATA_HOME/minecraft"
-alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
-alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
