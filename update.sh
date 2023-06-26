@@ -9,8 +9,14 @@ function up_file {
 	cp $1 ./$2
 }
 
+# Maintained directly in dotfiles repo:
+# helper.rules for spotdl-helper
+# ODroidXU4
+# phone
+
 up_dir ~/scripts
 up_dir ~/.config/bspwm
+up_dir ~/.config/fcitx5
 up_dir ~/.config/kitty
 up_dir ~/.config/mpv
 up_dir ~/.config/nvim
@@ -18,8 +24,8 @@ up_dir ~/.config/sxhkd
 up_dir ~/.config/zathura
 up_dir /etc/X11/xorg.conf.d
 
-up_file ~/.bashrc
 up_file ~/.bash_profile
+up_file ~/.bashrc
 up_file ~/.zprofile
 up_file ~/.zshrc
 up_file ~/.zshenv
