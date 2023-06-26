@@ -53,7 +53,4 @@ fi
 # Num lock on initially
 numlockx &
 
-# IME/IMF
-fcitx &
-
 exec bspwm

@@ -51,6 +51,8 @@ greenclip daemon &
 pkill -9 dunst && dunst &
 # Gestures
 libinput-gestures-setup stop start &
+# IME/IMF
+fcitx5 &
 # Compositor
 picom &
 
