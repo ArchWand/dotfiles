@@ -1,31 +1,34 @@
 " ArcWand's neovim vimrc
 call plug#begin()
 
+Plug 'dstein64/vim-startuptime'
+
 " Autocompletion
 Plug 'github/copilot.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dkarter/bullets.vim'
 
 " Rendering
 Plug 'lervag/vimtex'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-Plug 'jalvesaq/Nvim-R'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown' }
+Plug 'jalvesaq/Nvim-R', { 'for': 'r'}
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate'}
 Plug 'chrisbra/Colorizer'
 
 " Utility
 Plug 'preservim/nerdcommenter'
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 Plug 'gcmt/taboo.vim'
 Plug 'nvim-tree/nvim-tree.lua'
+Plug 'mg979/vim-visual-multi'
+Plug 'mbbill/undotree'
 Plug 'rhysd/vim-clang-format'
 
 " Visual
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
-Plug 'navarasu/onedark.nvim'
-Plug 'EdenEast/nightfox.nvim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 call plug#end()
@@ -112,6 +115,10 @@ nnoremap <leader>n :NumberToggle<CR>
 " Toggle word wrap
 nnoremap <leader>o :set wrap!<CR>
 
+" Persistent undo
+set undofile
+set undodir=~/.local/share/nvim/undos
+
 
 """ Ease of Use
 " Close all windows
@@ -157,20 +164,6 @@ nnoremap <A-h> xhP
 nnoremap <A-l> xp
 imap <A-h> <Esc><A-h>a
 imap <A-l> <Esc><A-l>a
-
-" Auto-surround
-vnoremap <leader>s( x<Esc>i()<Esc>P
-vmap <leader>s) <leader>s(
-vnoremap <leader>s[ x<Esc>i[]<Esc>P
-vmap <leader>s] <leader>s[
-vnoremap <leader>s{ x<Esc>i{}<Esc>P
-vmap <leader>s} <leader>s{
-vnoremap <leader>s< x<Esc>i<><Esc>P
-vmap <leader>s> <leader>s<
-vnoremap <leader>s' x<Esc>i''<Esc>P
-vnoremap <leader>s" x<Esc>i""<Esc>P
-vnoremap <leader>s` x<Esc>i``<Esc>P
-vnoremap <leader>s$ x<Esc>i$$<Esc>P
 
 " Cycle focus
 nnoremap <M-i> <C-w>w
@@ -219,7 +212,7 @@ function GoBoL()
 	let winwidth = WinTextWidth()
 	let whitelen = WhitespaceLen()
 
-	if virtcol('.') % winwidth - whitelen == 1
+	if virtcol('.') % winwidth - whitelen == 1 || !&wrap
 		return virtcol('.') > winwidth ? '^' : '0'
 	else
 		return 'g^'
@@ -320,6 +313,9 @@ let g:UltiSnipsExpandTrigger="<C-p>"
 " let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 " let g:UltiSnipsEditSplit="vertical"
 
+" Bullets
+
+
 " --- Rendering ---
 let g:tex_flavor = "latex"
 " VimTex
@@ -337,7 +333,7 @@ let R_assign = 0
 lua << EOF
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the first five listed parsers should always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "cpp", "python" },
+  ensure_installed = { "bash", "c", "cpp", "css", "diff", "git_config", "git_rebase", "gitcommit", "gitignore", "html", "http", "ini", "java", "java", "javascript", "json", "latex", "lua", "luadoc", "make", "markdown_inline", "python", "r", "rasi", "regex", "rust", "sxhkdrc", "vim", "vimdoc" },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
@@ -367,7 +363,7 @@ require'nvim-treesitter.configs'.setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+    -- additional_vim_regex_highlighting = false,
   },
 }
 EOF
@@ -396,6 +392,9 @@ require'nvim-tree'.setup {
 EOF
 " Mappings
 nnoremap <leader>e :NvimTreeToggle<CR>
+
+" UndoTree
+nnoremap <leader>u :UndotreeToggle<CR>
 
 
 " --- Visual ---

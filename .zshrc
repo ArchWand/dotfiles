@@ -2,6 +2,9 @@
 
 # ArcWand's zshrc
 
+# HISTSIZE
+export HISTSIZE=50000
+export SAVEHIST=50000
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -126,7 +129,7 @@ function mvcwd {
 	dir="$(pwd)" && cd .. && mv "$dir" "$1" ;
 	cd "$1"
 }
-alias cdnew='cd $(ls -rcd */ | tail -n 1)'
+alias cdnew='cd "$(ls -rcd */ | tail -n 1)"'
 
 function superkill {
 	while pkill -9 "$1" && killall "$1"; do done
@@ -143,13 +146,16 @@ alias cmd='command'
 alias hardclear='echo -ne "\ec"'
 alias reset="tput reset"
 
-alias ranger=". ranger"
-alias py=python
+alias nv=nvim
 alias clip="xsel -b"
+alias ranger=". ranger"
+alias plover="~/Applications/plover-4.0.0.dev12-x86_64_1117a3034f0a02c8898a2bccdcb0a905.AppImage"
+alias py=python
 
 alias icat="kitty +kitten icat"
 alias ssh="kitty +kitten ssh"
 
+alias zsh-no-git-prompt='git config --add oh-my-zsh.hide-status 1; git config --add oh-my-zsh.hide-dirty 1'
 alias kitty-disable-ime='unset GLFW_IM_MODULE && kitty'
 alias init-nvm='source /usr/share/nvm/init-nvm.sh'
 
@@ -158,4 +164,3 @@ alias startx11vnc="x11vnc -display :0 -usepw"
 # ZSH Syntax Highlighting with Catpuccin theme
 # source ~/.local/share/oh-my-zsh/custom/plugins/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
