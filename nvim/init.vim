@@ -71,7 +71,7 @@ set ignorecase smartcase
 
 " Set the leader as space
 let mapleader=" "
-" let maplocalleader="\"
+let maplocalleader="\\"
 nnoremap <Space> <Nop>
 
 " Line numbers
