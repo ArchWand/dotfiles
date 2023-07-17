@@ -440,6 +440,53 @@ IGNORE-MISMATCH=[
     https://open.spotify.com/track/4QhnNyKDsAkXPwHkSnuc89,
     https://open.spotify.com/track/4uOBL4DDWWVx4RhYKlPbPC,
     https://open.spotify.com/track/7KFvcwUv0UYWD7gLS78Cbb,
+    https://open.spotify.com/track/1vQMfDopZ9xyaVwW0WP23F,
+    https://open.spotify.com/track/4QbdGSGyECE7IRtjolOkjO,
+    https://open.spotify.com/track/5hcO4JPFMFgQ5edWGhhhaG,
+    https://open.spotify.com/track/41qLzxymjkp0R5vl3REb1S,
+    https://open.spotify.com/track/5fWKr5p15BTazjflJ6HX5j,
+    https://open.spotify.com/track/0NohRDiCdIjWFGWuvuysLi,
+    https://open.spotify.com/track/6bc8VmlNt5S9WJlyw8bBdd,
+    https://open.spotify.com/track/5C2d3tz8WACjmw7T6TthQ2,
+    https://open.spotify.com/track/1JD37Pmj6xJj8dlWHgLG9C,
+    https://open.spotify.com/track/1vwkPqaAWAKsPEhn8OUFUJ,
+    https://open.spotify.com/track/3Ne8F8XNWGrYyDkpWayVhn,
+    https://open.spotify.com/track/2H2XNAM6v2QwLbvHRG0aiH,
+    https://open.spotify.com/track/1S3h4EyNnZNvNYCeDVndUc,
+    https://open.spotify.com/track/37S86pw74OH8j96ZmMnrpR,
+    https://open.spotify.com/track/64KOSEJ9ZlV75JPxro5Chp,
+    https://open.spotify.com/track/2FQhL0Cwk69VDrsQEzN9Tn,
+    https://open.spotify.com/track/6Utgqpc5ivPkrfG5JfVUOI,
+    https://open.spotify.com/track/19euxgpVaBlvBOIRTLsgJQ,
+    https://open.spotify.com/track/1jbHCJ8EtvoKfMMYy3bAlN,
+    https://open.spotify.com/track/1KvMjr7Yx2WKl5WV4YCj9Y,
+    https://open.spotify.com/track/43KeCeXumyh17tzKOtqbms,
+    https://open.spotify.com/track/67pOBd4w25gNUeLC3PlFDm,
+    https://open.spotify.com/track/5v8PeA3Ui2TihKPSLJkpJ4,
+    https://open.spotify.com/track/2Ovz77Qn7ERXNf4I08WpmA,
+    https://open.spotify.com/track/1RQH42rIr42IEUhilODQIO,
+    https://open.spotify.com/track/35u6E4tsw03wAByhU6TKWF,
+    https://open.spotify.com/track/74mwyHRsGfQlDU2OMZELES,
+    https://open.spotify.com/track/4eIyItvPfLiRpBsvk81voz,
+    https://open.spotify.com/track/5xouIycayHmjZxeuhXPhgX,
+    https://open.spotify.com/track/2HRfEE2WLmFJcOdosYzPbX,
+    https://open.spotify.com/track/76qqDJijAjFph7sjUxNVG8,
+    https://open.spotify.com/track/3SmRItRvhanaZXKwV0yDKP,
+    https://open.spotify.com/track/6vnmdGcxCoFdvAMKskignJ,
+    https://open.spotify.com/track/4XNK01JmGacBhfz7LJlznm,
+    https://open.spotify.com/track/3uyqncQnOtA6zVD4pmQN0U,
+    https://open.spotify.com/track/59JkwCdGIMTZYb0j75vebU,
+    https://open.spotify.com/track/7muTXW7kGytN3zdomku6FV,
+    https://open.spotify.com/track/7CmjviM3EY4Xi7w8VzeULP,
+    https://open.spotify.com/track/4c1cUu1PFDX1YB6JDvG8vf,
+    https://open.spotify.com/track/5fMBzRMDEqh4pWmUdmfbi8,
+    https://open.spotify.com/track/6ZqcC24vsQKxMN6r4vaOX7,
+    https://open.spotify.com/track/5BrWTx3B9BNy1v20mBsOR5,
+    https://open.spotify.com/track/3qBoKLEqwoTFnOxKo6jHC6,
+    https://open.spotify.com/track/2uNUAaUtyzy75qSwiVAa5Q,
+    https://open.spotify.com/track/7evscakvct5wDmr1ap0CYl,
+    https://open.spotify.com/track/4mvygv61ByZzUoI1KrkMlC,
+    https://open.spotify.com/track/4DunhC1RuUbqC3MXrMozIg,
 ]
 
 # Manual song replacements
@@ -485,9 +532,26 @@ REPLACE=[
     https://www.youtube.com/watch?v=YVIUmIuRUtY | https://open.spotify.com/track/6oawUNjhBzuc1ZVzH4xrfJ,
     https://www.youtube.com/watch?v=WW6ndEj-zsg | https://open.spotify.com/track/5fgpCIjBJ098E9zqN9DS87,
     https://music.youtube.com/watch?v=NRirC-1Fq6U | https://open.spotify.com/track/5XFZ647GV7xMA3mLeRjhAI,
+    https://music.youtube.com/watch?v=-dVaaOB4wSg | https://open.spotify.com/track/2csIvlGQz4Xfpk4e5a6ISo,
 ]
 # Buffer for manual songs
-# MANUAL-BUFFER=./tmp_manual
+# MANUAL-BUFFER=./.tmp_manual
+
+# File renames
+# Comman separated list, where each entry is of the form
+# old_name : new_name
+RENAME=[
+    섬찟 (Hypnosis) - IVE.mp3 : Hypnosis (섬찟) - IVE.mp3,
+    날 알아줄까 - Stella Jang.mp3 : Do You Know Me (날 알아줄까) - Stella Jang.mp3,
+    L’Amour, Les Baguettes, Paris - Stella Jang.mp3 : L’Amour, Les Baguettes, Paris - Stella Jang.mp3,
+    괴도 (Danger) - TAEMIN.mp3 : Danger (괴도) - TAEMIN.mp3,
+    떨려요 - 스텔라.mp3 : Vibrato (떨려요) - Stellar (스텔라).mp3,
+    Orange, You’re Not a Joke to Me! - Stella Jang.mp3 : Orange, You’re Not a Joke to Me! - Stella Jang.mp3,
+    니가 하면 If You Do - GOT7.mp3 : If You Do (니가 하면) - GOT7.mp3,
+    너 때문에 미쳐 - T-ARA.mp3 : I Go Crazy Because of You (너 때문에 미쳐) - T-ARA.mp3,
+    24시간이 모자라 - SUNMI.mp3 : 24 hours (24시간이 모자라) - SUNMI.mp3,
+    궁금해 (Next Page) - IVE.mp3 : Next Page (궁금해) - IVE.mp3,
+]
 
 # Determines how strictly duplicates are checked for when merging
 # 0: Don't check for duplicates. May result in overwriting
@@ -507,6 +571,13 @@ REPLACE=[
 # 6: (default) #5, but youtube title can also follow the pattern "title (title)"
 # VERIFY-LEVEL=6
 
+# If a song does not have a url, skip verifying it
+# 0: Error on missing url
+# 1: Skip over missing url
+# 2: Allow manual skipping of missing url
+# 3: (default) Ask for user input on missing url
+# VERIFY-IGNORE-MISSING-URL=3
+
 # Integer value describing what steps to skip
 # Each value also skips all actions prior.
 # 0: Run normally
@@ -514,12 +585,12 @@ REPLACE=[
 # 2: Skip over manual replacing to verification
 # 3: Skip over verification to removing ids
 # 4: Skip removing the spotify ids to checking for duplicates
-# 5: Skip checking for duplicates to renaming non-ascii files
-# 6: Skip renaming non-ascii files to combining and removing buffers
+# 5: Skip checking for duplicates to renaming files
+# 6: Skip renaming files to combining and removing buffers
 # 7: Skip combining and removing buffers to normalizing with mp3gain
 # 8: Do nothing
 # SKIP=0
 
 # The buffer used to store downloaded songs before moving into DIR
-# BUFFER=./tmp_dlbuf
+# BUFFER=./.tmp_dlbuf
 
