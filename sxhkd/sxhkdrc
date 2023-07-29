@@ -49,7 +49,7 @@ super + n; {super + ,_}Return
 # ===== Top bar =====
 # Toggle polybar visibility
 {@,_}{Super_L,Super_R}
-	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --{hide,show}; done
+	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --{hide,show}; done{_,_}
 
 # Lock polybar in place
 super +{ shift +,_} b
