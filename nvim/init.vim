@@ -150,10 +150,14 @@ vnoremap <leader>c :<C-U>exec SingleInsert("`<cv`>", nr2char(getchar()), v:count
 command Vterm :vsp|:term
 
 " Move lines
-nnoremap <expr> <A-k> ":m -" . (v:count ? v:count-1 : 2) . "<CR>"
-nnoremap <expr> <A-j> ":m +" . (v:count ? v:count : 1) . "<CR>"
+nnoremap <expr> <A-k> ":<C-u>m -" . (v:count ? v:count+1 : 2) . "<CR>"
+nnoremap <expr> <A-j> ":<C-u>m +" . (v:count ? v:count : 1) . "<CR>"
+vnoremap <expr> <A-k> ":m '<-" . (v:count ? v:count+1 : 2) . "<CR>gv"
+vnoremap <expr> <A-j> ":m '>+" . (v:count ? v:count : 1) . "<CR>gv"
 nmap <A-Up> <A-k>
 nmap <A-Down> <A-j>
+vmap <A-Up> <A-k>
+vmap <A-Down> <A-j>
 imap <A-j> <C-o><A-j>
 imap <A-k> <C-o><A-k>
 imap <A-Down> <C-o><A-j>
