@@ -35,6 +35,7 @@ bspc rule -a 'firefox:Places:*' state=floating # Firefox Downloads
 bspc rule -a 'thunderbird:Msgcompose' state=floating
 bspc rule -a Blueman-manager state=floating
 bspc rule -a Pavucontrol state=floating
+bspc rule -a ripdrag state=floating
 
 # Tiling rules
 # Zathura
