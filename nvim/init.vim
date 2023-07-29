@@ -318,6 +318,13 @@ let g:UltiSnipsExpandTrigger="<C-p>"
 " let g:UltiSnipsEditSplit="vertical"
 
 " Bullets
+let g:bullets_enabled_file_types = [
+			\ 'markdown',
+			\ 'text',
+			\ 'gitcommit',
+			\ 'scratch'
+			\]
+let g:bullets_enable_in_empty_buffers = 1
 
 
 " --- Rendering ---
