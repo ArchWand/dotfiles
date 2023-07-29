@@ -28,7 +28,8 @@ super + t; {Left,Down,Up,Right}
 alt + F1
 	firefox
 alt + F2
-	discord
+	vencord
+	# discord
 alt + F3
 	kitty nvim
 
