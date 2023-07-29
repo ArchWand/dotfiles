@@ -24,6 +24,7 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi'
 Plug 'mbbill/undotree'
 Plug 'rhysd/vim-clang-format'
+Plug 'lambdalisue/suda.vim'
 
 " Visual
 Plug 'lukas-reineke/indent-blankline.nvim'
