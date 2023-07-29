@@ -3,12 +3,19 @@
 # using:
 # /usr/bin/openconnect
 
+vpn_url=vpn.stu.rpi.edu
+protocol=anyconnect
+
+user=zhur7
+pass=$(bw get password e86da553-b4c9-49aa-b6e7-aea500b48dd6 || notify-send "Invalid Master Password")
+
+
 # Test if running from terminal or from rofi
 if [ $KITTY_WINDOW_ID ]; then
 	# Running from terminal
-	sudo -v && printf "zhur7\n$(bw get password e86da553-b4c9-49aa-b6e7-aea500b48dd6 || notify-send "Invalid Master Password")""\npush" | sudo openconnect vpn.stu.rpi.edu || notify-send "VPN Connection Failed"
+	sudo -v && printf "$pass\npush" | sudo openconnect --protocol=$protocol "$vpn_url" -u $user|| notify-send "VPN Connection Failed"
 else
 	# Running from rofi
-	kitty --class=floating_kitty -- bash -c 'sudo -v && printf "zhur7\n$(bw get password e86da553-b4c9-49aa-b6e7-aea500b48dd6 || notify-send "Invalid Master Password")""\npush" | sudo openconnect vpn.stu.rpi.edu || notify-send "VPN Connection Failed"'
+	kitty --class=floating_kitty -- bash -c 'sudo -v && printf "$pass\npush" | sudo openconnect --protocol=$protocol $vpn_url -u $user || notify-send "VPN Connection Failed"'
 fi
 
