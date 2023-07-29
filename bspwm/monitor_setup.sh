@@ -21,7 +21,7 @@ case $ar_conf in
 			# Select all nodes
 			bspc node -f @/ &&\
 			# Move the nodes
-			bspc node -m eDP_$d --follow &&\
+			bspc node -d eDP_$d --follow &&\
 			# Unselect the nodes
 			bspc node -f @first
 		done
@@ -75,7 +75,7 @@ case $ar_conf in
 			# Select all nodes
 			bspc node -f @/ &&\
 			# Move the nodes
-			bspc node -m HDMI_$d --follow &&\
+			bspc node -d HDMI_$d --follow &&\
 			# Unselect the nodes
 			bspc node -f @first
 		done
