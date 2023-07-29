@@ -107,6 +107,8 @@ export EDITOR='nvim'
 export PATH="$HOME/scripts/.path:$PATH"
 # Add local bin to path
 export PATH="$HOME/.local/bin:$PATH"
+# Add cargo bins to path
+export PATH="$HOME/.local/share/cargo/bin:$PATH"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
