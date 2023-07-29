@@ -36,6 +36,7 @@ up_file ~/.config/picom/picom.conf
 up_file ~/.config/tridactyl/tridactylrc
 up_file ~/.config/X11/xinitrc
 up_file ~/.config/BetterDiscord/themes/nocturnal.theme.css
+up_file /etc/logid.cfg
 
 # If the script is called without parameters,
 # allow for manual committing
