@@ -487,6 +487,15 @@ IGNORE-MISMATCH=[
     https://open.spotify.com/track/7evscakvct5wDmr1ap0CYl,
     https://open.spotify.com/track/4mvygv61ByZzUoI1KrkMlC,
     https://open.spotify.com/track/4DunhC1RuUbqC3MXrMozIg,
+    https://open.spotify.com/track/02SbQgZbzMoylPoGr32ugF,
+    https://open.spotify.com/track/2BZVwnczJmNoGAtCjac819,
+    https://open.spotify.com/track/5Z0gyPr6idyscwLribVpFH,
+    https://open.spotify.com/track/1qlusFEI25LWMQNXcxfL7a,
+    https://open.spotify.com/track/4UHUzgsVA31r4yUq5dvfb1,
+    https://open.spotify.com/track/1vnxItiNAq3DoHope9ZwXr,
+    https://open.spotify.com/track/0KWHVBiWSYqbJ0dBs3UOi5,
+    https://open.spotify.com/track/4wp725MlpbUiyn1NcTMHJ6,
+    https://open.spotify.com/track/7CyPwkp0oE8Ro9Dd5CUDjW,
 ]
 
 # Manual song replacements
@@ -551,6 +560,7 @@ RENAME=[
     너 때문에 미쳐 - T-ARA.mp3 : I Go Crazy Because of You (너 때문에 미쳐) - T-ARA.mp3,
     24시간이 모자라 - SUNMI.mp3 : 24 hours (24시간이 모자라) - SUNMI.mp3,
     궁금해 (Next Page) - IVE.mp3 : Next Page (궁금해) - IVE.mp3,
+	หยุดดิ๊ (YaA!) - RedSpin.mp3 : YaA! (หยุดดิ๊) - RedSpin.mp3,
 ]
 
 # Determines how strictly duplicates are checked for when merging
