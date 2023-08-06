@@ -38,9 +38,9 @@ super + e
 
 
 # ===== Notifications =====
-super + n ; {super + ,_}x
+super + n; {super + ,_}x
 	dunstctl close-all
-super + n ; {super + ,_}p
+super + n; {super + ,_}p
 	dunstctl history-pop
 super + n; {super + ,_}Return
 	dunstctl action
