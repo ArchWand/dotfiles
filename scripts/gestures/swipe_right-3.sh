@@ -6,7 +6,7 @@ case "$app" in
 	firefox)
 		xdotool key ctrl+Page_Down
 		;;
-	discord)
+	discord|VencordDesktop)
 		xdotool key alt+shift+Down
 		;;
 	*kitty)
