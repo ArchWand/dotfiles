@@ -318,3 +318,7 @@ super + ctrl + alt + shift + F12; ctrl+p; ctrl+s
 	~/Applications/plover-4.0.0.dev12-x86_64_1117a3034f0a02c8898a2bccdcb0a905.AppImage -s plover_send_command quit &&\
 	notify-send "Plover" "Stopped"
 
+# MX Master swipe
+{_,alt + }XF86Launch{5,6,7,8}{_, + ctrl, + shift, + ctrl + shift}
+	n=3 && {_,n=4 && xdotool keyup alt && } ~/scripts/gestures/swipe_{left,down,up,right}-$n.sh{_,_,_,_}
+

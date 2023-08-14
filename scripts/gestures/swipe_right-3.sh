@@ -1,5 +1,4 @@
 #!/bin/zsh
-export DISPLAY=:0
 app=$(xprop -id $(xdotool getactivewindow) WM_CLASS | awk -F '"' '{print $4}')
 
 case "$app" in
@@ -15,7 +14,10 @@ case "$app" in
 		fi
 		;;
 	thunderbird)
-		xdotool key ctrl+Page_Down
+		xdotool key ctrl+Tab
+		;;
+	"")
+		xdotool key super+bracketright
 		;;
 	*)
 		;;

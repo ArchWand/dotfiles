@@ -1,5 +1,4 @@
 #!/bin/zsh
-export DISPLAY=:0
 # app=$(xprop -id $(xdotool getactivewindow) WM_CLASS | awk -F '"' '{print $4}')
 
 for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --toggle-override; done
