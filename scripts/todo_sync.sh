@@ -1,5 +1,11 @@
 #!/bin/sh
 
-rsync -au $HOME/Desktop/todo.txt arcwand@128.113.148.173:/home/arcwand/todo/todo.txt --timeout=15
-rsync -au arcwand@128.113.148.173:/home/arcwand/todo/todo.txt $HOME/Desktop/todo.txt --timeout=15
+USERNAME=arcwand
+IP=128.61.104.106
+LOCALFILE=$HOME/Desktop/todo.txt
+CLOUDFILE=/home/$USERNAME/todo/todo.txt
+TIMEOUT=15
+
+rsync -au $LOCALFILE $USERNAME@$IP:"$CLOUDFILE" --timeout=$TIMEOUT
+rsync -au $USERNAME@$IP:$CLOUDFILE $LOCALFILE --timeout=$TIMEOUT
 

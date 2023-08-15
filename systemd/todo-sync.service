@@ -1,0 +1,6 @@
+[Unit]
+Description=Sync todo list upon write
+
+[Service]
+type=oneshot
+ExecStart=/home/arcwand/scripts/todo_sync.sh

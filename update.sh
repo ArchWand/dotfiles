@@ -36,6 +36,8 @@ up_file ~/.config/libinput-gestures.conf
 up_file ~/.config/dunst/dunstrc
 up_file ~/.config/picom/picom.conf
 up_file ~/.config/tridactyl/tridactylrc
+up_file ~/.config/systemd/user/todo-sync.path systemd/
+up_file ~/.config/systemd/user/todo-sync.service systemd/
 up_file ~/.config/X11/xinitrc
 up_file ~/.config/BetterDiscord/themes/nocturnal.theme.css
 up_file /etc/logid.cfg

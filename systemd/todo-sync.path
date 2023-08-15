@@ -1,0 +1,5 @@
+[Path]
+PathModified=/home/arcwand/Desktop/todo.txt
+
+[Install]
+WantedBy=default.target
