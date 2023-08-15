@@ -54,21 +54,28 @@ export EDITOR='nvim'
 
 ###### ALIASES #####
 
-# ls variations
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+function rmcd { dir="$(pwd)" && cd .. && rm "$dir" -rf || cd "$dir" }
+function rdcd { dir="$(pwd)" && cd .. && rd "$dir" || cd "$dir" }
+function mcd { mkdir -p "$1" && cd "$1" }
+function mvcwd { dir="$(pwd)" && cd .. && mv "$dir" "$1" ; cd "$1" }
+function superkill { while pkill -9 "$1" && killall "$1"; do done }
+
+autoload zmv
+alias zcp='zmv -C'
+alias zln='zmv -L'
+alias la="ls -A"
+alias ll="ls -lAh"
 alias lc="ls -rc"
+alias cdnew='cd "$(ls -rcd */ | tail -n 1)"'
 
-mcd() { mkdir -p -- "$1" && cd -P -- "$1" }
+alias nv=nvim
+alias py=python
 
-alias py=python3
-alias updatedb="sudo echo 'Updating DB' && sudo updatedb && echo 'DB updated'"
+alias cmd='command'
+alias hardclear='echo -ne "\ec"'
+alias reset="tput reset"
+# alias init-nvm='source /usr/share/nvm/init-nvm.sh'
 
-#Utility
-alias reload-zsh="exec zsh"
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -118,24 +118,11 @@ export PATH="$HOME/.local/share/cargo/bin:$PATH"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-function rmcd {
-	dir="$(pwd)" && cd .. && rm "$dir" -rf || cd "$dir"
-}
-function rdcd {
-	dir="$(pwd)" && cd .. && rd "$dir" || cd "$dir"
-}
-function mcd {
-	mkdir -p "$1" && cd "$1"
-}
-function mvcwd {
-	dir="$(pwd)" && cd .. && mv "$dir" "$1" ;
-	cd "$1"
-}
-alias cdnew='cd "$(ls -rcd */ | tail -n 1)"'
-
-function superkill {
-	while pkill -9 "$1" && killall "$1"; do done
-}
+function rmcd { dir="$(pwd)" && cd .. && rm "$dir" -rf || cd "$dir" }
+function rdcd { dir="$(pwd)" && cd .. && rd "$dir" || cd "$dir" }
+function mcd { mkdir -p "$1" && cd "$1" }
+function mvcwd { dir="$(pwd)" && cd .. && mv "$dir" "$1" ; cd "$1" }
+function superkill { while pkill -9 "$1" && killall "$1"; do done }
 
 autoload zmv
 alias zcp='zmv -C'
@@ -143,24 +130,22 @@ alias zln='zmv -L'
 alias la="ls -A"
 alias ll="ls -lAh"
 alias lc="ls -rc"
+alias cdnew='cd "$(ls -rcd */ | tail -n 1)"'
 
-alias cmd='command'
-alias hardclear='echo -ne "\ec"'
-alias reset="tput reset"
-
+alias icat="kitty +kitten icat"
+alias ssh="kitty +kitten ssh"
 alias nv=nvim
 alias clip="xsel -b"
 alias ranger=". ranger"
 alias plover="~/Applications/plover-4.0.0.dev12-x86_64_1117a3034f0a02c8898a2bccdcb0a905.AppImage"
 alias py=python
 
-alias icat="kitty +kitten icat"
-alias ssh="kitty +kitten ssh"
-
+alias cmd='command'
+alias hardclear='echo -ne "\ec"'
+alias reset="tput reset"
 alias zsh-no-git-prompt='git config --add oh-my-zsh.hide-status 1; git config --add oh-my-zsh.hide-dirty 1'
 alias kitty-disable-ime='unset GLFW_IM_MODULE && kitty'
 alias init-nvm='source /usr/share/nvm/init-nvm.sh'
-
 alias xev-keyboard='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'
 alias startx11vnc="x11vnc -display :0 -usepw"
 
