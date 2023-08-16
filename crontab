@@ -13,9 +13,9 @@ HOME=/home/arcwand
 0 4 * * * find $HOME/Downloads/ -type d -mtime +14 -delete
 
 # Log laptop ip
-*/15 * * * * ssh arcwand@128.61.104.106 "echo $(hostname -i) >> laptop_ip.txt"
+*/30 * * * * ssh arcwand@128.61.104.106 "echo $(hostname -i) >> laptop_ip.txt"
 # Sync todo.txt
-0 * * * * $HOME/scripts/todo_sync.sh
+0 */2 * * * $HOME/scripts/todo_sync.sh
 
 # Remove neovim undo history older than 1 day
 0 4 * * * find $HOME/.local/share/nvim/undodir/ -type f -mtime +1 -delete
