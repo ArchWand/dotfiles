@@ -23,7 +23,6 @@ Plug 'gcmt/taboo.vim'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi'
 Plug 'mbbill/undotree'
-Plug 'rhysd/vim-clang-format'
 Plug 'lambdalisue/suda.vim'
 
 " Visual
@@ -311,12 +310,6 @@ nnoremap <C-A-p> :Copilot disable<CR>
 imap <C-A-p> <C-o><C-A-p>
 imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
-
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<C-p>"
-" let g:UltiSnipsJumpForwardTrigger="<C-f>"
-" let g:UltiSnipsJumpBackwardTrigger="<C-z>"
-" let g:UltiSnipsEditSplit="vertical"
 
 " Bullets
 let g:bullets_enabled_file_types = [

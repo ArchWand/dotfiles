@@ -1,38 +1,76 @@
+" ArcWand's neovim vimrc
 call plug#begin()
 
+Plug 'dstein64/vim-startuptime'
+
+" Autocompletion
+Plug 'github/copilot.vim'
+Plug 'dkarter/bullets.vim'
+
+" Utility
 Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 Plug 'gcmt/taboo.vim'
+Plug 'mg979/vim-visual-multi'
+Plug 'mbbill/undotree'
+Plug 'lambdalisue/suda.vim'
+
+" Visual
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 call plug#end()
 
+" ##### THEME #####
+
+set termguicolors
+" colorscheme catppuccin-mocha
+
 " ##### SETTINGS #####
 syntax enable
-filetype plugin on
+filetype plugin indent on
+
+""" Indentation
+set autoindent smarttab
+set noexpandtab
+set tabstop=4 shiftwidth=4 softtabstop=4
+set breakindent
+
+" .py - python script
+autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+" .R - R script
+autocmd FileType r setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+" .s - ASM
+autocmd FileType asm setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 """ Buffer settings
 " Mouse
 set mouse=a
 
-" Indenting
-set autoindent smarttab
-set tabstop=4 shiftwidth=4 softtabstop=4
-set breakindent
+" Visualize whitespace
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 " Ensure word wrap does not split words
 set formatoptions=l
 set lbr
 
+" Search settings
+set ignorecase smartcase
+
 " Set the leader as space
 let mapleader=" "
-let maplocalleader=" "
+let maplocalleader="\\"
 nnoremap <Space> <Nop>
 
 " Line numbers
 set number relativenumber
-autocmd BufReadPre,FileReadPre,WinEnter,FocusGained * :setlocal number relativenumber
-autocmd WinLeave,FocusLost * :setlocal number norelativenumber
 command NumberToggle :setlocal relativenumber!
+" Switch to not relative when focus lost
+" autocmd BufReadPre,FileReadPre,WinEnter,FocusGained * :setlocal number relativenumber
+" autocmd WinLeave,FocusLost * :setlocal number norelativenumber
 
 " Clipboard
 set clipboard=unnamedplus
@@ -44,17 +82,33 @@ set nobackup nowritebackup
 set splitbelow splitright
 
 " Code folding
-set foldmethod=syntax
+set foldmethod=manual
 set foldlevel=20
 
 " Scrolling
 set scrolloff=4
 set scroll=1
 
+" Default conceal level
+set conceallevel=2
+
 
 """ Utility
 " Reload vimrc
-command Rvrc source $MYVIMRC
+command R source $MYVIMRC
+
+" Visualize whitespace
+nnoremap <leader>w :set list!<CR>
+
+" Toggle relative numbering
+nnoremap <leader>n :NumberToggle<CR>
+
+" Toggle word wrap
+nnoremap <leader>o :set wrap!<CR>
+
+" Persistent undo
+set undofile
+set undodir=~/.local/share/nvim/undos
 
 
 """ Ease of Use
@@ -87,27 +141,27 @@ vnoremap <leader>c :<C-U>exec SingleInsert("`<cv`>", nr2char(getchar()), v:count
 command Vterm :vsp|:term
 
 " Move lines
-nnoremap <expr> <A-k> ":m -" . (v:count ? v:count-1 : 2) . "<CR>"
-nnoremap <expr> <A-j> ":m +" . (v:count ? v:count : 1) . "<CR>"
+nnoremap <expr> <A-k> ":<C-u>m -" . (v:count ? v:count+1 : 2) . "<CR>"
+nnoremap <expr> <A-j> ":<C-u>m +" . (v:count ? v:count : 1) . "<CR>"
+vnoremap <expr> <A-k> ":m '<-" . (v:count ? v:count+1 : 2) . "<CR>gv"
+vnoremap <expr> <A-j> ":m '>+" . (v:count ? v:count : 1) . "<CR>gv"
 nmap <A-Up> <A-k>
 nmap <A-Down> <A-j>
+vmap <A-Up> <A-k>
+vmap <A-Down> <A-j>
 imap <A-j> <C-o><A-j>
 imap <A-k> <C-o><A-k>
 imap <A-Down> <C-o><A-j>
 imap <A-Up> <C-o><A-k>
 
-" Auto-bracketing
-vnoremap <leader>s( x<Esc>i()<Esc>P
-vmap <leader>s) <leader>s(
-vnoremap <leader>s[ x<Esc>i[]<Esc>P
-vmap <leader>s] <leader>s[
-vnoremap <leader>s{ x<Esc>i{}<Esc>P
-vmap <leader>s} <leader>s{
-vnoremap <leader>s< x<Esc>i<><Esc>P
-vmap <leader>s> <leader>s<
-vnoremap <leader>s' x<Esc>i''<Esc>P
-vnoremap <leader>s" x<Esc>i""<Esc>P
-vnoremap <leader>s` x<Esc>i``<Esc>P
+" Move characters
+nnoremap <A-h> xhP
+nnoremap <A-l> xp
+imap <A-h> <Esc><A-h>a
+imap <A-l> <Esc><A-l>a
+
+" Cycle focus
+nnoremap <M-i> <C-w>w
 
 
 """ Movement
@@ -122,6 +176,12 @@ vmap <Down> j
 vmap <Up> k
 imap <Down> <C-o>j
 imap <Up> <C-o>k
+
+" Provide a method for unwrapped movement
+nnoremap gj j
+nnoremap gk k
+vnoremap gj j
+vnoremap gk k
 
 " Convenient BoL EoL
 function WinTextWidth()
@@ -147,7 +207,7 @@ function GoBoL()
 	let winwidth = WinTextWidth()
 	let whitelen = WhitespaceLen()
 
-	if virtcol('.') % winwidth - whitelen == 1
+	if virtcol('.') % winwidth - whitelen == 1 || !&wrap
 		return virtcol('.') > winwidth ? '^' : '0'
 	else
 		return 'g^'
@@ -196,19 +256,77 @@ vnoremap S "0S
 vnoremap x "0x
 vnoremap X "0X
 
+" Visual paste
+xnoremap <silent> p p:let @+=@0<CR>:let @0=@"<CR>
+
 
 
 " ##### PLUGINS #####
 
+" --- Autocompletion ---
+" Copilot
+let g:copilot_enabled = v:false
+nnoremap <C-A-p> :Copilot disable<CR>
+imap <C-A-p> <C-o><C-A-p>
+imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<C-p>"
+" let g:UltiSnipsJumpForwardTrigger="<C-f>"
+" let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+" let g:UltiSnipsEditSplit="vertical"
+
+" Bullets
+let g:bullets_enabled_file_types = [
+			\ 'markdown',
+			\ 'text',
+			\ 'gitcommit',
+			\ 'scratch'
+			\]
+let g:bullets_enable_in_empty_buffers = 1
+
+
+" --- Rendering ---
+let g:tex_flavor = "latex"
+" VimTex
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+
+" Markdown Preview
+let g:mkdp_auto_start = 0
+
+" RStudio
+let R_objbr_auto_start = 1
+let R_assign = 0
+
+" Colorizer
+nnoremap <leader>l :ColorToggle<CR>
+
+
+" --- Utility ---
 " NerdCommenter
 " Create default mappings
 let g:NERDCreateDefaultMappings = 1
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 " Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
+" let g:NERDCommentEmptyLines = 1
 
 " Taboo
 " Remember tab names
 set sessionoptions+=tabpages,globals
+
+" UndoTree
+nnoremap <leader>u :UndotreeToggle<CR>
+
+
+" --- Visual ---
+" Vim-Airline
+let g:airline_theme='violet'
+let g:airline_powerline_fonts = 1
+" Allow spaces for alignment
+let g:airline#extensions#whitespace#mixed_indent_algo = 2
+" But also no one cares about errant spaces
+let g:airline#extensions#whitespace#enabled = 0
 
