@@ -14,8 +14,9 @@ case "$app" in
 		fi
 		;;
 	thunderbird)
-		xdotool key ctrl+Tab
+		xdotool key n
 		;;
 	*)
+		xdotool key alt+Tab
 		;;
 esac

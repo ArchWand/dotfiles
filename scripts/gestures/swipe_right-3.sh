@@ -11,13 +11,14 @@ case "$app" in
 	*kitty)
 		if [[ -z $(xprop -id $(xdotool getactivewindow) WM_NAME | grep "nvim") ]]; then
 		else
+			xdotool key Escape key colon key n key Return
 		fi
 		;;
 	thunderbird)
 		xdotool key ctrl+Tab
 		;;
 	"")
-		xdotool key super+bracketright
+		bspc desktop -f next.local --follow
 		;;
 	*)
 		;;
