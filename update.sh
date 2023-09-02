@@ -31,7 +31,7 @@ up_file ~/.bashrc
 up_file ~/.zprofile
 up_file ~/.zshrc
 up_file ~/.zshenv
-up_file ~/.config/betterlockscreenrc
+up_file ~/.config/betterlockscreen/betterlockscreenrc
 up_file ~/.config/libinput-gestures.conf
 up_file ~/.config/dunst/dunstrc
 up_file ~/.config/picom/picom.conf
