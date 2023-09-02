@@ -7,6 +7,7 @@ Plug 'dstein64/vim-startuptime'
 Plug 'github/copilot.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dkarter/bullets.vim'
+" Plug 'm4xshen/autoclose.nvim'
 
 " Rendering
 Plug 'lervag/vimtex'
@@ -48,6 +49,9 @@ set noexpandtab
 set tabstop=4 shiftwidth=4 softtabstop=4
 set breakindent
 
+" .java - java program
+" CS 1332 requires spaces
+autocmd FileType java setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 " .py - python script
 autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 " .R - R script
@@ -105,6 +109,9 @@ set conceallevel=2
 """ Utility
 " Reload vimrc
 command R source $MYVIMRC
+
+" Sync todo list manually
+command TodoSync !/home/arcwand/scripts/todo_sync.sh
 
 " Visualize whitespace
 nnoremap <leader>w :set list!<CR>
@@ -304,6 +311,9 @@ nmap <leader>rn <Plug>(coc-rename)
 " Apply the most preferred quickfix action to fix diagnostic on the current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
+" Disable CoC
+nnoremap <leader>cd :<C-u>CocDisable<CR>
+
 " Copilot
 let g:copilot_enabled = v:false
 nnoremap <C-A-p> :Copilot disable<CR>
@@ -374,7 +384,7 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 " Colorizer
-nnoremap <leader>l :ColorToggle<CR>
+nnoremap <leader>h :ColorToggle<CR>
 
 
 " --- Utility ---
