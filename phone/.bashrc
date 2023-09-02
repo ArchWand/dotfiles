@@ -27,6 +27,6 @@ alias py=python
 
 alias cmd='command'
 alias hardclear='echo -ne "\ec"'
-alias laptop_ip='LAPTOP_IP=`ssh arcwand@128.113.148.173 "tail -n 1 laptop_ip.txt"` && echo $LAPTOP_IP'
+alias laptop_ip='LAPTOP_IP=`ssh arcwand@128.61.104.106 "tail -n 1 laptop_ip.txt"` && echo $LAPTOP_IP'
 alias startx11vnc='laptop_ip && ssh arcwand@$LAPTOP_IP "x11vnc -usepw -display :0"'
 
