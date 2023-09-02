@@ -3,9 +3,11 @@ alt + F1
 	firefox
 alt + F2
 	vencord
-	# discord
 alt + F3
 	kitty nvim
+alt + F4
+	firefox file:///home/arcwand/Class/Schedule.png
+
 
 super + e
 	thunar
