@@ -4,7 +4,7 @@ call plug#begin()
 Plug 'dstein64/vim-startuptime'
 
 " Autocompletion
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dkarter/bullets.vim'
 " Plug 'm4xshen/autoclose.nvim'
