@@ -44,7 +44,7 @@ bspc rule -a Zathura state=tiled
 # Autostart
 # Policy Kit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-# Top bar
+# Bar
 $HOME/.config/polybar/launch.sh &
 # Wallpaper
 nitrogen --restore &
@@ -57,7 +57,7 @@ pkill -9 dunst && dunst &
 # IME/IMF
 fcitx5 &
 # Clipboard history
-greenclip daemon &
+pkill -9 greenclip; greenclip daemon &
 # Auto-suspend
-pkill -9 xautolock && xautolock -time 30 -locker 'systemctl suspend' -detectsleep &
+pkill -9 xautolock; xautolock -time 30 -locker 'systemctl suspend' -detectsleep &
 
