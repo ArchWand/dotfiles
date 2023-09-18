@@ -23,6 +23,9 @@ case "$app" in
 	Zathura)
 		xdotool key q
 		;;
+	jetbrains-studio)
+		bspc node -c
+		;;
 	*)
 		xdotool key ctrl+w
 		;;
