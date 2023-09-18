@@ -140,6 +140,7 @@ alias ranger=". ranger"
 alias plover="~/Applications/plover-4.0.0.dev12-x86_64_1117a3034f0a02c8898a2bccdcb0a905.AppImage"
 alias py=python
 
+autoload zcalc
 alias cmd='command'
 alias hardclear='echo -ne "\ec"'
 alias reset="tput reset"
