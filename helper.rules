@@ -496,6 +496,17 @@ IGNORE-MISMATCH=[
     https://open.spotify.com/track/0KWHVBiWSYqbJ0dBs3UOi5,
     https://open.spotify.com/track/4wp725MlpbUiyn1NcTMHJ6,
     https://open.spotify.com/track/7CyPwkp0oE8Ro9Dd5CUDjW,
+    https://open.spotify.com/track/0rARKCfNtzBegIyIEiJjLK,
+    https://open.spotify.com/track/0bDYceyQd1jnJO4sK47YxU,
+    https://open.spotify.com/track/0LY4jOJChwNOYUp2dTNEss,
+    https://open.spotify.com/track/3bUD1FmJClHcD0U7rIN0TR,
+    https://open.spotify.com/track/3uWMfe3rWSwQZT4yAgGJhH,
+    https://open.spotify.com/track/2ivVS2ageitCQqnmmMaWoH,
+    https://open.spotify.com/track/4Cyf87ul1le0xTWRFBoYd7,
+    https://open.spotify.com/track/0fkL0fOhEzRK8WFe2ixt2d,
+    https://open.spotify.com/track/4tKU5Qfjlhrg6hTdl75kfT,
+    https://open.spotify.com/track/3NXNehGmRu9mH6BItOwSEp,
+    https://open.spotify.com/track/3acGHJqr9xU1cnCEfLX1Lx,
 ]
 
 # Manual song replacements
@@ -542,6 +553,7 @@ REPLACE=[
     https://www.youtube.com/watch?v=WW6ndEj-zsg | https://open.spotify.com/track/5fgpCIjBJ098E9zqN9DS87,
     https://music.youtube.com/watch?v=NRirC-1Fq6U | https://open.spotify.com/track/5XFZ647GV7xMA3mLeRjhAI,
     https://music.youtube.com/watch?v=-dVaaOB4wSg | https://open.spotify.com/track/2csIvlGQz4Xfpk4e5a6ISo,
+	https://www.youtube.com/watch?v=HJnvSOuG9kA | https://open.spotify.com/track/07Betr7cYIq5D9F2X9MnCT,
 ]
 # Buffer for manual songs
 # MANUAL-BUFFER=./.tmp_manual
@@ -561,6 +573,9 @@ RENAME=[
     24시간이 모자라 - SUNMI.mp3 : 24 hours (24시간이 모자라) - SUNMI.mp3,
     궁금해 (Next Page) - IVE.mp3 : Next Page (궁금해) - IVE.mp3,
 	หยุดดิ๊ (YaA!) - RedSpin.mp3 : YaA! (หยุดดิ๊) - RedSpin.mp3,
+    Girls’ Capitalism - tripleS.mp3 : Girls’ Capitalism - tripleS.mp3,
+    Killin’ Me Good - JIHYO.mp3 : Killin’ Me Good - JIHYO.mp3,
+    A-MOONO-KE (I’m OK) - JEON SOYEON.mp3 : A-MOONO-KE (I’m OK) - JEON SOYEON.mp3,
 ]
 
 # Determines how strictly duplicates are checked for when merging
