@@ -2,6 +2,14 @@
   "suggest.noselect": true,
   "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd",
 
+  "languageserver": {
+	  "R": {
+		  "command": "/usr/bin/R",
+		  "args" : [ "--slave", "-e", "languageserver::run()"],
+		  "filetypes" : ["r"]
+	  }
+  },
+
   "java.configuration.runtimes": [
 	  {
 		  "name": "JavaSE-11",

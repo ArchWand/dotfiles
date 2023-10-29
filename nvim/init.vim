@@ -4,7 +4,7 @@ call plug#begin()
 Plug 'dstein64/vim-startuptime'
 
 " Autocompletion
-" Plug 'github/copilot.vim'
+Plug 'github/copilot.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dkarter/bullets.vim'
 " Plug 'm4xshen/autoclose.nvim'
@@ -12,6 +12,7 @@ Plug 'dkarter/bullets.vim'
 " Rendering
 Plug 'lervag/vimtex'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown' }
+Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'jalvesaq/Nvim-R', { 'for': 'r'}
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate'}
 Plug 'chrisbra/Colorizer'
@@ -62,6 +63,9 @@ autocmd FileType asm setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 """ Buffer settings
 " Mouse
 set mouse=a
+
+" Highlight line and column
+set cursorline cursorcolumn
 
 " Visualize whitespace
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
@@ -150,8 +154,8 @@ nnoremap <leader>i :<C-U>exec SingleInsert("i", nr2char(getchar()), v:count1)<CR
 nnoremap <leader>a :<C-U>exec SingleInsert("a", nr2char(getchar()), v:count1)<CR>
 nnoremap <leader>I :<C-U>exec SingleInsert("I", nr2char(getchar()), v:count1)<CR>
 nnoremap <leader>A :<C-U>exec SingleInsert("A", nr2char(getchar()), v:count1)<CR>
-" Single change
-vnoremap <leader>c :<C-U>exec SingleInsert("`<cv`>", nr2char(getchar()), v:count1)<CR>
+" Single substitution
+vnoremap <leader>s :<C-U>exec SingleInsert("`<cv`>", nr2char(getchar()), v:count1)<CR>
 
 " Vertical split terminal
 command Vterm :vsp|:term
@@ -239,12 +243,12 @@ function GoEoL()
 	endif
 endfunction
 
-noremap <expr> H v:count ? 'H' : GoBoL()
-noremap <expr> L v:count ? 'L' : GoEoL()
-nmap <Home> H
-nmap <End> L
-imap <Home> <C-o><Home>
-imap <End> <C-o><End>
+noremap <expr> <HOME> GoBoL()
+noremap <expr> <END> GoEoL()
+nmap <expr> H v:count ? 'H' : '<Home>'
+nmap <expr> L v:count ? 'L' : '<End>'
+vmap <expr> H v:count ? 'H' : '<Home>'
+vmap <expr> L v:count ? 'L' : '<End>'
 
 
 """ Registers
@@ -301,9 +305,9 @@ endif
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
 
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
@@ -413,6 +417,11 @@ nnoremap <leader>u :UndotreeToggle<CR>
 
 
 " --- Visual ---
+" Indent Blankline
+lua << EOF
+require("ibl").setup()
+EOF
+
 " Vim-Airline
 let g:airline_theme='violet'
 let g:airline_powerline_fonts = 1
