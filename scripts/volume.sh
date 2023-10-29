@@ -22,7 +22,12 @@ volume=0
 function get_volume() {
 	local vfl=$(amixer get Master | grep "Front Left:" | awk -F'[][ %]' '{printf $8}')
 	local vfr=$(amixer get Master | grep "Front Right:" | awk -F'[][ %]' '{printf $8}')
-	echo $(( ($vfl+$vfr)/2 ))
+	local vmono=$(amixer get Master | grep "Mono:" | awk -F'[][ %]' '{printf $7}')
+	if [[ -n $vfl || -n $vfr ]]; then
+		echo $(( ($vfl+$vfr)/2 ))
+	else
+		echo $vmono
+	fi
 }
 
 function is_mute() {
