@@ -2,7 +2,8 @@
 alt + F1
 	firefox
 alt + F2
-	vencord
+	discord
+	# vencord
 alt + F3
 	kitty nvim
 alt + F4
@@ -22,7 +23,7 @@ super + n; {super + ,_}Return
 	dunstctl action
 
 
-# ===== Top bar =====
+# ===== Bar =====
 # Toggle polybar visibility
 {@,_}{Super_L,Super_R}
 	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --{hide,show}; done{_,_}
@@ -184,17 +185,13 @@ super + {period,comma}
 super + {_,shift + ,ctrl + }bracket{left,right}
 	bspc {desktop -f,node -d,desktop -s} {prev,next}.local --follow
 
-# Focus or send to the given desktop
-super + {_,shift + }{_,alt + }{1-9,0}
-	bspc {desktop -f,node -d} {focused,next}:'^{1-9,10}'
-
-# Swap two desktops
-super + ctrl + {_,alt + }{1-9,0}
-	bspc desktop -s {focused,next}:'^{1-9,10}' --follow
+# Focus, send to, or swap to the given desktop
+super + {_,shift + ,ctrl + }{_,alt + }{1-9,0}
+	bspc {desktop -f,node -d,desktop -s} {focused,next}:'^{1-9,10}'
 
 # Swap desktop to next monitor
 super + ctrl + alt + Tab
-	bspc desktop -s next:focused --follow
+	bspc desktop -s next:focused
 
 
 # ===== State =====
