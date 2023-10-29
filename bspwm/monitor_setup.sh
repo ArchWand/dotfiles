@@ -5,23 +5,19 @@ if [ -z "$ar_conf" ]; then
 	ar_conf=$(autorandr --list | head -n 1)
 fi
 
+~/.config/bspwm/desktops.sh
 case $ar_conf in
 	laptop) # Name of the one-screen config
-		# Reset the names of the desktops
-		# This is necessary since we will use a name based method to 
-		# move all the windows
-		~/.config/bspwm/desktops.sh
-
 		start_desk="eDP_$(bspc query -D -d focused --names | cut -d'_' -f 2)"
 
 		# Move all nodes to the primary monitor
 		for d in {01..10}; do
 			# Focus next desktop
-			bspc desktop HDMI_$d -f &&\
+			bspc desktop HDMI-1_$d -f &&\
 			# Select all nodes
 			bspc node -f @/ &&\
 			# Move the nodes
-			bspc node -d eDP_$d --follow &&\
+			bspc node -d eDP-1_$d --follow &&\
 			# Unselect the nodes
 			bspc node -f @first
 		done
@@ -35,8 +31,6 @@ case $ar_conf in
 		bspc desktop -f "$start_desk"
 		;;
 	desk) # Name of the two-screen config
-		~/.config/bspwm/desktops.sh
-
 		# Remember which desktop we started on
 		start_desk=$(bspc query -D -d focused --names)
 
@@ -47,10 +41,10 @@ case $ar_conf in
 		# but only if there are no nodes already on the external monitor
 		if [[ -z "$(bspc query -N -m "HDMI-1")" ]]; then
 			# Update the start desktops
-			start_desk="HDMI_$(echo "$start_desk" | cut -d'_' -f 2)"
+			start_desk="HDMI-1_$(echo "$start_desk" | cut -d'_' -f 2)"
 			# Swap all desktops to the external monitor
 			for d in {01..10}; do
-				bspc desktop eDP_$d -s HDMI_$d
+				bspc desktop eDP-1_$d -s HDMI-1_$d
 			done
 		fi
 		# Reset the desktop names
@@ -60,22 +54,17 @@ case $ar_conf in
 		bspc desktop -f "$start_desk"
 		;;
 	monitor) # Name of the external monitor only config
-		# Reset the names of the desktops
-		# This is necessary since we will use a name based method to 
-		# move all the windows
-		~/.config/bspwm/desktops.sh
-
 		# Remember which desktop we started on
-		start_desk="HDMI_$(bspc query -D -d focused --names | cut -d'_' -f 2)"
+		start_desk="HDMI-1_$(bspc query -D -d focused --names | cut -d'_' -f 2)"
 
 		# Move all nodes to the external monitor
 		for d in {01..10}; do
 			# Focus next desktop
-			bspc desktop eDP_$d -f &&\
+			bspc desktop eDP-1_$d -f &&\
 			# Select all nodes
 			bspc node -f @/ &&\
 			# Move the nodes
-			bspc node -d HDMI_$d --follow &&\
+			bspc node -d HDMI-1_$d --follow &&\
 			# Unselect the nodes
 			bspc node -f @first
 		done
