@@ -1,5 +1,6 @@
 #!/bin/zsh
 app=$(xprop -id $(xdotool getactivewindow) WM_CLASS | awk -F '"' '{print $4}')
+name=$(xprop -id $(xdotool getactivewindow) WM_NAME | awk -F '"' '{print $2}')
 
 case "$app" in
 	discord|VencordDesktop)
@@ -8,11 +9,23 @@ case "$app" in
 		for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --toggle-override; done
 		;;
 	*kitty)
-		if [[ -z $(xprop -id $(xdotool getactivewindow) WM_NAME | grep "nvim") ]]; then
-			xdotool key ctrl+d
-		else
-			xdotool key shift+z shift+z
-		fi
+		case "$name" in
+			nvim*|lf|ranger)
+				xdotool key shift+z shift+z
+				;;
+			lazygit)
+				xdotool key q
+				;;
+			*less)
+				xdotool key q
+				;;
+			man*)
+				xdotool key q
+				;;
+			*)
+				xdotool key ctrl+u key ctrl+d
+				;;
+		esac
 		;;
 	Spotify)
 		bspc node -c
@@ -24,7 +37,7 @@ case "$app" in
 		xdotool key q
 		;;
 	jetbrains-studio)
-		bspc node -c
+		xdotool key shift+z shift+z
 		;;
 	*)
 		xdotool key ctrl+w

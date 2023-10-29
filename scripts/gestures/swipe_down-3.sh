@@ -3,10 +3,7 @@ app=$(xprop -id $(xdotool getactivewindow) WM_CLASS | awk -F '"' '{print $4}')
 
 case "$app" in
 	firefox)
-		xdotool key ctrl+Tab
-		;;
-	discord|VencordDesktop)
-		xdotool key Escape
+		xdotool key ctrl+r
 		;;
 	*kitty)
 		if [[ -z $(xprop -id $(xdotool getactivewindow) WM_NAME | grep "nvim") ]]; then
@@ -17,6 +14,6 @@ case "$app" in
 		xdotool key n
 		;;
 	*)
-		xdotool key alt+Tab
+		xdotool key Escape
 		;;
 esac
