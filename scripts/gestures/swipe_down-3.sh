@@ -6,9 +6,7 @@ case "$app" in
 		xdotool key ctrl+r
 		;;
 	*kitty)
-		if [[ -z $(xprop -id $(xdotool getactivewindow) WM_NAME | grep "nvim") ]]; then
-		else
-		fi
+		xdotool key ctrl+c
 		;;
 	thunderbird)
 		xdotool key n
