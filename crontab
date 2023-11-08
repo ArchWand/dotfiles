@@ -17,8 +17,8 @@ HOME=/home/arcwand
 # Sync todo.txt
 */5 * * * * $HOME/scripts/todo_sync.sh
 
-# Remove neovim undo history older than 1 day
-0 4 * * * find $HOME/.local/share/nvim/undodir/ -type f -mtime +1 -delete
+# Remove neovim undo history older than 3 days
+0 4 * * * find $HOME/.local/share/nvim/undos/ -type f -mtime +1 -delete
 
 # Track window focus
 * * * * * $HOME/scripts/window_log
