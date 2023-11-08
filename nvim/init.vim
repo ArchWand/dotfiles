@@ -159,6 +159,8 @@ vnoremap <leader>s :<C-U>exec SingleInsert("`<cv`>", nr2char(getchar()), v:count
 
 " Vertical split terminal
 command Vterm :vsp|:term
+" Exit terminal mode
+tnoremap <Esc> <C-\><C-n>
 
 " Move lines
 nnoremap <expr> <A-k> ":<C-u>m -" . (v:count ? v:count+1 : 2) . "<CR>"
