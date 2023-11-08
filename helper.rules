@@ -507,6 +507,21 @@ IGNORE-MISMATCH=[
     https://open.spotify.com/track/4tKU5Qfjlhrg6hTdl75kfT,
     https://open.spotify.com/track/3NXNehGmRu9mH6BItOwSEp,
     https://open.spotify.com/track/3acGHJqr9xU1cnCEfLX1Lx,
+    https://open.spotify.com/track/5UUeEljsNQroCUNId8DIV6,
+    https://open.spotify.com/track/3nwQPAN4jq3iPjPf24LYAj,
+    https://open.spotify.com/track/0TX94kVRGQQw0APDMPfUxT,
+    https://open.spotify.com/track/5btJjUxmhPK1cwdw0mnhRD,
+    https://open.spotify.com/track/1rqb2FCXVn2HNL1afJEnTr,
+    https://open.spotify.com/track/1DzpZ8HBR0MgGkZDhAdd7f,
+    https://open.spotify.com/track/3isW89jO5h49OoCHpqediW,
+    https://open.spotify.com/track/2T9jFJm9xBdehACv1eZFvp,
+    https://open.spotify.com/track/0b8W1tf58MCAKjR6C3B20x,
+    https://open.spotify.com/track/0tSDqQOK8EgoRxYXWkP5rR,
+    https://open.spotify.com/track/3FWXkGqJx0giJzQNqkcK74,
+    https://open.spotify.com/track/0qMip0B2D4ePEjBJvAtYre,
+    https://open.spotify.com/track/3YXGSpMR27cthwFJfwd5DY,
+    https://open.spotify.com/track/2rIseDB7STvNmudfpDBZeu,
+    https://open.spotify.com/track/4BvuZVf9KyBN3QiPfeI9hw,
 ]
 
 # Manual song replacements
@@ -576,6 +591,20 @@ RENAME=[
     Girls’ Capitalism - tripleS.mp3 : Girls’ Capitalism - tripleS.mp3,
     Killin’ Me Good - JIHYO.mp3 : Killin’ Me Good - JIHYO.mp3,
     A-MOONO-KE (I’m OK) - JEON SOYEON.mp3 : A-MOONO-KE (I’m OK) - JEON SOYEON.mp3,
+    LET′S DANCE - LEE CHAE YEON.mp3 : LET′S DANCE - LEE CHAE YEON.mp3,
+    นี่นะคะ (I'm Here!) - MXFRUIT.mp3 : I'm Here! (นี่นะคะ) - MXFRUIT.mp3,
+    Love & Live - LOOΠΔ 13.mp3 : Love & Live - LOOΠΔ 13.mp3,
+    标签 (TITLE) - KUN.mp3 : TITLE (标签) - KUN.mp3,
+    スティグマ - GILTY x GILTY.mp3 : Stigma (スティグマ) - GILTY x GILTY.mp3,
+    修行 (NARCISSISM) - KUN.mp3 : NARCISSISM (修行) - KUN.mp3,
+    炎 - LiSA.mp3 : homura (炎) - LiSA.mp3,
+    スニーカーシンデレラ - GILTY x GILTY.mp3 : Sneaker Cinderella (スニーカーシンデレラ) - GILTY x GILTY.mp3,
+    紅蓮華 - LiSA.mp3 : Gurenge (紅蓮華) - LiSA.mp3,
+    C'mon (feat. Aminé) - JINI.mp3 : C'mon (feat. Aminé) - JINI.mp3,
+    现象 (PHENOMENON) - KUN.mp3 : PHENOMENON (现象) - KUN.mp3,
+    呪われてみてよ - GILTY x GILTY.mp3 : Norowaretemiteyo (呪われてみてよ) - GILTY x GILTY.mp3,
+    ニャンニャンBADバイバイ - GILTY x GILTY.mp3 : Nyannyanbadbyebye (ニャンニャンBADバイバイ) - GILTY x GILTY.mp3,
+    秘密の箱 - GILTY x GILTY.mp3 : Himitunohako (秘密の箱) - GILTY x GILTY.mp3,
 ]
 
 # Determines how strictly duplicates are checked for when merging
