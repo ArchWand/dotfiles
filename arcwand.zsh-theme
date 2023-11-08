@@ -33,6 +33,7 @@ cat_mocha_crust=233
 # Define colors
 if [[ $terminfo[colors] -ge 256 ]]; then
 	separator_c='%F{237}'
+	virtualenv_c='%B%F{197}%K{236}'
 	current_path_c='%B%F{036}%K{238}'
 	current_workdir_c='%B%F{063}%K{236}'
 	gitpr_c='%B%F{137}%K{236}'
@@ -41,6 +42,7 @@ if [[ $terminfo[colors] -ge 256 ]]; then
 	user_host_c='%F{241}'
 else
 	separator_c='%F{black}'
+	virtualenv_c='%B%F{red}%K{grey}'
 	current_path_c='%B%F{green}%K{grey}'
 	current_workdir_c='%B%F{blue}%K{grey}'
 	gitpr_c='%F{magenta}%K{grey}'
@@ -80,6 +82,7 @@ function get_user_host() {
 
 
 # Define prompt strings
+PROMPT_virtualenv="${virtualenv_c}"'$(virtualenv_prompt_info)'"${PR_RST}"
 PROMPT_current_path="${current_path_c}"'${${(%)cpath}%%${(%)cwdir}}'"${PR_RST}"
 PROMPT_current_workdir="${current_workdir_c}"'%1~'"${PR_RST}"
 PROMPT_gitpr="${gitpr_c}"'$(git_prompt_info)'"${PR_RST}"
@@ -112,7 +115,7 @@ precmd() {
 }
 
 # primary prompt: dashed separator, directory and vcs info
-PROMPT="${PR_RST}${PROMPT_current_path}${PROMPT_current_workdir}${PROMPT_gitpr}${PROMPT_shpm}${PR_RST} "
+PROMPT="${PR_RST}${PROMPT_virtualenv}${PROMPT_current_path}${PROMPT_current_workdir}${PROMPT_gitpr}${PROMPT_shpm}${PR_RST} "
 PS2='%B%F{8}%_%b>'"${PR_RST} "
 
 RPROMPT="${user_host}${PR_RST}"
