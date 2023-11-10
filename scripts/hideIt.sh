@@ -539,7 +539,6 @@ function toggle() {
 
 	# Ignore if overriden
 	if [ $(is_hidden) -gt 1 ]; then
-		notify-send override detected
 		return
 	fi
 	if [ $(is_hidden) -eq 0 ]; then
