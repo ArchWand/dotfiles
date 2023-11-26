@@ -130,7 +130,7 @@ alias zln='zmv -L'
 alias la="ls -A"
 alias ll="ls -lAh"
 alias lc="ls -rc"
-alias cdnew='cd "$(ls -rcd */ | tail -n 1)"'
+alias cdnew='cd "$(ls -cd */ | head -n 1)"'
 
 alias icat="kitty +kitten icat"
 alias ssh="kitty +kitten ssh"
