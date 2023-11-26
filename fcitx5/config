@@ -21,7 +21,7 @@ DeactivateKeys=
 TogglePreedit=
 
 [Hotkey/TriggerKeys]
-0=Control+Alt+Shift+U
+0=Control+Alt+U
 
 [Hotkey/PrevPage]
 0=Alt+comma
