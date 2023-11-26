@@ -105,7 +105,6 @@ set foldlevel=20
 " Scrolling
 " set smoothscroll
 set scrolloff=4
-set scroll=1
 
 " Default conceal level
 set conceallevel=2

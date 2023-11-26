@@ -58,4 +58,6 @@ pkill -9 dunst && dunst &
 fcitx5 &
 # Clipboard history
 pkill -9 greenclip; greenclip daemon &
+# Auto-suspend
+pkill -9 xautolock && xautolock -time 30 -locker 'systemctl suspend' -detectsleep &
 
