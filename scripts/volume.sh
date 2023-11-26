@@ -87,15 +87,15 @@ case $1 in
 		fi
 		;;
 	up)
-		volume_change 5
+		volume_change 5 &&\
 		send_notification
 		;;
 	down)
-		volume_change -5
+		volume_change -5 &&\
 		send_notification
 		;;
 	*)
-		volume_change $1
+		volume_change $1 &&\
 		send_notification
 		;;
 esac
