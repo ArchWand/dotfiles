@@ -1,18 +1,29 @@
 #!/bin/zsh
 app=$(xprop -id $(xdotool getactivewindow) WM_CLASS | awk -F '"' '{print $4}')
+name=$(xprop -id $(xdotool getactivewindow) WM_NAME | awk -F '"' '{print $2}')
 
 case "$app" in
 	firefox)
 		xdotool key ctrl+Page_Down
 		;;
-	discord|VencordDesktop)
+	discord|VencordDesktop|Slack)
 		xdotool key alt+shift+Down
 		;;
 	*kitty)
-		xdotool key ctrl+shift+Right
+		case "$name" in
+			nvim*|nv|lf|ranger)
+				xdotool key ctrl+o
+				;;
+			*)
+				xdotool key ctrl+shift+Left
+				;;
+		esac
 		;;
 	thunderbird)
 		xdotool key ctrl+Tab
+		;;
+	jetbrains-studio)
+		xdotool key g key t
 		;;
 	"")
 		bspc desktop -f next.local --follow

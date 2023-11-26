@@ -4,13 +4,11 @@ name=$(xprop -id $(xdotool getactivewindow) WM_NAME | awk -F '"' '{print $2}')
 
 case "$app" in
 	discord|VencordDesktop)
-		for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --toggle-override; done
-		xdotool key super+w
-		for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --toggle-override; done
+		bspc node -c
 		;;
 	*kitty)
 		case "$name" in
-			nvim*|lf|ranger)
+			nvim*|nv|lf|ranger)
 				xdotool key shift+z shift+z
 				;;
 			lazygit)

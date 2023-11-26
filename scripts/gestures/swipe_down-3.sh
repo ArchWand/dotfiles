@@ -11,6 +11,9 @@ case "$app" in
 	thunderbird)
 		xdotool key n
 		;;
+	"")
+		xdotool key alt+Tab
+		;;
 	*)
 		xdotool key Escape
 		;;
