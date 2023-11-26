@@ -30,7 +30,7 @@ super + n; {super + ,_}Return
 
 # Lock polybar in place
 super +{ shift +,_} b
-	vis={hide,show} &&\
+	vis={show,hide} &&\
 	for id in $(xdotool search --class polybar);\
 		do; $HOME/scripts/hideIt.sh --id $id --$vis;\
 		$HOME/scripts/hideIt.sh --id $id --toggle-override;\
@@ -150,18 +150,17 @@ super + g
 # ===== Cyclic =====
 # Focus the next/previous window in the current desktop
 super + {_,shift + }q
-	bspc node -f {next,prev}.local.!hidden.window
-
-# Focus the last desktop
+	bspc node -f {next,prev}.local.\!hidden.window
+alt + {_,shift + }Tab
+	dir={next,prev};\
+	bspc node -f $dir.local.\!hidden.window ||\
+	bspc monitor -f $dir
+# Focus the next desktop
 super + Tab
 	bspc desktop -f last.local
 # Focus the last node
 super + grave
 	bspc node -f last
-# Focus the last node on current desktop
-alt + Tab
-	bspc node last.local -g marked=on; bspc node any.active.\!local -g marked=on;\
-	bspc node -f last.marked; bspc node any.marked -g marked=off
 
 # Rotate tree
 super + shift + {d,a}
