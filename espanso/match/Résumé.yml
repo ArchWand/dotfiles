@@ -1,0 +1,93 @@
+matches:
+- trigger: stop
+  replace: "espanso stop\n"
+- trigger: fn
+  replace: Robert
+- trigger: ln
+  replace: Zhu
+- trigger: name
+  replace: Robert Zhu
+- trigger: gem
+  replace: rzhu302@gatech.edu
+- trigger: pn
+  replace: +1 (845) 803-4246
+- trigger: usa
+  replace: United States
+- trigger: atl
+  replace: Atlanta
+- trigger: ga
+  replace: Georgia
+- trigger: aga
+  replace: Atlanta, Georgia
+- trigger: zip
+  replace: 30332
+- trigger: hj
+  replace: Hopewell Jct.
+- trigger: ny
+  replace: New York
+- trigger: hn
+  replace: Hopewell Jct., New York
+- trigger: zip1
+  replace: 12533
+- trigger: gt
+  replace: Georgia Tech
+- trigger: git
+  replace: Georgia Institute of Technology
+- trigger: rpi
+  replace: Rensselaer Polytechnic Institute
+- trigger: ba
+  replace: Bachelor
+- trigger: cs
+  replace: Computer Science
+- trigger: gpa
+  replace: 3.5
+- trigger: rgpa
+  replace: 3.43
+- trigger: rsm
+  replace: August
+- trigger: rsy
+  replace: 2022
+- trigger: rem
+  replace: May
+- trigger: rey
+  replace: 2023
+- trigger: sm
+  replace: May
+- trigger: sy
+  replace: 2023
+- trigger: em
+  replace: May
+- trigger: ey
+  replace: 2025
+- trigger: grad
+  replace: 05/02/2025
+- trigger: ret
+  replace: 08/20/2024
+- trigger: pats
+  replace: Patsy's Roadhouse
+- trigger: resthost
+  replace: Restaurant Host
+- trigger: psm
+  replace: July
+- trigger: psy
+  replace: 2023
+- trigger: pem
+  replace: August
+- trigger: pey
+  replace: 2023
+- trigger: eth
+  replace: Asian
+- trigger: dob
+  replace: 04/25/2004
+- trigger: birth
+  replace: 25 April 2004
+- trigger: arc
+  replace: arcwand
+- trigger: li
+  replace: https://linkedin.com/in/arcwand
+- trigger: gh
+  replace: https://github.com/ArcWandx
+# - trigger: 
+  # replace: 
+# - trigger: 
+  # replace: 
