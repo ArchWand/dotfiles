@@ -120,7 +120,7 @@ export PATH="$HOME/.local/share/cargo/bin:$PATH"
 
 function rmcd { dir="$(pwd)" && cd .. && rm "$dir" -rf || cd "$dir" }
 function rdcd { dir="$(pwd)" && cd .. && rd "$dir" || cd "$dir" }
-function mcd { mkdir -p "$1" && cd "$1" }
+function mcd { mkdir -p "$*" && cd "$*" }
 function mvcwd { dir="$(pwd)" && cd .. && mv "$dir" "$1" || cd - ; cd "$1" }
 function superkill { while pkill -9 "$1" && killall "$1"; do done }
 
