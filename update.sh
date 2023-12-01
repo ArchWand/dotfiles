@@ -19,7 +19,6 @@ fcrontab -l > crontab 2> /dev/null
 up_dir ~/scripts
 up_dir ~/.config/bspwm
 up_dir ~/.config/espanso/match espanso
-up_dir ~/.config/fcitx5
 up_dir ~/.config/kitty
 up_dir ~/.config/mpv
 up_dir ~/.config/nvim
