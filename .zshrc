@@ -122,7 +122,9 @@ function rmcd { dir="$(pwd)" && cd .. && rm "$dir" -rf || cd "$dir" }
 function rdcd { dir="$(pwd)" && cd .. && rd "$dir" || cd "$dir" }
 function mcd { mkdir -p "$*" && cd "$*" }
 function mvcwd { dir="$(pwd)" && cd .. && mv "$dir" "$1" || cd - ; cd "$1" }
+
 function superkill { while pkill -9 "$1" && killall "$1"; do done }
+function mpv_kill { sleep $1 && pkill -15 mpv && sleep 2 && pkill -15 kitty }
 
 autoload zmv
 alias zcp='zmv -C'
