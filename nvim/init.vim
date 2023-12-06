@@ -238,7 +238,7 @@ endfunction
 function GoEoL()
 	let winwidth = WinTextWidth()
 
-	if virtcol('.') % winwidth == 0
+	if virtcol('.') % winwidth == 0 || !&wrap
 		return '$'
 	else
 		return 'g$'
@@ -279,7 +279,7 @@ vnoremap x "0x
 vnoremap X "0X
 
 " Visual paste
-xnoremap <silent> p p:let @+=@0<CR>:let @0=@"<CR>
+xnoremap <silent> p p:let @1=@+<CR>gvy:let @0=@1<CR>
 
 
 
