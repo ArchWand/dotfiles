@@ -16,6 +16,7 @@ Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'jalvesaq/Nvim-R', { 'for': 'r'}
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate'}
 Plug 'chrisbra/Colorizer'
+Plug 'tyru/open-browser.vim'
 
 " Utility
 Plug 'preservim/nerdcommenter'
@@ -391,7 +392,6 @@ EOF
 
 " Colorizer
 nnoremap <leader>h :ColorToggle<CR>
-
 
 " --- Utility ---
 " NerdCommenter
