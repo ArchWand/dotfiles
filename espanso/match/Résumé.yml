@@ -21,13 +21,15 @@ matches:
   replace: Atlanta, Georgia
 - trigger: zip
   replace: 30332
+- trigger: 17
+  replace: 17 Creekside Rd.
 - trigger: hj
   replace: Hopewell Jct.
 - trigger: ny
   replace: New York
 - trigger: hn
   replace: Hopewell Jct., New York
-- trigger: zip1
+- trigger: zi1
   replace: 12533
 - trigger: gt
   replace: Georgia Tech
