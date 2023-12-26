@@ -1,88 +1,25 @@
 # ===== Quick Open =====
+# Firefox
 alt + F1
 	firefox
+# Discord
 alt + F2
 	discord
 	# vencord
+# Neovim
 alt + F3
 	kitty nvim
+# Schedule
 alt + F4
 	firefox file:///home/arcwand/Class/Schedule.png
 
-
+# File Explorer
 super + e
 	thunar
 
-
-# ===== Notifications =====
-super + n; {super + ,_}x
-	dunstctl close-all
-super + n; {super + ,_}p
-	dunstctl history-pop
-super + n; {super + ,_}Return
-	dunstctl action
-
-
-# ===== Bar =====
-# Toggle polybar visibility
-{@,_}{Super_L,Super_R}
-	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --{hide,show}; done{_,_}
-
-# Lock polybar in place
-super +{ shift +,_} b
-	vis={hide,show} &&\
-	for id in $(xdotool search --class polybar);\
-		do; $HOME/scripts/hideIt.sh --id $id --$vis;\
-		$HOME/scripts/hideIt.sh --id $id --toggle-override;\
-		$HOME/scripts/hideIt.sh --id $id --$vis;\
-	done
-
-# Show/hide polybar
-super + p; {super + ,_}h
-	polybar-msg cmd toggle && bspc config top_padding 0
-
-
-# Toggle Polybar date
-super + p; {super + ,_}d
-	polybar-msg action "#date.toggle"
-
-# Network menu
-super + p; n
-	$HOME/.config/rofi/rofi-network-manager/rofi-network-manager.sh
-super + p; super + n
-	$HOME/.config/rofi/rofi-network-manager/rofi-network-manager.sh
-
-
-# ===== Rofi Bindings =====
-# program launcher
-super + d
-	~/.config/rofi/launcher.sh
-
-# Window switcher
-super + i
-	~/.config/rofi/windows.sh
-
-# Window switcher (local)
-super + alt + i
-	~/.config/rofi/windowcd.sh
-
-# Clipboard history
-super + alt + v
-	rofi -modi "clipboard:greenclip print" -show clipboard -theme-str '#window \{y-offset: 200; \}'
-
-# Emoji picker
-super + semicolon
-	/usr/bin/rofimoji
-
-# Unicode picker
-super + shift + u
-	/usr/bin/rofimoji --files all
-super + alt + u
-	/usr/bin/rofimoji --files all --action copy-unicode
-
-# Show help
-super + slash
-    ~/.config/sxhkd/sxhkd-help
+# Calculator
+XF86Calculator
+	kitty --class=floating_kitty -- python3
 
 
 # ===== Desktop Environment =====
@@ -93,8 +30,21 @@ super + shift + x
 # Screenshot
 super + shift + s
 	flameshot gui
+# Screenshot
 Print
 	flameshot gui
+
+# Close/kill current window
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# Quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# Make sxhkd reload its configuration files
+super + Escape
+	pkill -USR1 -x sxhkd
 
 
 # ===== Terminal =====
@@ -107,64 +57,32 @@ super + shift + Return
 	kitty --class floating_kitty
 
 
-# ===== Bspwm Hotkeys =====
-# Quit/restart bspwm
-super + alt + {q,r}
-	bspc {quit,wm -r}
+# ===== Move Nodes =====
+# Focus/swap node/swap node to monitor
+super + {_,shift + ,ctrl + shift + }{h,j,k,l}
+	bspc node -{f,s,m} {west,south,north,east} --follow
 
-# Close and kill
-super + {_,shift + }w
-	bspc node -{c,k}
+# Focus one monitor over
+super + ctrl + {h,j,k,l}
+	bspc monitor -f {west,wouth,north,east} --follow
 
-# Alternate between the tiled and monocle layout
-super + m
-	bspc desktop -l next
-
-# Make sxhkd reload its configuration files:
-super + Escape
-	pkill -USR1 -x sxhkd
-
-
-# ===== Movement =====
-# Focus/swap the node in the given direction
-super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east} --follow
-
-# move a floating window
-super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-# Move the current window to the next monitor
-super + ctrl + shift + {h,j,k,l}
-	bspc node -m {west,wouth,north,east} --follow
-
-# Move current window to a pre-selected space
-super + shift + m
-	bspc node -n last.!automatic
-
-# Swap the current node and the biggest window
-super + g
-	bspc node -s biggest.local.window
-
-
-# ===== Cyclic =====
 # Focus the next/previous window in the current desktop
 super + {_,shift + }q
 	bspc node -f {next,prev}.local.\!hidden.window
+
+# Focus the next/previous window in the current desktop
 alt + {_,shift + }Tab
 	dir={next,prev};\
 	bspc node -f $dir.local.\!hidden.window ||\
 	bspc monitor -f $dir
-# Focus the next desktop
+
+# Focus the last used desktop
 super + Tab
 	bspc desktop -f last.local
-# Focus the last node
+
+# Focus the last active node
 super + grave
 	bspc node -f last
-
-# Rotate tree
-super + shift + {d,a}
-	bspc node @/ -C {forward,backward}
 
 # Focus the next monitor
 super + alt + Tab
@@ -174,9 +92,31 @@ super + alt + Tab
 super + alt + shift + Tab
 	bspc node -m next --follow
 
+
+# ===== Advanced Movement =====
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Rotate tree
+super + shift + {d,a}
+	bspc node @/ -C {forward,backward}
+
+# Swap the current node and the biggest window
+super + g
+	bspc node -s biggest.local.window
+
 # Focus the node for the given path jump
 super + {period,comma}
 	bspc node -f @{parent,first}
+
+# Expand a window
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# Contract a window
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 
 # ===== Desktops =====
@@ -184,7 +124,7 @@ super + {period,comma}
 super + {_,shift + ,ctrl + }bracket{left,right}
 	bspc {desktop -f,node -d,desktop -s} {prev,next}.local --follow
 
-# Focus, send to, or swap to the given desktop
+# Focus, send to, or swap to the given desktop or tothe desktop on the next monitor
 super + {_,shift + ,ctrl + }{_,alt + }{1-9,0}
 	bspc {desktop -f,node -d,desktop -s} {focused,next}:'^{1-9,10}'
 
@@ -194,12 +134,9 @@ super + ctrl + alt + Tab
 
 
 # ===== State =====
-# Expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-# Contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+# Alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
 
 # Toggle floating/tiled
 super + f
@@ -223,23 +160,23 @@ super + ctrl + f
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
-# Always on screen
+# (sticky/pin) Always on screen
 super + alt + p
 	bspc node -g sticky
 
 
 # ===== Preselect =====
-# preselect the direction
-super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+# Preselect the direction
+super + p; {_,super + }{h,j,k,l}
+	bspc node -p {_,_}{west,south,north,east}
 
-# cancel the preselection for the focused node
-super + ctrl + space
-	bspc node -p cancel
+# Cancel the preselection for the focused node/desktop
+super + p; {_,super + }{_,shift + }space
+	{_,_}{bspc node -p cancel,bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel}
 
-# cancel the preselection for the focused desktop
-super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+# Move current window to a pre-selected space
+super + shift + m
+	bspc node -n last.!automatic
 
 
 # ===== Tabbed =====
@@ -248,40 +185,49 @@ super + ctrl + shift + space
 #   r                   (detach) remove focused window from tabbed container
 #   shift + r           (detach --all) remove all windows from tabbed container
 #   e                   (embed) attach next opened window to focused window
-#   z                   (embed terminal) attach a terminal to focused window
 #   {h,j,k,l}           (create) merge focused tabbed/window with target tabbed/window
 #   arrows              (transfer) attach focused window with target tabbed/window
 
+# (create) create new tabbed container on focused window
 super + t; t
 	bsptab-rs create focused
+
+# (detach) remove focused window from tabbed container
 super + t; r
 	bsptab-rs detach focused
+
+# (detach --all) remove all windows from tabbed container
 super + t; shift + r
 	bsptab-rs detach --all focused
+
+# (embed) attach next opened window to focused window
 super + t; e
 	bsptab-rs embed focused
+
+# (create) merge focused tabbed/window with target tabbed/window
 super + t; {h,j,k,l}
 	bsptab-rs create focused {west,south,north,east}
+
+# (transfer) attach focused window with target tabbed/window
 super + t; {Left,Down,Up,Right}
 	bsptab-rs transfer focused {west,south,north,east}
 
 
 # ===== Multimedia Keys =====
-# Calculator
-XF86Calculator
-	kitty --class=floating_kitty -- python3
-
-# Brightness
+# Brightness down
 {super + ,_}XF86MonBrightnessDown
 	~/scripts/brightness.sh dec
+# Brightness up
 {super + ,_}XF86MonBrightnessUp
 	~/scripts/brightness.sh inc
 
-# Volume Control
+# Volume down
 {super + ,_}XF86AudioLowerVolume
 	~/scripts/volume.sh -5
+# Volume up
 {super + ,_}XF86AudioRaiseVolume
 	~/scripts/volume.sh +5
+# Mute volume
 {super + ,_}XF86AudioMute
 	~/scripts/volume.sh mute
 
@@ -289,20 +235,95 @@ XF86Calculator
 XF86AudioPlay
 	~/.config/mpv/pause-play.sh ||\
 	playerctl play-pause
+# Previous
+{shift + ,_}XF86AudioPrev
+	~/.config/mpv/playlist-prev.sh ||\
+	playerctl previous
+# Next
+{shift + ,_}XF86AudioNext
+	~/.config/mpv/playlist-next.sh ||\
+	playerctl next
+# The shift option allows me to use my laptop, since I binded
+# shift + fn + f2 to previous
 
-# Next/Previous
-XF86AudioPrev
-	~/.config/mpv/playlist-prev.sh ||\
-	playerctl previous
-XF86AudioNext
-	~/.config/mpv/playlist-next.sh ||\
-	playerctl next
-shift + XF86AudioLowerVolume
-	~/.config/mpv/playlist-prev.sh ||\
-	playerctl previous
-shift + XF86AudioRaiseVolume
-	~/.config/mpv/playlist-next.sh ||\
-	playerctl next
+
+# ===== Notifications =====
+# Close all notifications
+super + n; {super + ,_}x
+	dunstctl close-all
+
+# Show previous notifcation
+super + n; {super + ,_}p
+	dunstctl history-pop
+
+# Click notification
+super + n; {super + ,_}Return
+	dunstctl action
+
+
+# ===== Bar =====
+# Popup polybar
+{@,_}{Super_L,Super_R}
+	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --{hide,show}; done{_,_}
+
+# Lock polybar hidden/shown
+super +{ shift +,_} b
+	vis={hide,show} &&\
+	for id in $(xdotool search --class polybar);\
+		do; $HOME/scripts/hideIt.sh --id $id --$vis;\
+		$HOME/scripts/hideIt.sh --id $id --toggle-override;\
+		$HOME/scripts/hideIt.sh --id $id --$vis;\
+	done
+
+# Show/hide polybar
+super + p; {super + ,_}h
+	polybar-msg cmd toggle && bspc config bottom_padding 0
+
+
+# Toggle Polybar date
+super + p; {super + ,_}d
+	polybar-msg action "#date.toggle"
+
+# Network menu
+super + p; n
+	$HOME/.config/rofi/rofi-network-manager/rofi-network-manager.sh
+# Network menu
+super + p; super + n
+	$HOME/.config/rofi/rofi-network-manager/rofi-network-manager.sh
+
+
+# ===== Rofi Bindings =====
+# Rofi
+super + d
+	~/.config/rofi/launcher.sh
+
+# Window switcher (global)
+super + i
+	~/.config/rofi/windows.sh
+
+# Window switcher (local)
+super + alt + i
+	~/.config/rofi/windowcd.sh
+
+# Clipboard history
+super + alt + v
+	rofi -modi "clipboard:greenclip print" -show clipboard -theme-str '#window \{y-offset: 200; \}'
+
+# Emoji picker
+super + semicolon
+	/usr/bin/rofimoji
+
+# Unicode picker
+super + shift + u
+	/usr/bin/rofimoji --files all
+# Unicode picker copy code point
+super + alt + u
+	/usr/bin/rofimoji --files all --action copy-unicode
+
+# Show help
+super + slash
+    ~/.config/sxhkd/sxhkd-help
+
 
 # ===== Script keys =====
 # Plover resume
