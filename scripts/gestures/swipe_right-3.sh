@@ -11,11 +11,11 @@ case "$app" in
 		;;
 	*kitty)
 		case "$name" in
-			nvim*|nv|lf|ranger)
-				xdotool key ctrl+o
-				;;
 			*)
 				xdotool key ctrl+shift+Left
+				;;
+			nvim*|nv|lf|ranger)
+				xdotool key ctrl+o
 				;;
 		esac
 		;;
