@@ -1,7 +1,17 @@
-# Options: merge, new
+# Options: new, diff
 # new: Creates a new directory containing the downloaded playlist
-# merge: Merges a new playlist download with already downloaded songs
+# diff: Takes two csvs from Exportify and compares them. Overrides all other functions.
 MODE=new
+
+# Use Exportify to get csvs for two playlists, and put their names as DIFF-NEW and DIFF-OLD
+# Options:
+# new: Prints a list of the songs in DIFF-NEW but not in DIFF-OLD
+# old: Prints a list of the songs in DIFF-OLD but not in DIFF-NEW
+# diff: Prints the list of both DIFF-MODE=new and DIFF-MODE=old
+# common: Prints the list of songs in both DIFF-NEW and DIFF-OLD
+# DIFF-MODE=new
+# DIFF-NEW=
+# DIFF-OLD=
 
 # Format for the file names; syntax is that of spotdl (`spotdl -h | grep -A 10 -- --output`)
 # OUTPUT-FORMAT={title} - {artists}
@@ -9,12 +19,11 @@ MODE=new
 # The url of the new playlist. The playlist must be public
 URL=https://open.spotify.com/playlist/2irg8CxKIPTqhLX8n8EJIY?si=bbdc4d8f70874c12
 
-# The directory to put the songs in. For MODE=merge, this
-# is the directory that contains songs already
+# The directory to put the songs in.
 DIR=./dir
 
 # Whether or not to use mp3gain
-# MP3GAIN=True
+MP3GAIN=True
 
 # Comma separated list of spotify urls where we should ignore
 # differences in the title and artist from the title and artist
@@ -522,6 +531,22 @@ IGNORE-MISMATCH=[
     https://open.spotify.com/track/3YXGSpMR27cthwFJfwd5DY,
     https://open.spotify.com/track/2rIseDB7STvNmudfpDBZeu,
     https://open.spotify.com/track/4BvuZVf9KyBN3QiPfeI9hw,
+    https://open.spotify.com/track/1FU3x0eu9cUl3AltO6t2KH,
+    https://open.spotify.com/track/1R6qeTvAvaxB7hydIYVIY8,
+    https://open.spotify.com/track/0xrX9ZarxssZpNBfcnyuPl,
+    https://open.spotify.com/track/2XVtXrEu5C8V38u22Xt2Yy,
+    https://open.spotify.com/track/0fUDzNEPCbjLVyC1OOs5B5,
+    https://open.spotify.com/track/3SJuomeDUOX6OAWwhH973s,
+    https://open.spotify.com/track/2VNpT9fRk1kyksT0S4coZR,
+    https://open.spotify.com/track/6gcuJpHu0Ey30D5WR76y98,
+    https://open.spotify.com/track/3UnKrt0sLHdXg18oIzku06,
+    https://open.spotify.com/track/4BR2cWJBye7fqfMU2mMgfh,
+    https://open.spotify.com/track/4SVclvBg36E2kJVuGWGyfq,
+    https://open.spotify.com/track/2BHj31ufdEqVK5CkYDp9mA,
+    https://open.spotify.com/track/28xjm4FnnGI4Xnds7VoNSl,
+    https://open.spotify.com/track/7mcPowL43JeZiAudu19AUN,
+    https://open.spotify.com/track/5T5OjYnQ9yemW2Eqn9piCx,
+    https://open.spotify.com/track/1rp986nzkyAX1wFpxzbwlC,
 ]
 
 # Manual song replacements
@@ -569,6 +594,7 @@ REPLACE=[
     https://music.youtube.com/watch?v=NRirC-1Fq6U | https://open.spotify.com/track/5XFZ647GV7xMA3mLeRjhAI,
     https://music.youtube.com/watch?v=-dVaaOB4wSg | https://open.spotify.com/track/2csIvlGQz4Xfpk4e5a6ISo,
 	https://www.youtube.com/watch?v=HJnvSOuG9kA | https://open.spotify.com/track/07Betr7cYIq5D9F2X9MnCT,
+    https://music.youtube.com/watch?v=UvQQWa9XFvw | https://open.spotify.com/track/5UUeEljsNQroCUNId8DIV6,
 ]
 # Buffer for manual songs
 # MANUAL-BUFFER=./.tmp_manual
@@ -605,6 +631,10 @@ RENAME=[
     呪われてみてよ - GILTY x GILTY.mp3 : Norowaretemiteyo (呪われてみてよ) - GILTY x GILTY.mp3,
     ニャンニャンBADバイバイ - GILTY x GILTY.mp3 : Nyannyanbadbyebye (ニャンニャンBADバイバイ) - GILTY x GILTY.mp3,
     秘密の箱 - GILTY x GILTY.mp3 : Himitunohako (秘密の箱) - GILTY x GILTY.mp3,
+    PARANOIA - HEARTSTEEL, League of Legends, BAEKHYUN, tobi lou, ØZI, Cal Scruby.mp3 : PARANOIA - HEARTSTEEL, League of Legends, BAEKHYUN, tobi lou, ØZI, Cal Scruby.mp3,
+    Soñar (Breaker) - NMIXX.mp3 : Soñar (Breaker) - NMIXX.mp3,
+    COUP D’ETAT - KINGDOM.mp3 : COUP D’ETAT - KINGDOM.mp3,
+	つないだ手にキスを - 14th Melody English Cover - rokubairenka.mp3 : 14th Melody English Cover (つないだ手にキスを) - rokubairenka.mp3,
 ]
 
 # Determines how strictly duplicates are checked for when merging
@@ -634,17 +664,24 @@ RENAME=[
 
 # Integer value describing what steps to skip
 # Each value also skips all actions prior.
+# You may have to remove certain checks in the python script, as it will fail
+# if any directories have existing files. If a directory is supposed to have
+# files, comment out the directory check.
 # 0: Run normally
 # 1: Skip downloading to manual replacing
-# 2: Skip over manual replacing to verification
-# 3: Skip over verification to removing ids
-# 4: Skip removing the spotify ids to checking for duplicates
-# 5: Skip checking for duplicates to renaming files
-# 6: Skip renaming files to combining and removing buffers
-# 7: Skip combining and removing buffers to normalizing with mp3gain
-# 8: Do nothing
+# 2: Skip over manual replacing to downloading JSON metadata for verification
+# 3: Skip downloading JSON to verifying songs
+# 4: Skip verifying songs to removing the spotify ids
+# 5: Skip removing the spotify ids to checking for duplicates
+# 6: Skip checking for duplicates to renaming files
+# 7: Skip renaming files to combining and removing buffers
+# 8: Skip combining and removing buffers to normalizing with mp3gain
+# 9: Do nothing
 # SKIP=0
 
 # The buffer used to store downloaded songs before moving into DIR
 # BUFFER=./.tmp_dlbuf
+
+# The buffer used to store json metadata before verification
+# JSON-BUFFER=./.tmp_jsonbuf
 
