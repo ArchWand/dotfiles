@@ -637,13 +637,6 @@ RENAME=[
 	つないだ手にキスを - 14th Melody English Cover - rokubairenka.mp3 : 14th Melody English Cover (つないだ手にキスを) - rokubairenka.mp3,
 ]
 
-# Determines how strictly duplicates are checked for when merging
-# 0: Don't check for duplicates. May result in overwriting
-# 1: Don't overwrite duplicates.
-# 2: Overwrite duplicates with newer file.
-# 3: (default) Queue duplicates for manual handling.
-# DUP-SCAN-LEVEL=3
-
 # Determines how strict verification is. Files that fail verification
 # will be queued for manual review.
 # 0: Don't do any verification
