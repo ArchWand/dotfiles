@@ -82,10 +82,10 @@ function get_user_host() {
 
 
 # Define prompt strings
-PROMPT_virtualenv="${virtualenv_c}"'$(virtualenv_prompt_info)'"${PR_RST}"
 PROMPT_current_path="${current_path_c}"'${${(%)cpath}%%${(%)cwdir}}'"${PR_RST}"
 PROMPT_current_workdir="${current_workdir_c}"'%1~'"${PR_RST}"
 PROMPT_gitpr="${gitpr_c}"'$(git_prompt_info)'"${PR_RST}"
+PROMPT_virtualenv="${virtualenv_c}"'$(virtualenv_prompt_info)'"${PR_RST}"
 PROMPT_shpm="${shpm_c}"'%($(path_split)l.'$'\n''.) %(!.#.»)'"${PR_RST}" # shell privilege marker
 
 
@@ -115,7 +115,7 @@ precmd() {
 }
 
 # primary prompt: dashed separator, directory and vcs info
-PROMPT="${PR_RST}${PROMPT_virtualenv}${PROMPT_current_path}${PROMPT_current_workdir}${PROMPT_gitpr}${PROMPT_shpm}${PR_RST} "
+PROMPT="${PR_RST}${PROMPT_current_path}${PROMPT_current_workdir}${PROMPT_gitpr}${PROMPT_virtualenv}${PROMPT_shpm}${PR_RST} "
 PS2='%B%F{8}%_%b>'"${PR_RST} "
 
 RPROMPT="${user_host}${PR_RST}"
