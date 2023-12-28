@@ -8,7 +8,7 @@ case "$app" in
 		;;
 	*kitty)
 		case "$name" in
-			nvim*|nv|lf|ranger)
+			nvim*|nv|"make edit"|lf|ranger)
 				xdotool key shift+z shift+z
 				;;
 			lazygit)
@@ -41,3 +41,4 @@ case "$app" in
 		xdotool key ctrl+w
 		;;
 esac
+
