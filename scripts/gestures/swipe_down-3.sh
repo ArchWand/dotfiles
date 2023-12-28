@@ -4,7 +4,7 @@ name=$(xprop -id $(xdotool getactivewindow) WM_NAME | awk -F '"' '{print $2}')
 
 case "$app" in
 	firefox)
-		xdotool key ctrl+r
+		xdotool key ctrl+Tab
 		;;
 	*kitty)
 		case "$name" in
