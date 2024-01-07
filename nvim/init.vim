@@ -125,13 +125,13 @@ command R source $MYVIMRC
 command TodoSync !/home/arcwand/scripts/todo_sync.sh
 
 " Visualize whitespace
-nnoremap <leader>w :set list!<CR>
+command WhitespaceToggle :set list!<CR>
 
 " Toggle relative numbering
 nnoremap <leader>n :NumberToggle<CR>
 
 " Toggle word wrap
-nnoremap <leader>o :set wrap!<CR>
+nnoremap <leader>w :set wrap!<CR>
 
 " Persistent undo
 set undofile
@@ -163,6 +163,9 @@ nnoremap <leader>I :<C-U>exec SingleInsert("I", nr2char(getchar()), v:count1)<CR
 nnoremap <leader>A :<C-U>exec SingleInsert("A", nr2char(getchar()), v:count1)<CR>
 " Single substitution
 vnoremap <leader>s :<C-U>exec SingleInsert("`<cv`>", nr2char(getchar()), v:count1)<CR>
+" Single newline
+nnoremap <leader>o o<Esc>
+nnoremap <leader>O O<Esc>
 
 " Vertical split terminal
 command Vterm :vsp|:term
