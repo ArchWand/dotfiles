@@ -126,6 +126,11 @@ function mvcwd { dir="$(pwd)" && cd .. && mv "$dir" "$1" || cd - ; cd "$1" }
 function superkill { while pkill -9 "$1" && killall "$1"; do done }
 function mpv_kill { sleep $1 && pkill -15 mpv && sleep 2 && pkill -15 kitty }
 
+function venv {
+	if [ ! -d venv ]; then python3 -m venv venv; fi
+	source venv/bin/activate
+}
+
 autoload zmv
 alias zcp='zmv -C'
 alias zln='zmv -L'
@@ -135,12 +140,7 @@ alias lc="ls -rc"
 alias cdnew='cd "$(ls -cd */ | head -n 1)"'
 
 alias icat="kitty +kitten icat"
-alias ssh="kitty +kitten ssh"
-alias nv=nvim
 alias clip="xsel -b"
-alias ranger=". ranger"
-alias plover="~/Applications/plover-4.0.0.dev12-x86_64_1117a3034f0a02c8898a2bccdcb0a905.AppImage"
-alias py=python
 
 autoload zcalc
 alias cmd='command'
@@ -152,7 +152,12 @@ alias init-nvm='source /usr/share/nvm/init-nvm.sh'
 alias xev-keyboard='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'
 alias startx11vnc="x11vnc -display :0 -usepw"
 
-alias lf=ranger
+alias nv=nvim
+alias plover="~/Applications/plover-4.0.0.dev12-x86_64_1117a3034f0a02c8898a2bccdcb0a905.AppImage"
+alias py=python
+alias lf=". ranger"
+alias rip=ripdrag
+alias lg=lazygit
 
 # ZSH Syntax Highlighting with Catpuccin theme
 source ~/.local/share/oh-my-zsh/custom/plugins/themes/arcwand-zsh-syntax-highlighting.zsh
