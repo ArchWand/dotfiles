@@ -276,19 +276,15 @@ super +{ shift +,_} b
 	done
 
 # Show/hide polybar
-super + p; {super + ,_}h
+super + n; {_,super + }h
 	polybar-msg cmd toggle && bspc config bottom_padding 0
 
-
 # Toggle Polybar date
-super + p; {super + ,_}d
+super + n; {_,super + }d
 	polybar-msg action "#date.toggle"
 
 # Network menu
-super + p; n
-	$HOME/.config/rofi/rofi-network-manager/rofi-network-manager.sh
-# Network menu
-super + p; super + n
+super + n; {_,super + }n
 	$HOME/.config/rofi/rofi-network-manager/rofi-network-manager.sh
 
 
