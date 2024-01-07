@@ -47,6 +47,8 @@ colorscheme catppuccin-mocha
 syntax enable
 filetype plugin indent on
 
+set colorcolumn=80
+
 """ Indentation
 set autoindent smarttab
 set noexpandtab
