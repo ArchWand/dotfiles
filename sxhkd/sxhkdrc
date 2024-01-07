@@ -267,8 +267,8 @@ super + n; {super + ,_}Return
 	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --{hide,show}; done{_,_}
 
 # Lock polybar hidden/shown
-super +{ shift +,_} b
-	vis={hide,show} &&\
+super +{_, shift +} b
+	vis={show,hide} &&\
 	for id in $(xdotool search --class polybar);\
 		do; $HOME/scripts/hideIt.sh --id $id --$vis;\
 		$HOME/scripts/hideIt.sh --id $id --toggle-override;\
