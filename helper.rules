@@ -547,6 +547,12 @@ IGNORE-MISMATCH=[
     https://open.spotify.com/track/7mcPowL43JeZiAudu19AUN,
     https://open.spotify.com/track/5T5OjYnQ9yemW2Eqn9piCx,
     https://open.spotify.com/track/1rp986nzkyAX1wFpxzbwlC,
+    https://open.spotify.com/track/1WfxhZEtlQ9J0B4325cBsF,
+    https://open.spotify.com/track/4S40MDl8IuzSHsmsctWaKI,
+    https://open.spotify.com/track/2TvL6anT3bzqJlHnU7qk83,
+    https://open.spotify.com/track/1HnJhU3MhAnRQzdkFm6xQr,
+    https://open.spotify.com/track/5z1qoC9KRyVVDjs2ZHiFXJ,
+    https://open.spotify.com/track/0i8K9oyDQSg5tPZUTHPwhX,
 ]
 
 # Manual song replacements
@@ -595,6 +601,8 @@ REPLACE=[
     https://music.youtube.com/watch?v=-dVaaOB4wSg | https://open.spotify.com/track/2csIvlGQz4Xfpk4e5a6ISo,
 	https://www.youtube.com/watch?v=HJnvSOuG9kA | https://open.spotify.com/track/07Betr7cYIq5D9F2X9MnCT,
     https://music.youtube.com/watch?v=UvQQWa9XFvw | https://open.spotify.com/track/5UUeEljsNQroCUNId8DIV6,
+	https://www.youtube.com/watch?v=QP62Tch8TS4 | https://open.spotify.com/track/4c1cUu1PFDX1YB6JDvG8vf,
+    https://www.youtube.com/watch?v=QP62Tch8TS4 | https://open.spotify.com/track/4c1cUu1PFDX1YB6JDvG8vf,
 ]
 # Buffer for manual songs
 # MANUAL-BUFFER=./.tmp_manual
@@ -635,6 +643,9 @@ RENAME=[
     Soñar (Breaker) - NMIXX.mp3 : Soñar (Breaker) - NMIXX.mp3,
     COUP D’ETAT - KINGDOM.mp3 : COUP D’ETAT - KINGDOM.mp3,
 	つないだ手にキスを - 14th Melody English Cover - rokubairenka.mp3 : 14th Melody English Cover (つないだ手にキスを) - rokubairenka.mp3,
+    Sis puella magica! - 梶浦 由記.mp3 : Sis puella magica! - Yuki Kajiura (梶浦 由記).mp3,
+    愛をちょうだい - AOA, Takanori Nishikawa T.M.Revolution.mp3 : Ai Wo Choudai (愛をちょうだい) - AOA, Takanori Nishikawa T.M.Revolution.mp3,
+    ﻿Not Like You - STAYC.mp3 : Not Like You - STAYC.mp3,
 ]
 
 # Determines how strict verification is. Files that fail verification
