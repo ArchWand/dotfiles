@@ -56,8 +56,10 @@ set tabstop=4 shiftwidth=4 softtabstop=4
 set breakindent
 
 " .java - java program
-" CS 1332 requires spaces
+" .java - CS 1332 requires spaces
 autocmd FileType java setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+" .md - markdown
+autocmd FileType markdown setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " .py - python script
 autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 " .R - R script
