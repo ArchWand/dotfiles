@@ -170,13 +170,17 @@ super + alt + p
 super + p; {_,super + }{h,j,k,l}
 	bspc node -p {_,_}{west,south,north,east}
 
-# Cancel the preselection for the focused node/desktop
-super + p; {_,super + }{_,shift + }space
-	{_,_}{bspc node -p cancel,bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel}
+# Set the preselect ratio
+super + p; {_,super + }{1-9}
+	{_,_}bspc node -o 0.{1-9}
 
 # Move current window to a pre-selected space
 super + shift + m
 	bspc node -n last.!automatic
+
+# Cancel the preselection for the focused node/desktop
+super + p; {_,super + }{_,shift + }space
+	{_,_}{bspc node -p cancel,bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel}
 
 
 # ===== Tabbed =====
