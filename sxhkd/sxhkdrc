@@ -216,20 +216,20 @@ super + t; {Left,Down,Up,Right}
 # ===== Multimedia Keys =====
 # Brightness down
 {super + ,_}XF86MonBrightnessDown
-	~/scripts/brightness.sh dec
+	~/.config/sxhkd/brightness.sh dec
 # Brightness up
 {super + ,_}XF86MonBrightnessUp
-	~/scripts/brightness.sh inc
+	~/.config/sxhkd/brightness.sh inc
 
 # Volume down
 {super + ,_}XF86AudioLowerVolume
-	~/scripts/volume.sh -5
+	~/.config/sxhkd/volume.sh -5
 # Volume up
 {super + ,_}XF86AudioRaiseVolume
-	~/scripts/volume.sh +5
+	~/.config/sxhkd/volume.sh +5
 # Mute volume
 {super + ,_}XF86AudioMute
-	~/scripts/volume.sh mute
+	~/.config/sxhkd/volume.sh mute
 
 # Play/Pause
 XF86AudioPlay
