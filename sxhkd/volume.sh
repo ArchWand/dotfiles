@@ -1,4 +1,5 @@
 #!/bin/bash
+export DISPLAY=:0
 
 # How long the notifications shows for in milliseconds
 timeout=1000
@@ -16,13 +17,11 @@ prog_color="#8ba9ed"
 # Dunst stack tag; enables replacing the notification
 dunst_tag=status_update
 
-# Global variable to reduce number of amixer calls
-volume=0
-
 function get_volume() {
-	local vfl=$(amixer get Master | grep "Front Left:" | awk -F'[][ %]' '{printf $8}')
-	local vfr=$(amixer get Master | grep "Front Right:" | awk -F'[][ %]' '{printf $8}')
-	local vmono=$(amixer get Master | grep "Mono:" | awk -F'[][ %]' '{printf $7}')
+	cache_amixer="$(amixer get Master)"
+	local vfl=$(echo "$cache_amixer" | grep "Front Left:" | awk -F'[][ %]' '{printf $8}')
+	local vfr=$(echo "$cache_amixer" | grep "Front Right:" | awk -F'[][ %]' '{printf $8}')
+	local vmono=$(echo "$cache_amixer" | grep "Mono:" | awk -F'[][ %]' '{printf $7}')
 	if [[ -n $vfl || -n $vfr ]]; then
 		echo $(( ($vfl+$vfr)/2 ))
 	else
@@ -56,6 +55,8 @@ function volume_change() {
 
 # Uses Dunst
 function send_notification() {
+	volume=$(get_volume)
+
 	if [[ $1 == "mute" ]]; then
 		dunstify -a "volume" -i audio-volume-muted-symbolic -u $priority -t $timeout -h string:x-dunst-stack-tag:"$dunst_tag" "Volume: Muted"
 		return
