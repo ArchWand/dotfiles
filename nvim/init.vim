@@ -27,6 +27,8 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi'
 Plug 'mbbill/undotree'
 Plug 'lambdalisue/suda.vim'
+Plug 'jbyuki/instant.nvim'
+Plug 'tpope/vim-fugitive'
 
 " Visual
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -320,6 +322,7 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Disable CoC
 nnoremap <leader>cd :<C-u>CocDisable<CR>
+autocmd FileType markdown let b:coc_enabled=0
 
 " Copilot
 let g:copilot_enabled = v:false
@@ -390,9 +393,6 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-" Colorizer
-nnoremap <leader>h :ColorToggle<CR>
-
 " --- Utility ---
 " NerdCommenter
 " Create default mappings
@@ -416,6 +416,9 @@ nnoremap <leader>e :NvimTreeToggle<CR>
 
 " UndoTree
 nnoremap <leader>u :UndotreeToggle<CR>
+
+" Instant
+let g:instant_username = "arcwand"
 
 
 " --- Visual ---
