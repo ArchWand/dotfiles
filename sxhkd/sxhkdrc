@@ -58,7 +58,7 @@ super + shift + Return
 
 
 # ===== Move Nodes =====
-# Focus/swap node/swap node to monitor
+# Focus node/swap node/swap node to monitor
 super + {_,shift + ,ctrl + shift + }{h,j,k,l}
 	bspc node -{f,s,m} {west,south,north,east} --follow
 
@@ -70,15 +70,23 @@ super + ctrl + {h,j,k,l}
 super + {_,shift + }q
 	bspc node -f {next,prev}.local.\!hidden.window
 
-# Focus the next/previous window in the current desktop
+# Focus nodes in MRU order
 alt + {_,shift + }Tab
-	dir={next,prev};\
-	bspc node -f $dir.local.\!hidden.window ||\
-	bspc monitor -f $dir
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
 
 # Focus the last used desktop
-super + Tab
-	bspc desktop -f last.local
+super + {_,shift + }Tab
+	bspc wm -h off; \
+	bspc desktop -f {older,newer}.local; \
+	bspc wm -h on
+
+# Concretize - set current focus as the newest history item
+~Alt_{L,R}
+	bspc node -f
+# ~Super_{L,R} # Lumped with polybar popup
+	# bspc desktop -f
 
 # Focus the last active node
 super + grave
@@ -122,11 +130,15 @@ super + alt + shift + {h,j,k,l}
 # ===== Desktops =====
 # Focus, send to, or swap adjacent desktops
 super + {_,shift + ,ctrl + }bracket{left,right}
-	bspc {desktop -f,node -d,desktop -s} {prev,next}.local --follow
+	bspc wm -h off; \
+	bspc {desktop -f,node -d,desktop -s} {prev,next}.local --follow; \
+	bspc wm -h on
 
 # Focus, send to, or swap to the given desktop or tothe desktop on the next monitor
 super + {_,shift + ,ctrl + }{_,alt + }{1-9,0}
-	bspc {desktop -f,node -d,desktop -s} {focused,next}:'^{1-9,10}'
+	bspc wm -h off; \
+	bspc {desktop -f,node -d,desktop -s} {focused,next}:'^{1-9,10}'; \
+	bspc wm -h on
 
 # Swap desktop to next monitor
 super + ctrl + alt + Tab
@@ -267,8 +279,11 @@ super + n; {super + ,_}Return
 
 # ===== Bar =====
 # Popup polybar
-{@,_}{Super_L,Super_R}
-	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --{hide,show}; done{_,_}
+Super_{L,R}
+	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --show; done; \
+	bspc desktop -f # Concretize
+@Super_{L,R}
+	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --hide; done
 
 # Lock polybar hidden/shown
 super +{_, shift +} b
