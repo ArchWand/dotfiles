@@ -83,10 +83,8 @@ super + {_,shift + }Tab
 	bspc wm -h on
 
 # Concretize - set current focus as the newest history item
-~Alt_{L,R}
+super + c
 	bspc node -f
-# ~Super_{L,R} # Lumped with polybar popup
-	# bspc desktop -f
 
 # Focus the last active node
 super + grave
@@ -280,8 +278,7 @@ super + n; {super + ,_}Return
 # ===== Bar =====
 # Popup polybar
 Super_{L,R}
-	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --show; done; \
-	bspc desktop -f # Concretize
+	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --show; done
 @Super_{L,R}
 	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --hide; done
 
