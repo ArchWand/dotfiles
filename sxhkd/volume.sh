@@ -30,12 +30,14 @@ function get_volume() {
 }
 
 function is_mute() {
-	amixer get Master | grep '%' | awk '{print $6}' | grep off > /dev/null
+	echo "$(amixer get Master)" | grep '%' | awk '{print $6}' | grep off > /dev/null
 }
 
 function volume_change() {
 	# Automatically unmute upon volume adjustment
-	amixer set Master unmute
+	if is_mute; then
+		amixer set Master unmute
+	fi
 
 	volume=$(get_volume)
 
