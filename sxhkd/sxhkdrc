@@ -70,17 +70,9 @@ super + ctrl + {h,j,k,l}
 super + {_,shift + }q
 	bspc node -f {next,prev}.local.\!hidden.window
 
-# Focus nodes in MRU order
-alt + {_,shift + }Tab
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
-
 # Focus the last used desktop
 super + {_,shift + }Tab
-	bspc wm -h off; \
-	bspc desktop -f {older,newer}.local; \
-	bspc wm -h on
+	bspc desktop -f {older,newer}.local
 
 # Concretize - set current focus as the newest history item
 super + c
@@ -128,15 +120,11 @@ super + alt + shift + {h,j,k,l}
 # ===== Desktops =====
 # Focus, send to, or swap adjacent desktops
 super + {_,shift + ,ctrl + }bracket{left,right}
-	bspc wm -h off; \
-	bspc {desktop -f,node -d,desktop -s} {prev,next}.local --follow; \
-	bspc wm -h on
+	bspc {desktop -f,node -d,desktop -s} {prev,next}.local --follow
 
 # Focus, send to, or swap to the given desktop or tothe desktop on the next monitor
 super + {_,shift + ,ctrl + }{_,alt + }{1-9,0}
-	bspc wm -h off; \
-	bspc {desktop -f,node -d,desktop -s} {focused,next}:'^{1-9,10}'; \
-	bspc wm -h on
+	bspc {desktop -f,node -d,desktop -s} {focused,next}:'^{1-9,10}'
 
 # Swap desktop to next monitor
 super + ctrl + alt + Tab
@@ -310,11 +298,11 @@ super + d
 	~/.config/rofi/launcher.sh
 
 # Window switcher (global)
-super + i
+alt + shift + Tab
 	~/.config/rofi/windows.sh
 
 # Window switcher (local)
-super + alt + i
+alt + Tab
 	~/.config/rofi/windowcd.sh
 
 # Clipboard history
