@@ -93,10 +93,10 @@ PROMPT_shpm="${shpm_c}"'%($(path_split)l.'$'\n''.) %(!.#.»)'"${PR_RST}" # shell
 
 preexec() {
   preexec_called=1
+  preexec_called_time=$SECONDS
 }
 
-precmd() {
-  # Find prompt
+get_prompt() {
   local ec=$?
   if [ "$ec" != 0 ] && [ "$preexec_called" = 1 ]; then
     local plain_bar1=" $ec ↵"
@@ -114,11 +114,20 @@ precmd() {
   print
 }
 
+get_timer() {
+  if [ $preexec_called_time ]; then
+    timer=$(($SECONDS - $preexec_called_time))
+  fi
+}
+
+precmd() {
+  get_prompt # must be first to get correct error code
+  get_timer
+}
+
 # primary prompt: dashed separator, directory and vcs info
 PROMPT="${PR_RST}${PROMPT_current_path}${PROMPT_current_workdir}${PROMPT_gitpr}${PROMPT_virtualenv}${PROMPT_shpm}${PR_RST} "
 PS2='%B%F{8}%_%b>'"${PR_RST} "
-
-RPROMPT="${user_host}${PR_RST}"
 
 # git settings
 ZSH_THEME_GIT_PROMPT_PREFIX="${gitpr_c}["
