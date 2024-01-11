@@ -17,7 +17,7 @@ case "$app" in
 		xdotool key n
 		;;
 	"")
-		xdotool key alt+Tab
+		xdotool key super+q
 		;;
 	*)
 		xdotool key Escape
