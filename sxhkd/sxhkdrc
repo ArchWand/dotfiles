@@ -297,12 +297,12 @@ super + n; {_,super + }n
 super + d
 	~/.config/rofi/launcher.sh
 
-# Window switcher (global)
-alt + shift + Tab
-	~/.config/rofi/windows.sh
-
 # Window switcher (local)
 alt + Tab
+	~/.config/rofi/windows.sh
+
+# Window switcher (global)
+alt + shift + Tab
 	~/.config/rofi/windowcd.sh
 
 # Clipboard history
