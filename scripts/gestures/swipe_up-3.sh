@@ -6,6 +6,9 @@ case "$app" in
 	discord|VencordDesktop)
 		bspc node -c
 		;;
+	firefox)
+		xdotool key ctrl+w
+		;;
 	*kitty)
 		case "$name" in
 			nvim*|nv*|"make edit"|lf|ranger)
@@ -38,7 +41,7 @@ case "$app" in
 		xdotool key shift+z shift+z
 		;;
 	*)
-		xdotool key ctrl+w
+		bspc node -c
 		;;
 esac
 
