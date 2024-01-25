@@ -11,7 +11,7 @@ alt + F3
 	kitty nvim
 # Schedule
 alt + F4
-	firefox file:///home/arcwand/Class/Schedule.png
+	firefox file:///home/arcwand/Class/Schedule/schedule.png
 
 # File Explorer
 super + e
