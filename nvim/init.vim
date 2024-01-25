@@ -56,7 +56,6 @@ set tabstop=4 shiftwidth=4 softtabstop=4
 set breakindent
 
 " .java - java program
-" .java - CS 1332 requires spaces
 autocmd FileType java setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 " .md - markdown
 autocmd FileType markdown setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
@@ -66,6 +65,8 @@ autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType r setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " .s - ASM
 autocmd FileType asm setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+" .tex - LaTeX
+autocmd FileType tex setlocal colorcolumn=120
 
 """ Buffer settings
 " Mouse
@@ -114,7 +115,7 @@ set foldlevel=20
 set scrolloff=4
 
 " Default conceal level
-set conceallevel=2
+set conceallevel=0
 
 
 """ Utility
