@@ -55,7 +55,7 @@ libinput-gestures-setup stop start &
 # Notifications
 pkill -9 dunst && dunst &
 # IME/IMF
-fcitx5 &
+fcitx5 -r &
 # Clipboard history
 pkill -9 greenclip; greenclip daemon &
 # Auto-suspend
