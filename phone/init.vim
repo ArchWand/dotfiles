@@ -1,4 +1,4 @@
-" ArcWand's neovim vimrc
+" ArcWand's phone neovim vimrc
 call plug#begin()
 
 Plug 'dstein64/vim-startuptime'
@@ -7,9 +7,9 @@ Plug 'dstein64/vim-startuptime'
 Plug 'github/copilot.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dkarter/bullets.vim'
+" Plug 'm4xshen/autoclose.nvim'
 
 " Rendering
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate'}
 Plug 'chrisbra/Colorizer'
 
 " Utility
@@ -21,6 +21,8 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi'
 Plug 'mbbill/undotree'
 Plug 'lambdalisue/suda.vim'
+Plug 'jbyuki/instant.nvim'
+Plug 'tpope/vim-fugitive'
 
 " Visual
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -39,12 +41,18 @@ colorscheme catppuccin-mocha
 syntax enable
 filetype plugin indent on
 
+set colorcolumn=80
+
 """ Indentation
 set autoindent smarttab
 set noexpandtab
 set tabstop=4 shiftwidth=4 softtabstop=4
 set breakindent
 
+" .java - java program
+autocmd FileType java setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+" .md - markdown
+autocmd FileType markdown setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " .py - python script
 autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 " .R - R script
@@ -55,6 +63,9 @@ autocmd FileType asm setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 """ Buffer settings
 " Mouse
 set mouse=a
+
+" Highlight line and column
+set cursorline cursorcolumn
 
 " Visualize whitespace
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
@@ -93,7 +104,6 @@ set foldlevel=20
 
 " Scrolling
 set scrolloff=4
-set scroll=1
 
 " Default conceal level
 set conceallevel=2
@@ -104,13 +114,13 @@ set conceallevel=2
 command R source $MYVIMRC
 
 " Visualize whitespace
-nnoremap <leader>w :set list!<CR>
+command WhitespaceToggle :set list!<CR>
 
 " Toggle relative numbering
 nnoremap <leader>n :NumberToggle<CR>
 
 " Toggle word wrap
-nnoremap <leader>o :set wrap!<CR>
+nnoremap <leader>w :set wrap!<CR>
 
 " Persistent undo
 set undofile
@@ -142,9 +152,14 @@ nnoremap <leader>I :<C-U>exec SingleInsert("I", nr2char(getchar()), v:count1)<CR
 nnoremap <leader>A :<C-U>exec SingleInsert("A", nr2char(getchar()), v:count1)<CR>
 " Single change
 vnoremap <leader>c :<C-U>exec SingleInsert("`<cv`>", nr2char(getchar()), v:count1)<CR>
+" Single newline
+nnoremap <leader>o o<Esc>
+nnoremap <leader>O O<Esc>
 
 " Vertical split terminal
 command Vterm :vsp|:term
+" Exit terminal mode
+tnoremap <Esc> <C-\><C-n>
 
 " Move lines
 nnoremap <expr> <A-k> ":<C-u>m -" . (v:count ? v:count+1 : 2) . "<CR>"
@@ -222,7 +237,7 @@ endfunction
 function GoEoL()
 	let winwidth = WinTextWidth()
 
-	if virtcol('.') % winwidth == 0
+	if virtcol('.') % winwidth == 0 || !&wrap
 		return '$'
 	else
 		return 'g$'
@@ -231,10 +246,10 @@ endfunction
 
 noremap <expr> H v:count ? 'H' : GoBoL()
 noremap <expr> L v:count ? 'L' : GoEoL()
-nmap <Home> H
-nmap <End> L
-imap <Home> <C-o><Home>
-imap <End> <C-o><End>
+nmap <expr> H v:count ? 'H' : '<Home>'
+nmap <expr> L v:count ? 'L' : '<End>'
+vmap <expr> H v:count ? 'H' : '<Home>'
+vmap <expr> L v:count ? 'L' : '<End>'
 
 
 """ Registers
@@ -263,7 +278,8 @@ vnoremap x "0x
 vnoremap X "0X
 
 " Visual paste
-xnoremap <silent> p p:let @+=@0<CR>:let @0=@"<CR>
+xnoremap <silent> p p:let @1=@+<CR>gvy:let @0=@1<CR>
+
 
 
 
@@ -319,57 +335,6 @@ let g:bullets_enable_in_empty_buffers = 1
 
 
 " --- Rendering ---
-let g:tex_flavor = "latex"
-" VimTex
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-
-" Markdown Preview
-let g:mkdp_auto_start = 0
-
-" RStudio
-let R_objbr_auto_start = 1
-let R_assign = 0
-
-" Treesitter
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the first five listed parsers should always be installed)
-  ensure_installed = { "bash", "c", "cpp", "css", "diff", "git_config", "git_rebase", "gitcommit", "gitignore", "html", "http", "ini", "java", "java", "javascript", "json", "latex", "lua", "luadoc", "make", "markdown_inline", "python", "r", "rasi", "regex", "rust", "sxhkdrc", "vim", "vimdoc" },
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
-
-  -- List of parsers to ignore installing (for "all")
-  -- ignore_install = { },
-
-  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-
-  highlight = {
-    enable = true,
-
-	disable = { "latex", "ini" },
-    -- disable = function(lang, buf)
-    --     local max_filesize = 1024 * 1024 -- 1 GB
-    --     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-    --     if ok and stats and stats.size > max_filesize then
-    --         return true
-    --     end
-    -- end,
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    -- additional_vim_regex_highlighting = false,
-  },
-}
-EOF
-
 " Colorizer
 nnoremap <leader>l :ColorToggle<CR>
 
