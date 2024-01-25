@@ -33,24 +33,27 @@ cat_mocha_crust=233
 # Define colors
 if [[ $terminfo[colors] -ge 256 ]]; then
 	separator_c='%F{237}'
+  exec_time_c='%F{241}'
+  return_code_c='%F{red}'
+	user_host_c='%F{241}'
+
 	virtualenv_c='%B%F{197}%K{236}'
 	current_path_c='%B%F{036}%K{238}'
 	current_workdir_c='%B%F{063}%K{236}'
 	gitpr_c='%B%F{137}%K{236}'
 	shpm_c='%B%F{035}%K{236}'
-
-	user_host_c='%F{241}'
 else
 	separator_c='%F{black}'
+  exec_time_c='%F{grey}'
+  return_code_c='%F{red}'
+	user_host_c='%F{white}'
+
 	virtualenv_c='%B%F{red}%K{grey}'
 	current_path_c='%B%F{green}%K{grey}'
 	current_workdir_c='%B%F{blue}%K{grey}'
 	gitpr_c='%F{magenta}%K{grey}'
 	shpm_c='%B%F{yellow}%K{grey}'
-
-	user_host_c='%F{white}'
 fi
-return_code_c='%F{red}'
 PR_RST='%b%f%k'
 
 unset cat_mocha_rosewater cat_mocha_flamingo cat_mocha_pink cat_mocha_mauve cat_mocha_red cat_mocha_maroon cat_mocha_peach cat_mocha_yellow cat_mocha_green cat_mocha_teal cat_mocha_sky cat_mocha_sapphire cat_mocha_blue cat_mocha_lavender cat_mocha_text cat_mocha_subtext1 cat_mocha_subtext0 cat_mocha_overlay2 cat_mocha_overlay1 cat_mocha_overlay0 cat_mocha_surface2 cat_mocha_surface1 cat_mocha_surface0 cat_mocha_base cat_mocha_mantle cat_mocha_crust
@@ -92,37 +95,45 @@ PROMPT_shpm="${shpm_c}"'%($(path_split)l.'$'\n''.) %(!.#.»)'"${PR_RST}" # shell
 ##### Prompt Formatting #####
 
 preexec() {
-  preexec_called=1
-  preexec_called_time=$SECONDS
-}
-
-get_prompt() {
-  local ec=$?
-  if [ "$ec" != 0 ] && [ "$preexec_called" = 1 ]; then
-    local plain_bar1=" $ec ↵"
-    local bar1=$(print -nP "${return_code_c}${plain_bar1}${PR_RST}")
-    unset preexec_called
-  fi
-  local plain_bar2=" $(get_user_host)"
-  local bar2=$(print -nP "${user_host_c}${plain_bar2}${PR_RST}")
-
-  local len1=${#${(%%)plain_bar1}}
-  local len2=${#${(%%)plain_bar2}}
-  local dash_len=$(( $(term_width) - $len1 - $len2 - 1))
-
-  print -nP "${separator_c}${(l.${dash_len}..-.)}${bar1}${bar2}${PR_RST}"
-  print
-}
-
-get_timer() {
-  if [ $preexec_called_time ]; then
-    timer=$(($SECONDS - $preexec_called_time))
-  fi
+  preexec_called=$(($(date +%s%0N)/1000000))
 }
 
 precmd() {
-  get_prompt # must be first to get correct error code
-  get_timer
+  # Store the error code so we can do other operations without losing it
+  local ec=$?
+
+  # If we have just run a command, then do the following:
+  if [ "$preexec_called" ]; then
+    # Find how long the command took
+    local now=$(($(date +%s%0N)/1000000))
+    time=$((now - preexec_called))
+    # Only display the time if it took long enough
+    if [ "$time" -gt 0 ]; then
+      local plain_exec_time="${time} ms "
+      local exec_time=$(print -nP "${exec_time_c}${plain_exec_time}${PR_RST}")
+    fi
+
+    # In the event that there was an error code, display it
+    if [ "$ec" != 0 ]; then
+      local plain_return_code=" $ec ↵"
+      local return_code=$(print -nP "${return_code_c}${plain_return_code}${PR_RST}")
+    fi
+    unset preexec_called
+  fi
+
+  # Find the user and host
+  local plain_user_host=" $(get_user_host)"
+  local user_host=$(print -nP "${user_host_c}${plain_user_host}${PR_RST}")
+
+  # Find the length of the dashed separator, minus the extra info text.
+  local dash_len=$(( $(term_width) - 1))
+  (( dash_len -= ${#${(%%)plain_exec_time}} ))
+  (( dash_len -= ${#${(%%)plain_return_code}} ))
+  (( dash_len -= ${#${(%%)plain_user_host}} ))
+
+  # print -nP "${separator_c}${(l.${dash_len}..-.)}${return_code}${user_host}${PR_RST}"
+  print -nP "${exec_time}${separator_c}${(l.${dash_len}..-.)}${return_code}${user_host}${PR_RST}"
+  print
 }
 
 # primary prompt: dashed separator, directory and vcs info
@@ -149,7 +160,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
 ZSH_GIT_PROMPT_SHOW_UPSTREAM=full
 
 # Clear variables
-unset current_path_c current_workdir_c gitpr_c shpm_c
+unset virtualenv_c current_path_c current_workdir_c gitpr_c shpm_c
 unset gitpr_added gitpr_modified gitpr_deleted gitpr_renamed gitpr_unmerged gitpr_untracked
 unset PR_RST
 
