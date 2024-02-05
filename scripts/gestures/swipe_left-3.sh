@@ -25,6 +25,9 @@ case "$app" in
 	jetbrains-studio)
 		xdotool key g key T
 		;;
+	com.ra4king.circuitsim.gui.CircuitSim)
+		xdotool key ctrl+shift+Tab
+		;;
 	"")
 		bspc desktop -f prev.local --follow
 		;;
