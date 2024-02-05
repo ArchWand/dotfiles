@@ -31,7 +31,7 @@ function half_dimension() {
 # Floating rules
 bspc rule -a floating_kitty state=floating rectangle=$(half_dimension $(bspc query -M --names | head -n 1))+0+0 center=true
 bspc rule -a '*:Toolkit:Picture-in-Picture' state=floating sticky=on focus=on
-bspc rule -a 'firefox:Places:*' state=floating # Firefox Downloads
+# bspc rule -a 'firefox:Places:*' state=floating # Firefox Downloads
 bspc rule -a 'thunderbird:Msgcompose' state=floating
 bspc rule -a Blueman-manager state=floating
 bspc rule -a Pavucontrol state=floating
