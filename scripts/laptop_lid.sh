@@ -2,8 +2,15 @@
 
 file="/etc/systemd/logind.conf"
 param="HandleLidSwitch"
-value=$1
 
+# if no parameters given, print current value
+if [ -z "$1" ]; then
+	value=$(grep -E "^\s*${param}\s*=" "$file" | sed "s/.*=\s*//")
+	echo "Current value: ${value}"
+	exit 0
+fi
+
+value=$1
 valid_values=(suspend ignore)
 if [[ ! " ${valid_values[@]} " =~ " ${value} " ]]; then
 	echo "Invalid value: ${value}"
