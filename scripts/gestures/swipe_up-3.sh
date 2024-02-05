@@ -14,13 +14,7 @@ case "$app" in
 			nvim*|nv*|"make edit"|lf|ranger)
 				xdotool key shift+z shift+z
 				;;
-			lazygit)
-				xdotool key q
-				;;
-			*less)
-				xdotool key q
-				;;
-			man*)
+			lazygit|less|man*|btop)
 				xdotool key q
 				;;
 			*)
