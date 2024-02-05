@@ -163,3 +163,4 @@ alias lg=lazygit
 # ZSH Syntax Highlighting with Catpuccin theme
 source ~/.local/share/oh-my-zsh/custom/plugins/themes/arcwand-zsh-syntax-highlighting.zsh
 # source ~/.local/share/oh-my-zsh/custom/plugins/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
+
