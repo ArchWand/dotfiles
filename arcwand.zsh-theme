@@ -32,27 +32,27 @@ cat_mocha_crust=233
 
 # Define colors
 if [[ $terminfo[colors] -ge 256 ]]; then
-	separator_c='%F{237}'
+  separator_c='%F{237}'
   exec_time_c='%F{241}'
   return_code_c='%F{red}'
-	user_host_c='%F{241}'
+  user_host_c='%F{241}'
 
-	virtualenv_c='%B%F{197}%K{236}'
-	current_path_c='%B%F{036}%K{238}'
-	current_workdir_c='%B%F{063}%K{236}'
-	gitpr_c='%B%F{137}%K{236}'
-	shpm_c='%B%F{035}%K{236}'
+  virtualenv_c='%B%F{197}%K{236}'
+  current_path_c='%B%F{036}%K{238}'
+  current_workdir_c='%B%F{063}%K{236}'
+  gitpr_c='%B%F{137}%K{236}'
+  shpm_c='%B%F{035}%K{236}'
 else
-	separator_c='%F{black}'
+  separator_c='%{\e[02;37m%}' # { escape normal dim; white color }
   exec_time_c='%F{grey}'
   return_code_c='%F{red}'
-	user_host_c='%F{white}'
+  user_host_c='%F{white}'
 
-	virtualenv_c='%B%F{red}%K{grey}'
-	current_path_c='%B%F{green}%K{grey}'
-	current_workdir_c='%B%F{blue}%K{grey}'
-	gitpr_c='%F{magenta}%K{grey}'
-	shpm_c='%B%F{yellow}%K{grey}'
+  virtualenv_c='%B%F{red}%K{grey}'
+  current_path_c='%B%F{green}%K{grey}'
+  current_workdir_c='%B%F{blue}%K{grey}'
+  gitpr_c='%F{magenta}%K{grey}'
+  shpm_c='%B%F{yellow}%K{grey}'
 fi
 PR_RST='%b%f%k'
 
@@ -131,9 +131,7 @@ precmd() {
   (( dash_len -= ${#${(%%)plain_return_code}} ))
   (( dash_len -= ${#${(%%)plain_user_host}} ))
 
-  # print -nP "${separator_c}${(l.${dash_len}..-.)}${return_code}${user_host}${PR_RST}"
-  print -nP "${exec_time}${separator_c}${(l.${dash_len}..-.)}${return_code}${user_host}${PR_RST}"
-  print
+  print -P "${exec_time}${separator_c}${(l.${dash_len}..-.)}${return_code}${user_host}${PR_RST}"
 }
 
 # primary prompt: dashed separator, directory and vcs info
