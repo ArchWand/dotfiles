@@ -14,7 +14,7 @@ fi
 sudo -v
 
 # Edit $param=$value
-sudo sed -i -e 's/^#\?\('"$param"'=\)\(.*\)\(#.*\)\?$/\1'"$value"' # Edited by laptop_lid.sh/' "$file"
+sudo sed -i -e 's/^#\?\('"$param"'=\)\(.*\)\(#.*\)\?$/\1'"$value"'/' "$file"
 
 # Apply changes
 sudo systemctl kill -s HUP systemd-logind
