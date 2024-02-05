@@ -60,5 +60,6 @@ fcitx5 -r &
 # Clipboard history
 pkill -9 greenclip; greenclip daemon &
 # Auto-suspend
-pkill -9 xautolock && xautolock -time 30 -locker 'systemctl suspend' -detectsleep &
+pkill -9 xautolock
+# xautolock -time 60 -locker 'systemctl suspend' -notify 30 -notifier 'notify-send "Inactivity detected" "Suspending in 30 seconds."' -detectsleep &
 
