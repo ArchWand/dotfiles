@@ -36,6 +36,7 @@ bspc rule -a 'thunderbird:Msgcompose' state=floating
 bspc rule -a Blueman-manager state=floating
 bspc rule -a Pavucontrol state=floating
 bspc rule -a ripdrag state=floating
+bspc rule -a 'com.ra4king.circuitsim.gui.CircuitSim:*:Rename circuit' state=floating
 
 # Tiling rules
 # Zathura
