@@ -553,6 +553,7 @@ IGNORE-MISMATCH=[
     https://open.spotify.com/track/1HnJhU3MhAnRQzdkFm6xQr,
     https://open.spotify.com/track/5z1qoC9KRyVVDjs2ZHiFXJ,
     https://open.spotify.com/track/0i8K9oyDQSg5tPZUTHPwhX,
+    https://open.spotify.com/track/0InqZvX2yR28fcnNN8F1A6,
 ]
 
 # Manual song replacements
@@ -647,6 +648,9 @@ RENAME=[
     愛をちょうだい - AOA, Takanori Nishikawa T.M.Revolution.mp3 : Ai Wo Choudai (愛をちょうだい) - AOA, Takanori Nishikawa T.M.Revolution.mp3,
     ﻿Not Like You - STAYC.mp3 : Not Like You - STAYC.mp3,
 	破繭（《鬥羅大陸》動畫2020年新主題曲） - Angela Chang.mp3 : pojian 破繭（《鬥羅大陸》動畫2020年新主題曲） - Angela Chang.mp3,
+    運命の人 - 『ユイカ』.mp3 : The One (運命の人) - Yuika (『ユイカ』).mp3,
+    美丽的神话 - 金喜善.mp3 : meilidesh (美丽的神话) - Kim Hee-sun (金喜善).mp3,
+    我期待的不是雪 - 张妙格.mp3 : woqidaidebushixue (我期待的不是雪) - zhangmiaoge (张妙格).mp3,
 ]
 
 # Determines how strict verification is. Files that fail verification
