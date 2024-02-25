@@ -42,7 +42,7 @@ matches:
 - trigger: cs
   replace: Computer Science
 - trigger: gpa
-  replace: 3.5
+  replace: 3.86
 - trigger: rgpa
   replace: 3.43
 - trigger: rsm
