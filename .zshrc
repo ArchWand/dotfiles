@@ -81,7 +81,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z virtualenv)
+plugins=(git zoxide virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -130,7 +130,7 @@ function venv {
 	if [ ! -d venv ]; then python3 -m venv venv; fi
 	source venv/bin/activate
 }
-function open { xdg-open "${1:-.}" }
+function open { xdg-open "${1:-.}" &> /dev/null & disown; }
 
 autoload zmv
 alias zcp='zmv -C'
