@@ -3,7 +3,7 @@ app=$(xprop -id $(xdotool getactivewindow) WM_CLASS | awk -F '"' '{print $4}')
 name=$(xprop -id $(xdotool getactivewindow) WM_NAME | awk -F '"' '{print $2}')
 
 case "$app" in
-	firefox)
+	firefox|Chromium|Google-chrome)
 		xdotool key ctrl+Page_Up
 		;;
 	discord|VencordDesktop|Slack)
