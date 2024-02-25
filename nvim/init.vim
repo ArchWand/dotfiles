@@ -66,7 +66,7 @@ autocmd FileType r setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " .s - ASM
 autocmd FileType asm setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " .tex - LaTeX
-autocmd FileType tex setlocal colorcolumn=120
+autocmd FileType tex setlocal colorcolumn=120 expandtab tabstop=1 shiftwidth=1 softtabstop=1
 
 """ Buffer settings
 " Mouse
@@ -262,6 +262,8 @@ nmap <expr> H v:count ? 'H' : '<Home>'
 nmap <expr> L v:count ? 'L' : '<End>'
 vmap <expr> H v:count ? 'H' : '<Home>'
 vmap <expr> L v:count ? 'L' : '<End>'
+onoremap <expr> H v:count ? 'H' : '<Home>'
+onoremap <expr> L v:count ? 'L' : '<End>'
 
 
 """ Registers
@@ -421,6 +423,9 @@ require'nvim-tree'.setup {
 EOF
 " Mappings
 nnoremap <leader>e :NvimTreeToggle<CR>
+
+" Reenable gx after loading nvim-tree
+nnoremap gx <CMD>execute '!xdg-open ' .. shellescape(expand('<cfile>'), v:true)<CR>
 
 " UndoTree
 nnoremap <leader>u :UndotreeToggle<CR>
