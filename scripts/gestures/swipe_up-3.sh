@@ -6,7 +6,7 @@ case "$app" in
 	discord|VencordDesktop)
 		bspc node -c
 		;;
-	firefox)
+	firefox|Chromium|Google-chrome)
 		xdotool key ctrl+w
 		;;
 	*kitty)
