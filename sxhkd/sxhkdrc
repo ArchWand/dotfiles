@@ -162,6 +162,12 @@ super + ctrl + {m,x,y,z}
 super + alt + p
 	bspc node -g sticky
 
+# (minimize) Hidden 
+super + shift + i
+	hidden=$(bspc query -N -n .hidden -d focused);\
+	if [ -z "$hidden" ]; then bspc node focused -g hidden=on;\
+	else bspc node "$hidden" -g hidden=off; fi
+
 
 # ===== Preselect =====
 # Preselect the direction
