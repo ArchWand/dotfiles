@@ -277,7 +277,7 @@ Super_{L,R}
 	for id in $(xdotool search --class polybar); do $HOME/scripts/hideIt.sh --id $id --hide; done
 
 # Lock polybar hidden/shown
-super +{_, shift +} b
+super + {b; super + b,shift + b}
 	vis={show,hide} &&\
 	for id in $(xdotool search --class polybar);\
 		do; $HOME/scripts/hideIt.sh --id $id --$vis;\
@@ -286,15 +286,15 @@ super +{_, shift +} b
 	done
 
 # Show/hide polybar
-super + n; {_,super + }h
+super + b; {_,super + }h
 	polybar-msg cmd toggle && bspc config bottom_padding 0
 
 # Toggle Polybar date
-super + n; {_,super + }d
+super + b; {_,super + }d
 	polybar-msg action "#date.toggle"
 
 # Network menu
-super + n; {_,super + }n
+super + b; {_,super + }n
 	$HOME/.config/rofi/rofi-network-manager/rofi-network-manager.sh
 
 
