@@ -124,7 +124,7 @@ function mcd { mkdir -p "$*" && cd "$*" }
 function mvcwd { dir="$(pwd)" && cd .. && mv "$dir" "$1" || cd - ; cd "$1" }
 
 function superkill { while pkill -9 "$1" && killall "$1"; do done }
-function mpv_kill { sleep $1 && pkill -15 mpv && sleep 2 && pkill -15 kitty }
+function mpv_kill { sleep $1 && pkill -15 mpv && sleep 2 && kill -15 $(ps -o ppid= $$) }
 
 function venv {
 	if [ ! -d venv ]; then python3 -m venv venv; fi
