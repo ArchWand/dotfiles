@@ -1,7 +1,10 @@
 # Options: new, diff
 # new: Creates a new directory containing the downloaded playlist
-# diff: Takes two csvs from Exportify and compares them. Overrides all other functions.
+# diff: Takes two csvs from Exportify and compares them
 MODE=new
+
+# The url of the new playlist. The playlist must be public
+URL=https://open.spotify.com/playlist/2irg8CxKIPTqhLX8n8EJIY?si=4074332c25c246b6
 
 # Use Exportify to get csvs for two playlists, and put their names as DIFF-NEW and DIFF-OLD
 # Options:
@@ -13,14 +16,18 @@ MODE=new
 # DIFF-NEW=
 # DIFF-OLD=
 
+# Granularity of diff
+# 1: Match Spotify ID
+# 2: Match title, artist, and album
+# 3: Match title and artist
+# 4: Match title
+# DIFF-LEVEL=3
+
 # Format for the file names; syntax is that of spotdl (`spotdl -h | grep -A 10 -- --output`)
 # OUTPUT-FORMAT={title} - {artists}
 
-# The url of the new playlist. The playlist must be public
-URL=https://open.spotify.com/playlist/2irg8CxKIPTqhLX8n8EJIY?si=bbdc4d8f70874c12
-
 # The directory to put the songs in.
-DIR=./dir
+DIR=./songs
 
 # Whether or not to use mp3gain
 MP3GAIN=True
@@ -821,11 +828,10 @@ RENAME=[
 # 2: Skip over manual replacing to downloading JSON metadata for verification
 # 3: Skip downloading JSON to verifying songs
 # 4: Skip verifying songs to removing the spotify ids
-# 5: Skip removing the spotify ids to checking for duplicates
-# 6: Skip checking for duplicates to renaming files
-# 7: Skip renaming files to combining and removing buffers
-# 8: Skip combining and removing buffers to normalizing with mp3gain
-# 9: Do nothing
+# 5: Skip removing the spotify ids to renaming files
+# 6: Skip renaming files to combining and removing buffers
+# 7: Skip combining and removing buffers to normalizing with mp3gain
+# 8: Do nothing
 # SKIP=0
 
 # The buffer used to store downloaded songs before moving into DIR
