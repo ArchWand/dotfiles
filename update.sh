@@ -35,8 +35,6 @@ up_file ~/.config/betterlockscreen/betterlockscreenrc
 up_file ~/.config/libinput-gestures.conf
 up_file ~/.config/dunst/dunstrc
 up_file ~/.config/picom/picom.conf
-up_file ~/.config/systemd/user/todo-sync.path systemd/
-up_file ~/.config/systemd/user/todo-sync.service systemd/
 up_file ~/.config/X11/xinitrc
 up_file ~/.local/share/oh-my-zsh/custom/themes/arcwand.zsh-theme
 up_file /etc/logid.cfg
