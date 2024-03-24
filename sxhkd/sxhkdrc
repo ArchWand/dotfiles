@@ -19,8 +19,7 @@ super + e
 
 # Calculator
 XF86Calculator
-	kitty --class=floating_kitty -- python3
-
+	kitty --class=calc_kitty -- zsh -c "autoload zcalc && zcalc"
 
 # ===== Desktop Environment =====
 # Lock screen
