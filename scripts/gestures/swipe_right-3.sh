@@ -12,7 +12,7 @@ case "$app" in
 	*kitty)
 		case "$name" in
 			*)
-				xdotool key ctrl+shift+Left
+				xdotool key ctrl+shift+Right
 				;;
 			nvim*|nv|lf|ranger)
 				xdotool key ctrl+o
