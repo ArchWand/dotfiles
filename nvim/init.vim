@@ -165,8 +165,8 @@ nnoremap <leader>A :<C-U>exec SingleInsert("A", nr2char(getchar()), v:count1)<CR
 " Single substitution
 vnoremap <leader>s :<C-U>exec SingleInsert("`<cv`>", nr2char(getchar()), v:count1)<CR>
 " Single newline
-nnoremap <leader>o o<Esc>
-nnoremap <leader>O O<Esc>
+nnoremap <expr> <leader>o "m'" . (v:count) . "o<Esc>`'"
+nnoremap <expr> <leader>O "m'" . (v:count) . "O<Esc>`'"
 
 " Vertical split terminal
 command Vterm :vsp|:term
@@ -195,6 +195,7 @@ imap <A-l> <Esc><A-l>a
 
 " Cycle focus
 nnoremap <M-i> <C-w>w
+nnoremap <M-S-i> <C-w><S-w>
 
 
 """ Movement
