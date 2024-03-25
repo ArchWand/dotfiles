@@ -66,7 +66,7 @@ autocmd FileType r setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " .s - ASM
 autocmd FileType asm setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " .tex - LaTeX
-autocmd FileType tex setlocal colorcolumn=120 expandtab tabstop=1 shiftwidth=1 softtabstop=1
+autocmd FileType tex setlocal colorcolumn=80 expandtab tabstop=1 shiftwidth=1 softtabstop=1
 
 """ Buffer settings
 " Mouse
