@@ -144,7 +144,6 @@ alias icat="kitty +kitten icat"
 alias clip="xsel -b"
 
 autoload zcalc
-alias cmd='command'
 alias hardclear='echo -ne "\ec"'
 alias reset="tput reset"
 alias zsh-no-git-prompt='git config --add oh-my-zsh.hide-status 1; git config --add oh-my-zsh.hide-dirty 1'
@@ -153,6 +152,7 @@ alias init-nvm='source /usr/share/nvm/init-nvm.sh'
 alias xev-keyboard='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'
 alias startx11vnc="x11vnc -display :0 -usepw"
 
+alias rm=trash-put
 alias nv=nvim
 alias plover="~/Applications/plover-4.0.0.dev12-x86_64_1117a3034f0a02c8898a2bccdcb0a905.AppImage"
 alias py=python
