@@ -109,6 +109,8 @@ export PATH="$HOME/scripts/.path:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 # Add cargo bins to path
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
+# Add perl for biber
+export PATH="$PATH:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
