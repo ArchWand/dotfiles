@@ -19,7 +19,7 @@ super + e
 
 # Calculator
 XF86Calculator
-	kitty --class=calc_kitty -- zsh -c "autoload zcalc && zcalc"
+	kitty --class=calc_kitty ~/scripts/calc.sh
 
 # ===== Desktop Environment =====
 # Lock screen
