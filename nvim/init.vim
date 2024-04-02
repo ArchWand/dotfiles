@@ -196,6 +196,8 @@ imap <A-l> <Esc><A-l>a
 " Cycle focus
 nnoremap <M-i> <C-w>w
 nnoremap <M-S-i> <C-w><S-w>
+inoremap <M-i> <C-o><C-w>w
+inoremap <M-S-i> <C-o><C-w><S-w>
 
 
 """ Movement
