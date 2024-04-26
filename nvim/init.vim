@@ -134,6 +134,9 @@ nnoremap <leader>n :NumberToggle<CR>
 " Toggle word wrap
 nnoremap <leader>w :set wrap!<CR>
 
+" Toggle colorcolumn between 80 and none
+nnoremap <expr> <leader>8 ":set cc=".(&colorcolumn == 80 ? "" : "80")."<CR>"
+
 " Persistent undo
 set undofile
 set undodir=~/.local/share/nvim/undos
