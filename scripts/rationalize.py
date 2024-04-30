@@ -8,7 +8,7 @@ def rationalize(decimal, max_denom=1000, max_error=0):
     # F_1
     nl, dl = 0, 1
     nr, dr = 1, 1
-    # forward declartions
+    # forward declarations
     nm, dm = round(decimal), 1
 
     while dl + dr <= max_denom and abs(nm / dm - decimal) > max_error:
