@@ -13,7 +13,6 @@ Plug 'dkarter/bullets.vim'
 Plug 'lervag/vimtex'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown' }
 Plug 'weirongxu/plantuml-previewer.vim'
-Plug 'jalvesaq/Nvim-R', { 'for': 'r'}
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate'}
 Plug 'chrisbra/Colorizer'
 Plug 'tyru/open-browser.vim'
