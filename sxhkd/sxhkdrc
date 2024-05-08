@@ -304,11 +304,11 @@ super + d
 
 # Window switcher (local)
 alt + Tab
-	~/.config/rofi/windows.sh
+	~/.config/rofi/window_local.sh
 
 # Window switcher (global)
 alt + shift + Tab
-	~/.config/rofi/windowcd.sh
+	~/.config/rofi/window_global.sh
 
 # Clipboard history
 super + alt + v
