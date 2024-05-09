@@ -121,9 +121,6 @@ set conceallevel=0
 " Reload vimrc
 command R source $MYVIMRC
 
-" Sync todo list manually
-command TodoSync !/home/arcwand/scripts/todo_sync.sh
-
 " Visualize whitespace
 command WhitespaceToggle :set list!<CR>
 

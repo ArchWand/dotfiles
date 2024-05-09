@@ -21,7 +21,7 @@ up_dir ~/.config/bspwm
 up_dir ~/.config/espanso/match espanso
 up_dir ~/.config/kitty
 up_dir ~/.config/mpv
-up_dir ~/.config/nvim
+# up_dir ~/.config/nvim
 up_dir ~/.config/sxhkd
 up_dir ~/.config/zathura
 up_dir /etc/X11/xorg.conf.d
