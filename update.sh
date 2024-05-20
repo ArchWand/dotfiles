@@ -3,10 +3,10 @@
 cd "$(dirname "$0")"
 
 function up_dir {
-	rsync -a --delete $1 ./$2
+	rsync -a --delete "$1" ./"$2"
 }
 function up_file {
-	cp $1 ./$2
+	cp "$1" ./"$2"
 }
 
 # Maintained directly in dotfiles repo:
@@ -34,12 +34,12 @@ up_dir ~/.config/nvim tools
 up_dir ~/.config/zathura tools
 up_file ~/.config/Vencord/settings/quickCss.css tools
 fcrontab -l > tools/crontab 2> /dev/null
-up_file ~/.bash_profile tools/shell
-up_file ~/.bashrc tools/shell
-up_file ~/.zprofile tools/shell
-up_file ~/.zshrc tools/shell
-up_file ~/.zshenv tools/shell
-up_file ~/.local/share/oh-my-zsh/custom/themes/arcwand.zsh-theme tools/shell
+up_file ~/.bash_profile tools/shell/.bash_profile
+up_file ~/.bashrc tools/shell/.bashrc
+up_file ~/.zprofile tools/shell/.zprofile
+up_file ~/.zshrc tools/shell/.zshrc
+up_file ~/.zshenv tools/shell/.zshenv
+up_file ~/.local/share/oh-my-zsh/custom/themes/arcwand.zsh-theme tools/shell/arcwand.zsh-theme
 
 # If the script is called without parameters,
 # allow for manual committing
