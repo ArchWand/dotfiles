@@ -12,7 +12,7 @@ case "$app" in
 	*kitty)
 		case "$name" in
 			nvim*|nv*|"make edit"|lf|ranger)
-				xdotool key shift+z shift+z
+				xdotool key Escape shift+z shift+z
 				;;
 			lazygit|less|man*|btop)
 				xdotool key q
