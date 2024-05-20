@@ -14,31 +14,32 @@ function up_file {
 # ODroidXU4
 # phone
 
-fcrontab -l > crontab 2> /dev/null
+up_dir ~/.config/bspwm desktop_environment
+up_dir ~/.config/polybar desktop_environment
+up_dir ~/.config/rofi desktop_environment
+up_dir ~/.config/sxhkd desktop_environment
+up_dir /etc/X11/xorg.conf.d desktop_environment
+up_file ~/.config/betterlockscreen/betterlockscreenrc desktop_environment
+up_file ~/.config/dunst/dunstrc desktop_environment
+up_file ~/.config/libinput-gestures.conf desktop_environment
+up_file /etc/logid.cfg desktop_environment
+up_file ~/.config/picom/picom.conf desktop_environment
+up_file ~/.config/X11/xinitrc desktop_environment
 
 up_dir ~/scripts
-up_dir ~/.config/bspwm
-up_dir ~/.config/espanso/match espanso
-up_dir ~/.config/kitty
-up_dir ~/.config/mpv
-# up_dir ~/.config/nvim
-up_dir ~/.config/sxhkd
-up_dir ~/.config/zathura
-up_dir /etc/X11/xorg.conf.d
 
-up_file ~/.bash_profile
-up_file ~/.bashrc
-up_file ~/.zprofile
-up_file ~/.zshrc
-up_file ~/.zshenv
-up_file ~/.config/betterlockscreen/betterlockscreenrc
-up_file ~/.config/libinput-gestures.conf
-up_file ~/.config/dunst/dunstrc
-up_file ~/.config/picom/picom.conf
-up_file ~/.config/Vencord/settings/quickCss.css
-up_file ~/.config/X11/xinitrc
-up_file ~/.local/share/oh-my-zsh/custom/themes/arcwand.zsh-theme
-up_file /etc/logid.cfg
+up_dir ~/.config/kitty tools
+up_dir ~/.config/mpv tools
+up_dir ~/.config/nvim tools
+up_dir ~/.config/zathura tools
+up_file ~/.config/Vencord/settings/quickCss.css tools
+fcrontab -l > tools/crontab 2> /dev/null
+up_file ~/.bash_profile tools/shell
+up_file ~/.bashrc tools/shell
+up_file ~/.zprofile tools/shell
+up_file ~/.zshrc tools/shell
+up_file ~/.zshenv tools/shell
+up_file ~/.local/share/oh-my-zsh/custom/themes/arcwand.zsh-theme tools/shell
 
 # If the script is called without parameters,
 # allow for manual committing
