@@ -1,6 +1,10 @@
 # arcwand.zsh-theme
 # Custom theme
 
+# Specify location of gnu coreutils date (posix does not have nanoseconds)
+local date="/usr/bin/date"
+# local date="/opt/homebrew/bin/gdate"
+
 # Catpuccin Colors
 cat_mocha_rosewater=224
 cat_mocha_flamingo=224
@@ -94,8 +98,10 @@ PROMPT_shpm="${shpm_c}"'%($(path_split)l.'$'\n''.) %(!.#.»)'"${PR_RST}" # shell
 
 ##### Prompt Formatting #####
 
+eval 'get_epoch_nanoseconds() { printf "$(($('$date' +%s%0N)/1000000))" }'
+
 preexec() {
-  preexec_called=$(($(date +%s%0N)/1000000))
+  preexec_called=$(get_epoch_nanoseconds)
 }
 
 precmd() {
@@ -105,7 +111,7 @@ precmd() {
   # If we have just run a command, then do the following:
   if [ "$preexec_called" ]; then
     # Find how long the command took
-    local now=$(($(date +%s%0N)/1000000))
+    local now=$(get_epoch_nanoseconds)
     time=$((now - preexec_called))
     # Only display the time if it took long enough
     if [ "$time" -gt 0 ]; then
@@ -161,4 +167,5 @@ ZSH_GIT_PROMPT_SHOW_UPSTREAM=full
 unset virtualenv_c current_path_c current_workdir_c gitpr_c shpm_c
 unset gitpr_added gitpr_modified gitpr_deleted gitpr_renamed gitpr_unmerged gitpr_untracked
 unset PR_RST
+unset date
 
