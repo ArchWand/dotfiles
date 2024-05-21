@@ -1,7 +1,7 @@
 {
 	"name": "Vimium C",
-	"@time": "5/19/2024, 8:48:17 PM",
-	"time": 1716176897018,
+	"@time": "5/20/2024, 7:13:00 PM",
+	"time": 1716257580260,
 	"environment": {
 		"extension": "1.99.997",
 		"platform": "linux",
@@ -17,7 +17,10 @@
 		"map + zoomIn",
 		"map _ zoomOut",
 		"map = zoomReset",
-		"",
+		"map of LinkHints.activateFocus",
+		"map oh LinkHints.activateHover",
+		"map oF LinkHints.activateLeave",
+		"map oH LinkHints.unhoverLast",
 		"map % Vomnibar.activateHistory",
 		"",
 		"map <a-h> goBack",
@@ -25,7 +28,9 @@
 		"",
 		"map H previousTab",
 		"map L nextTab",
+		"map <a-x> restoreGivenTab",
 		"map w moveTabToNewWindow",
+		"",
 		"map dH closeTabsOnLeft",
 		"map dL closeTabsOnRight",
 		"map do closeOtherTabs",
@@ -37,7 +42,7 @@
 		"map <a-c-v> openUrl url=\"vimium://status/toggle/^\\u0020<a-c-v>\"",
 		""
 	],
-	"linkHintCharacters": "asdghjklweruio",
+	"linkHintCharacters": "qwertyuiopasdfghjklzxcvbnm",
 	"userDefinedCss": [
 		"/* Mocha palette */",
 		"",
