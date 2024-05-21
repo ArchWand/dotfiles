@@ -120,7 +120,7 @@ export PATH="$PATH:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-function rmcd { dir="$(pwd)" && cd .. && rm "$dir" -rf || cd "$dir" }
+function rmcd { dir="$(pwd)" && cd .. && rm -rf "$dir" || cd "$dir" }
 function rdcd { dir="$(pwd)" && cd .. && rd "$dir" || cd "$dir" }
 function mcd { mkdir -p "$*" && cd "$*" }
 function mvcwd { dir="$(pwd)" && cd .. && mv "$dir" "$1" || cd - ; cd "$1" }
