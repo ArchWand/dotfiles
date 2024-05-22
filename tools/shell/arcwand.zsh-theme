@@ -98,7 +98,7 @@ PROMPT_shpm="${shpm_c}"'%($(path_split)l.'$'\n''.) %(!.#.»)'"${PR_RST}" # shell
 
 ##### Prompt Formatting #####
 
-eval 'get_epoch_nanoseconds() { printf "$(($('$date' +%s%0N)/1000000))" }'
+eval 'get_epoch_nanoseconds() { printf "$(($('$date' +%s%0N 2>/dev/null || printf "0")/1000000))" 2>/dev/null }'
 
 preexec() {
   preexec_called=$(get_epoch_nanoseconds)
