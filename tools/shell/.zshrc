@@ -139,8 +139,8 @@ alias zcp='zmv -C'
 alias zln='zmv -L'
 alias la="ls -A"
 alias ll="ls -lAh"
-alias lc="ls -rc"
-alias cdnew='cd "$(ls -cd */ | head -n 1)"'
+alias lc="ls -rct"
+alias cdnew='cd "$(ls -ctd */ | head -n 1)"'
 
 alias icat="kitty +kitten icat"
 alias clip="xsel -b"
