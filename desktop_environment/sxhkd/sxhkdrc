@@ -221,6 +221,8 @@ super + t; {h,j,k,l}
 super + t; {Left,Down,Up,Right}
 	bsptab-rs transfer focused {west,south,north,east}
 
+super + t; Return
+    bsptab-rs embed focused & kitty -1
 
 # ===== Multimedia Keys =====
 # Brightness down
