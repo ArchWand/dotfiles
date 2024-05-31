@@ -104,8 +104,10 @@ super + g
 	bspc node -s biggest.local.window
 
 # Focus the node for the given path jump
-super + {period,comma}
-	bspc node -f @{parent,first}
+super +{_, shift +} comma
+	bspc node -f @{first,parent}
+super +{_, shift +} period
+	bspc node -f @{second,brother}
 
 # Expand a window
 super + alt + {h,j,k,l}
