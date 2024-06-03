@@ -1,46 +1,51 @@
 #!/bin/bash
-export DISPLAY=:0
+# Most recent notification ID is stored within the script
+ID=1336
+FILENAME=$0
 
+set_id() {
+	sed -i -E 's/^ID=[0-9]+/ID='$1'/' $FILENAME
+}
+get_id() {
+	awk -F'=' '/^ID=/{print $2}' $FILENAME
+}
+
+send_notification() {
+(
+	# Wait for lock on /tmp/.scripts.volume.exclusivelock (fd 201) for 10 seconds
+	flock -x -w 10 201 || exit 1
+
+	set_id $(notify-send -p -r $(get_id) -a "volume" "Volume: $1" \
+		-u $PRIORITY -t $TIMEOUT -h int:value:$2 \
+		-i "$3" || printf "0\n")
+
+) 201>/tmp/.scripts.volume.exclusivelock
+}
+
+# Priority of notification
+PRIORITY=normal
 # How long the notifications shows for in milliseconds
-timeout=1000
-
-# Dunst priority of notification
-priority=normal
+TIMEOUT=1000
 
 # When changing the volume, round to the nearest multiple
 # set to 1 to disable
 round=5
 
-# Progress bar color
-prog_color="#8ba9ed"
-
-# Dunst stack tag; enables replacing the notification
-dunst_tag=status_update
-
-function get_volume() {
-	cache_amixer="$(amixer get Master)"
-	local vfl=$(echo "$cache_amixer" | grep "Front Left:" | awk -F'[][ %]' '{printf $8}')
-	local vfr=$(echo "$cache_amixer" | grep "Front Right:" | awk -F'[][ %]' '{printf $8}')
-	local vmono=$(echo "$cache_amixer" | grep "Mono:" | awk -F'[][ %]' '{printf $7}')
-	if [[ -n $vfl || -n $vfr ]]; then
-		echo $(( ($vfl+$vfr)/2 ))
-	else
-		echo $vmono
-	fi
+vol() {
+	amixer get Master | awk -F'[][[%]' '/%/{print $2}' | head -1
 }
 
-function is_mute() {
-	echo "$(amixer get Master)" | grep '%' | awk '{print $6}' | grep off > /dev/null
+is_mute() {
+	amixer get Master | grep '%' | awk '{print $6}' | grep off > /dev/null
 }
 
-function volume_change() {
+volume_change() {
 	# Automatically unmute upon volume adjustment
 	if is_mute; then
 		amixer set Master unmute
 	fi
 
-	volume=$(get_volume)
-
+	volume=$(vol)
 	# Change the volume appropriately
 	# (rounding to the nearest multiple)
 	if [[ $volume -eq $volume/${round}*${round} ]]; then
@@ -53,53 +58,45 @@ function volume_change() {
 	fi
 
 	amixer set Master $volume%
-}
 
-# Uses Dunst
-function send_notification() {
-	volume=$(get_volume)
-
-	if [[ $1 == "mute" ]]; then
-		dunstify -a "volume" -i audio-volume-muted-symbolic -u $priority -t $timeout -h string:x-dunst-stack-tag:"$dunst_tag" "Volume: Muted"
-		return
-	fi
-
-	# set level to low, medium, high, or overamplified
+	# Fetch the appropriate symbol for the new volume level
+	volume=$(vol)
 	if [[ $volume -le 33 ]]; then
-		level=low
+		level="audio-volume-low-symbolic"
 	elif [[ $volume -le 66 ]]; then
-		level=medium
+		level="audio-volume-medium-symbolic"
 	elif [[ $volume -le 100 ]]; then
-		level=high
+		level="audio-volume-high-symbolic"
 	else
-		level=overamplified
+		level="audio-volume-overamplified-symbolic"
 	fi
 
-	dunstify -a "volume" -i audio-volume-$level-symbolic -u $priority -t $timeout -h string:x-dunst-stack-tag:"$dunst_tag" -h int:value:"$volume" "Volume: ${volume}%" -h string:hlcolor:"$prog_color"
+	args=("$volume%" $volume $level)
 }
 
+declare -a args
 case $1 in
 	mute)
 		# toggle
 		amixer set Master toggle
 		if is_mute; then
-			send_notification mute
+			send_notification "Muted" 0 "audio-volume-muted-symbolic"
 		else
-			volume=$(get_volume)
-			send_notification
+			volume_change 0 args
+			send_notification ${args[@]}
 		fi
 		;;
 	up)
-		volume_change 5 &&\
-		send_notification
+		volume_change $round args
+		send_notification ${args[@]}
 		;;
 	down)
-		volume_change -5 &&\
-		send_notification
+		volume_change -$round args
+		send_notification ${args[@]}
 		;;
 	*)
-		volume_change $1 &&\
-		send_notification
+		volume_change $1 args
+		send_notification ${args[@]}
 		;;
 esac
 
