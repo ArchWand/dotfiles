@@ -8,7 +8,9 @@ alt + F2
 	# vencord
 # Neovim
 alt + F3
-	kitty nvim
+	kitty -1 nvim
+	uxterm -e nvim
+	# wezterm start nvim
 # Schedule
 alt + F4
 	firefox file:///home/arcwand/Class/Schedule/schedule.png
@@ -19,7 +21,7 @@ super + e
 
 # Calculator
 XF86Calculator
-	kitty --class=calc_kitty ~/scripts/calc.sh
+	kitty -1 --class=calc_kitty ~/scripts/calc.sh
 
 # ===== Desktop Environment =====
 # Lock screen
@@ -49,11 +51,12 @@ super + Escape
 # ===== Terminal =====
 # Terminal emulator
 super + Return
-	exo-open --launch TerminalEmulator
+	kitty -1
+	# wezterm
 
 # Floating terminal
 super + shift + Return
-	kitty --class floating_kitty
+	kitty -1 --class floating_kitty
 
 
 # ===== Move Nodes =====
