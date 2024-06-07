@@ -247,15 +247,12 @@ super + t; Return
 
 # Play/Pause
 XF86AudioPlay
-	~/.config/mpv/pause-play.sh ||\
 	playerctl play-pause
 # Previous
 {shift + ,_}XF86AudioPrev
-	~/.config/mpv/playlist-prev.sh ||\
 	playerctl previous
 # Next
 {shift + ,_}XF86AudioNext
-	~/.config/mpv/playlist-next.sh ||\
 	playerctl next
 # The shift option allows me to use my laptop, since I binded
 # shift + fn + f2 to previous
