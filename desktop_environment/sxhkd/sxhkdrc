@@ -19,7 +19,7 @@ super + e
 
 # Calculator
 XF86Calculator
-	wezterm --class calc_term ~/scripts/calc.sh
+	kitty --class calc_term ~/scripts/calc.sh
 
 # ===== Desktop Environment =====
 # Lock screen
@@ -256,18 +256,25 @@ XF86AudioPlay
 
 
 # ===== Notifications =====
-# Close all notifications
-super + n; {super + ,_}x
-	dunstctl close-all
+# Close notifications
+super + n; {super + ,_}{x,q}
+	{_,_}wired --drop {latest,all}
 
-# Show previous notifcation
-super + n; {super + ,_}p
-	dunstctl history-pop
+# Change number of notifications displayed
+super + n; {super + h:, h:,_}{super + ,_}p
+	wired --show 1
+super + n; {super + h:, h:,_}{super + ,_}n
+	wired --drop latest
 
 # Click notification
-super + n; {super + ,_}Return
-	dunstctl action
+super + n; {super + ,_}{Return,1-4}
+	{_,_}wired -a latest:{default,1-4}
 
+# Toggle do not disturb mode
+super + n; {super + ,_}d
+	wired --dnd on && wired --drop all
+super + n; {super + ,_}e
+	wired --dnd off
 
 # ===== Bar =====
 # Popup polybar

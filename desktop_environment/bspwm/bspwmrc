@@ -69,7 +69,7 @@ picom &
 # Gestures
 libinput-gestures-setup stop start &
 # Notifications
-pkill -9 dunst; dunst &
+pkill -9 wired; wired &
 # IME/IMF
 fcitx5 -r &
 # Clipboard history

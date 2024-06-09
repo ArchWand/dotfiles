@@ -20,7 +20,7 @@ up_dir ~/.config/rofi desktop_environment
 up_dir ~/.config/sxhkd desktop_environment
 up_dir /etc/X11/xorg.conf.d desktop_environment
 up_file ~/.config/betterlockscreen/betterlockscreenrc desktop_environment
-up_file ~/.config/dunst/dunstrc desktop_environment
+up_file ~/.config/wired/wired.ron desktop_environment
 up_file ~/.config/libinput-gestures.conf desktop_environment
 up_file /etc/logid.cfg desktop_environment
 up_file ~/.config/picom/picom.conf desktop_environment

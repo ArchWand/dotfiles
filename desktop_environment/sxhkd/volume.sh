@@ -1,26 +1,4 @@
 #!/bin/bash
-# Most recent notification ID is stored within the script
-ID=1336
-FILENAME=$0
-
-set_id() {
-	sed -i -E 's/^ID=[0-9]+/ID='$1'/' $FILENAME
-}
-get_id() {
-	awk -F'=' '/^ID=/{print $2}' $FILENAME
-}
-
-send_notification() {
-(
-	# Wait for lock on /tmp/.scripts.volume.exclusivelock (fd 201) for 10 seconds
-	flock -x -w 10 201 || exit 1
-
-	set_id $(notify-send -p -r $(get_id) -a "volume" "Volume: $1" \
-		-u $PRIORITY -t $TIMEOUT -h int:value:$2 \
-		-i "$3" || printf "0\n")
-
-) 201>/tmp/.scripts.volume.exclusivelock
-}
 
 # Priority of notification
 PRIORITY=normal
@@ -30,6 +8,13 @@ TIMEOUT=1000
 # When changing the volume, round to the nearest multiple
 # set to 1 to disable
 round=5
+
+send_notification() {
+	notify-send -a "volume" \
+		-u $PRIORITY -t $TIMEOUT -i "$3" \
+		-h string:wired-tag:system-notif -h int:value:$2 \
+		"Volume: $1"
+}
 
 vol() {
 	amixer get Master | awk -F'[][[%]' '/%/{print $2}' | head -1
