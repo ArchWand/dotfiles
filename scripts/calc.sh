@@ -14,3 +14,4 @@ def rationalize(decimal, max_denom=1000, max_error=0):
 
 EOF
 )"
+

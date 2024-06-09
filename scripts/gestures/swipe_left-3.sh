@@ -9,10 +9,11 @@ case "$app" in
 	discord|VencordDesktop|Slack)
 		xdotool key alt+shift+Up
 		;;
-	*kitty)
+	*kitty|*wezterm)
 		case "$name" in
 			*)
-				xdotool key ctrl+shift+Left
+				# xdotool key ctrl+shift+Left
+				xdotool key ctrl+shift+Tab
 				;;
 			nvim*|nv|lf|ranger)
 				xdotool key ctrl+o

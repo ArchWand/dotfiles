@@ -120,7 +120,7 @@ export PATH="$PATH:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-function rmcd { dir="$(pwd)" && cd .. && rm -rf "$dir" || cd "$dir" }
+function rmcd { dir="$(pwd)" && cd .. && trash-put "$dir" || cd "$dir" }
 function rdcd { dir="$(pwd)" && cd .. && rd "$dir" || cd "$dir" }
 function mcd { mkdir -p "$*" && cd "$*" }
 function mvcwd { dir="$(pwd)" && cd .. && mv "$dir" "$1" || cd - ; cd "$1" }
@@ -142,14 +142,13 @@ alias ll="ls -lAh"
 alias lc="ls -rct"
 alias cdnew='cd "$(ls -ctd */ | head -n 1)"'
 
-alias icat="kitty +kitten icat"
+alias icat="wezterm imgcat"
 alias clip="xsel -b"
 
 autoload zcalc
 alias hardclear='echo -ne "\ec"'
 alias reset="tput reset"
 alias zsh-no-git-prompt='git config --add oh-my-zsh.hide-status 1; git config --add oh-my-zsh.hide-dirty 1'
-alias kitty-disable-ime='unset GLFW_IM_MODULE && kitty'
 alias init-nvm='source /usr/share/nvm/init-nvm.sh'
 alias xev-keyboard='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'
 alias startx11vnc="x11vnc -display :0 -usepw"

@@ -41,8 +41,8 @@ function position() {
 }
 
 # Floating terminal rules
-bspc rule -a floating_kitty state=floating rectangle=$(half_dimension "$(bspc query -M --names | head -n 1)")+0+0 center=true
-bspc rule -a calc_kitty state=floating rectangle=400x500+1000+500
+bspc rule -a floating_term state=floating rectangle=$(half_dimension "$(bspc query -M --names | head -n 1)")+0+0 center=true
+bspc rule -a calc_term state=floating rectangle=400x500+1000+500
 
 # General floating rules
 bspc rule -a '*:Toolkit:Picture-in-Picture' state=floating sticky=on focus=on

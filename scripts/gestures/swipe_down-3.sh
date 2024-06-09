@@ -6,7 +6,7 @@ case "$app" in
 	firefox)
 		xdotool key ctrl+r
 		;;
-	*kitty)
+	*kitty|*wezterm)
 		case "$name" in
 			*)
 				xdotool key ctrl+c
