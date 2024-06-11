@@ -19,7 +19,7 @@ case "$app" in
 				;;
 			*)
 				# xdotool key ctrl+u key ctrl+d
-				xdotool key ctrl+z key x
+				xdotool key ctrl+shift+h
 				;;
 		esac
 		;;

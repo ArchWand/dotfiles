@@ -84,7 +84,7 @@ function M.apply_to_config(config)
 
   config.inactive_pane_hsb = {
     saturation = 1.0,
-    brightness = 0.6,
+    brightness = 0.9,
   }
 
   config.window_background_opacity = 0.9

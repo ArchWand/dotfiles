@@ -18,10 +18,32 @@ function M.apply_to_config(config)
       key = "v", mods = "LEADER|CTRL",
       action = a.SendKey { key = "v", mods = "CTRL", },
     },
+    -- Debug
+    {
+      key = "d", mods = "LEADER",
+      action = a.ShowDebugOverlay,
+    },
+    -- Clear selection
+    {
+      key = "l", mods = "LEADER|CTRL",
+      action = a.ClearSelection,
+    },
 
     -- More powerful and convenient copy and paste
     {
       key = "c", mods = "CTRL",
+      action = wezterm.action_callback(function(window, pane)
+        local has_selection = window:get_selection_text_for_pane(pane) ~= ""
+        if has_selection then
+          window:perform_action(a.CopyTo "ClipboardAndPrimarySelection", pane)
+          window:perform_action(a.ClearSelection, pane)
+        else
+          window:perform_action(a.SendKey { key = "c", mods = "CTRL" }, pane)
+        end
+      end),
+    },
+    { -- For MacOS parity
+      key = "c", mods = "CMD",
       action = wezterm.action_callback(function(window, pane)
         local has_selection = window:get_selection_text_for_pane(pane) ~= ""
         if has_selection then
