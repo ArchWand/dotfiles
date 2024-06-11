@@ -42,12 +42,12 @@ function M.apply_to_config(config)
   -- Visual bell
   config.visual_bell = {
     fade_in_function = "Constant",
-    fade_in_duration_ms = 50,
+    fade_in_duration_ms = 100,
     fade_out_function = "Constant",
-    fade_out_duration_ms = 50,
+    fade_out_duration_ms = 100,
     -- target = "CursorColor",
   }
-  config.colors.visual_bell = '#11111b'
+  config.colors.visual_bell = '#1e1e2e'
 
   -- Tab bar
   config.use_fancy_tab_bar = false

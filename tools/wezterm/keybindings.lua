@@ -18,11 +18,6 @@ function M.apply_to_config(config)
       key = "v", mods = "LEADER|CTRL",
       action = a.SendKey { key = "v", mods = "CTRL", },
     },
-    -- Close pane
-    {
-      key = "x", mods = "LEADER",
-      action = a.CloseCurrentPane { confirm = false },
-    },
 
     -- More powerful and convenient copy and paste
     {
@@ -48,12 +43,20 @@ function M.apply_to_config(config)
 
     -- More sensible split keybinds
     { -- Note that "Vertical" and "Horizontal" are swapped to match Neovim
-      key = "v", mods = "LEADER",
+      key = "L", mods = "CTRL|SHIFT",
       action = a.SplitHorizontal { domain = "CurrentPaneDomain" },
     },
     {
-      key = "s", mods = "LEADER",
+      key = "J", mods = "CTRL|SHIFT",
       action = a.SplitVertical { domain = "CurrentPaneDomain" },
+    },
+    {
+      key = "H", mods = "CTRL|SHIFT",
+      action = a.CloseCurrentPane { confirm = false },
+    },
+    {
+      key = "K", mods = "CTRL|SHIFT",
+      action = a.CloseCurrentPane { confirm = false },
     },
 
     -- Rebind OPT-Left, OPT-Right as ALT-b, ALT-f for MacOS

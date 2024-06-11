@@ -9,8 +9,6 @@ require("keybindings").apply_to_config(config)
 require("config").apply_to_config(config)
 require("events").apply_to_config(config)
 
-config.enable_kitty_keyboard = true
-
 -- wezterm.log_error()
 
 return config
