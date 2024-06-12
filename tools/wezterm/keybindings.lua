@@ -28,6 +28,15 @@ function M.apply_to_config(config)
       key = "l", mods = "LEADER|CTRL",
       action = a.ClearSelection,
     },
+    -- Cancel command
+    {
+      key = "Return", mods = "LEADER|CTRL",
+      action = a.Multiple {
+        a.SendKey { key = "Home" },
+        a.SendKey { key = "#", mods = "SHIFT" },
+        a.SendKey { key = "Return" },
+      },
+    },
 
     -- More powerful and convenient copy and paste
     {

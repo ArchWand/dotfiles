@@ -9,8 +9,8 @@ function M.apply_to_config(config)
   config.enable_wayland = false
   config.exit_behavior = "Close"
   config.exit_behavior_messaging = "Terse"
-  config.swallow_mouse_click_on_window_focus = false -- even on MacOS
-  config.use_resize_increments = true
+  -- config.swallow_mouse_click_on_window_focus = false -- even on MacOS
+  config.use_resize_increments = false
   config.window_decorations = "RESIZE"
 end
 
