@@ -85,10 +85,6 @@ function M.apply_to_config(config)
       key = "H", mods = "CTRL|SHIFT",
       action = a.CloseCurrentPane { confirm = false },
     },
-    {
-      key = "K", mods = "CTRL|SHIFT",
-      action = a.CloseCurrentPane { confirm = false },
-    },
 
     -- Rebind OPT-Left, OPT-Right as ALT-b, ALT-f for MacOS
     {
