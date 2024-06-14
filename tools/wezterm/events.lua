@@ -1,7 +1,7 @@
 local M = {}
 
 function M.apply_to_config(config)
-  local cfg_padding = require("appearance").padding_table
+  local cfg_padding = require("padding").padding_table
 
   wezterm.on("window-resized", function(window)
     util.compute_padding(window, cfg_padding)

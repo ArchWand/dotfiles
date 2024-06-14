@@ -23,7 +23,7 @@ function M.compute_padding(window, cfg_padding)
 end
 
 function M.is_mac()
-  return wezterm.target_triple == 'aarch64-apple-darwin'
+  return wezterm.target_triple == "aarch64-apple-darwin"
 end
 
 return M
