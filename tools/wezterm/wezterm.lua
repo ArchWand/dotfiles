@@ -1,4 +1,5 @@
 wezterm = require "wezterm"
+util = require "util"
 local config = {}
 
 require("appearance").apply_to_config(config)

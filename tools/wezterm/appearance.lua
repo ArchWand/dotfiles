@@ -75,12 +75,25 @@ function M.apply_to_config(config)
   }
 
   -- Window padding
-  config.window_padding = {
-    left = 0,
-    right = 0,
-    top = 0,
-    bottom = 0,
-  }
+  config.window_padding = { top = 0, bottom = 0, left = 0, right = 0, }
+
+  -- Configure per-window-size paddings
+  M.padding_table = { w = {}, h = {} }
+  -- Fullscreen
+  M.padding_table.w[1920] = { left = 0, right = 0 }
+  M.padding_table.h[1080] = { top = 4, bottom = 5 }
+
+  -- Full
+  M.padding_table.w[1914] = { left = 2, right = 2 }
+  M.padding_table.h[1074] = { top = 1, bottom = 2 }
+
+  -- Half
+  M.padding_table.w[954] = { left = 2, right = 2 }
+  M.padding_table.h[534] = { top = 4, bottom = 5 }
+
+  util.set_default(M.padding_table.w, { left = 0, right = 0 })
+  util.set_default(M.padding_table.h, { top = 0, bottom = 0 })
+
 
   config.inactive_pane_hsb = {
     saturation = 1.0,
