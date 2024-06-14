@@ -1,10 +1,10 @@
 local M = {}
+M.padding_table = { w = {}, h = {} }
 
 function M.apply_to_config(config)
   config.window_padding = { top = 0, bottom = 0, left = 0, right = 0, }
 
   -- Configure per-window-size paddings
-  M.padding_table = { w = {}, h = {} }
   -- Laptop Fullscreen
   M.padding_table.w[1920] = { left = 0, right = 0 }
   M.padding_table.h[1080] = { top = 4, bottom = 5 }
