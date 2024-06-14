@@ -12,8 +12,8 @@
 	"keyMappings": [
 		"#!no-check",
 		"map F LinkHints.activateOpenInNewForegroundTab",
-		"map <a-f> LinkHints.activateOpenInNewTab",
-		"map <a-s-f> LinkHints.activateWithQueue",
+		"map <a-f> LinkHints.activateWithQueue",
+		"map <a-s-f> LinkHints.activateOpenInNewTab",
 		"map <c-e> scrollPxDown",
 		"map <c-y> scrollPxUp",
 		"map zh scrollPxLeft",
@@ -186,5 +186,6 @@
 		""
 	],
 	"vimSync": true,
+	"waitForEnter": false,
 	"ignoreCapsLock": 2
 }
