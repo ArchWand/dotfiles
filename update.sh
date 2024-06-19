@@ -31,9 +31,9 @@ up_dir ~/scripts
 up_dir ~/.config/kitty tools
 up_dir ~/.config/mpv tools
 up_dir ~/.config/nvim tools
+up_dir ~/.config/Vencord/settings tools/Vencord
 up_dir ~/.config/wezterm tools
 up_dir ~/.config/zathura tools
-up_file ~/.config/Vencord/settings/quickCss.css tools
 fcrontab -l > tools/crontab 2> /dev/null
 up_file ~/.bash_profile tools/shell/.bash_profile
 up_file ~/.bashrc tools/shell/.bashrc
