@@ -1,19 +1,19 @@
 {
 	"name": "Vimium C",
-	"@time": "6/14/2024, 9:05:54 AM",
-	"time": 1718381154113,
+	"@time": "8/13/2024, 11:33:16 AM",
+	"time": 1723563196571,
 	"environment": {
 		"extension": "1.99.997",
 		"platform": "linux",
-		"firefox": 127
+		"firefox": 128
 	},
 	"exclusionRules": [
 		{
-			"passKeys": "+ - j k r ",
+			"passKeys": "+ - [ ] a j k r x z ",
 			"pattern": "^(https?:\\/\\/)?(www\\.)?reddit.com/"
 		},
 		{
-			"passKeys": "0 < > c g i r x z ",
+			"passKeys": "/ 0 < > c g i r x z ",
 			"pattern": "^(https?:\\/\\/)?(www\\.|m\\.)?(youtube\\.com|youtu\\.be)"
 		},
 		{
