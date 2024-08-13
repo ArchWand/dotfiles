@@ -18,6 +18,7 @@ up_dir ~/.config/bspwm desktop_environment
 up_dir ~/.config/polybar desktop_environment
 up_dir ~/.config/rofi desktop_environment
 up_dir ~/.config/sxhkd desktop_environment
+up_dir ~/.local/share/fonts desktop_environment
 up_dir /etc/X11/xorg.conf.d desktop_environment
 up_file ~/.config/betterlockscreen/betterlockscreenrc desktop_environment
 up_file ~/.config/wired/wired.ron desktop_environment
