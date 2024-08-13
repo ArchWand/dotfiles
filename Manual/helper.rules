@@ -843,6 +843,10 @@ IGNORE-MISMATCH=[
     https://open.spotify.com/track/1PeBPKbOCc370rnLKploBL,
     https://open.spotify.com/track/74oWejX8MG6SEaJiz1334D,
     https://open.spotify.com/track/1NcsCToPRUh9AI6ua83jAm,
+    https://open.spotify.com/track/6wpI5gQoIYWBJs9juUEvJI,
+    https://open.spotify.com/track/45OflED18VsURGw2z0Y6Cv,
+    https://open.spotify.com/track/1T0hdoMSjzoKUPbKRmrDg3,
+    https://open.spotify.com/track/3x4378ztiLvFmm2nuzEI0C,
 ]
 
 # Manual song replacements
@@ -1093,6 +1097,10 @@ RENAME=[
     ドレスコード (Prod. imase) - LE SSERAFIM.mp3 : Dresscode (ドレスコード) (Prod. imase) - LE SSERAFIM.mp3,
     쏘리 쏘리 Sorry, Sorry - SUPER JUNIOR.mp3 : Sorry, Sorry (쏘리 쏘리) - SUPER JUNIOR.mp3,
     ジュエリー (Prod. imase) - LE SSERAFIM.mp3 : Jewelry (ジュエリー) (Prod. imase) - LE SSERAFIM.mp3,
+    ゆらゆら -運命の花- - ZEROBASEONE.mp3 : YURA YURA (ゆらゆら -運命の花-) - ZEROBASEONE.mp3,
+    熱愛フローズン - VALIS.mp3 : Netsuai Frozen (熱愛フローズン) - VALIS.mp3,
+    ตึกตัก (Skip a Beat) - Celeste.mp3 : Skip a Beat (ตึกตัก) - Celeste.mp3,
+    Long Chat (#♥) - aespa.mp3 : Long Chat (#♥) - aespa.mp3,
 ]
 
 # Determines how strict verification is. Files that fail verification

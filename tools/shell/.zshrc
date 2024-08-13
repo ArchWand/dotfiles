@@ -152,6 +152,7 @@ alias zsh-no-git-prompt='git config --add oh-my-zsh.hide-status 1; git config --
 alias init-nvm='source /usr/share/nvm/init-nvm.sh'
 alias xev-keyboard='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'
 alias startx11vnc="x11vnc -display :0 -usepw"
+alias newjournal="mkdir -p ~/Journal/$(date -I) && cd ~/Journal/$(date -I) && printf \"**$(date +"%H:%m"):**  \\n\" >> page.md && nvim page.md -c 'normal! Go'"
 
 alias rm=trash-put
 alias nv=nvim

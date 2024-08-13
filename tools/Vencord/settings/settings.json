@@ -120,7 +120,8 @@
         "Experiments": {
             "enabled": true,
             "enableIsStaff": false,
-            "forceStagingBanner": false
+            "forceStagingBanner": false,
+            "toolbarDevMenu": false
         },
         "F8Break": {
             "enabled": false
@@ -177,7 +178,7 @@
             "invertScroll": true,
             "nearestNeighbour": false,
             "square": true,
-            "zoom": 2,
+            "zoom": 2.000000000000001,
             "size": 1000,
             "zoomSpeed": 0.5
         },
@@ -221,7 +222,9 @@
             "ignoreChannels": "",
             "ignoreGuilds": "",
             "logEdits": true,
-            "logDeletes": true
+            "logDeletes": true,
+            "collapseDeleted": false,
+            "inlineEdits": true
         },
         "MessageTags": {
             "enabled": false
@@ -298,7 +301,10 @@
             "enabled": false
         },
         "NoReplyMention": {
-            "enabled": true
+            "enabled": true,
+            "userList": "1234567890123445,1234567890123445",
+            "shouldPingListed": true,
+            "inverseShiftReply": false
         },
         "NoScreensharePreview": {
             "enabled": false
@@ -385,7 +391,8 @@
             "enabled": true,
             "chatMentions": true,
             "memberList": true,
-            "voiceUsers": true
+            "voiceUsers": true,
+            "reactorsList": true
         },
         "SearchReply": {
             "enabled": true
@@ -691,10 +698,22 @@
         "FixYoutubeEmbeds": {
             "enabled": false
         },
-        "WatchTogetherAdblock": {
+        "XSOverlay": {
             "enabled": false
         },
-        "XSOverlay": {
+        "UserSettingsAPI": {
+            "enabled": true
+        },
+        "ShowAllRoles": {
+            "enabled": false
+        },
+        "ConsoleJanitor": {
+            "enabled": false
+        },
+        "MentionAvatars": {
+            "enabled": false
+        },
+        "YoutubeAdblock": {
             "enabled": false
         }
     },
@@ -708,7 +727,7 @@
         "authenticated": true,
         "url": "https://api.vencord.dev/",
         "settingsSync": true,
-        "settingsSyncVersion": 1717888955028
+        "settingsSyncVersion": 1722627328085
     },
     "enabledThemes": []
 }

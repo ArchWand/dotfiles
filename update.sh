@@ -31,6 +31,7 @@ up_dir ~/scripts
 up_dir ~/.config/kitty tools
 up_dir ~/.config/mpv tools
 up_dir ~/.config/nvim tools
+up_dir ~/.config/ranger tools
 up_dir ~/.config/Vencord/settings tools/Vencord
 up_dir ~/.config/wezterm tools
 up_dir ~/.config/zathura tools
