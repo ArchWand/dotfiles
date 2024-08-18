@@ -178,7 +178,7 @@
             "invertScroll": true,
             "nearestNeighbour": false,
             "square": true,
-            "zoom": 2.000000000000001,
+            "zoom": 4.4913098549842845,
             "size": 1000,
             "zoomSpeed": 0.5
         },
@@ -727,7 +727,7 @@
         "authenticated": true,
         "url": "https://api.vencord.dev/",
         "settingsSync": true,
-        "settingsSyncVersion": 1722627328085
+        "settingsSyncVersion": 1723911232314
     },
     "enabledThemes": []
 }
