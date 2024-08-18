@@ -14,5 +14,3 @@ window_name="$(xdotool getactivewindow getwindowname)"
 
 echo "$timestamp | $window_name" >> "$log_file"
 
-unset log_file timestamp window_name
-

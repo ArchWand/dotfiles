@@ -21,16 +21,16 @@ up_dir ~/.config/rofi desktop_environment
 up_dir ~/.config/sxhkd desktop_environment
 up_dir ~/.local/share/fonts desktop_environment
 up_dir /etc/X11/xorg.conf.d desktop_environment
-up_file ~/.config/betterlockscreen/betterlockscreenrc desktop_environment
-up_file ~/.config/wired/wired.ron desktop_environment
+# up_file ~/.config/betterlockscreen/betterlockscreenrc desktop_environment
+up_file ~/.config/wired.ron desktop_environment
 up_file ~/.config/libinput-gestures.conf desktop_environment
-up_file /etc/logid.cfg desktop_environment
-up_file ~/.config/picom/picom.conf desktop_environment
+up_file ~/.config/picom.conf desktop_environment
 up_file ~/.config/X11/xinitrc desktop_environment
+up_file /etc/logid.cfg desktop_environment
 
 up_dir ~/scripts
 
-up_dir ~/.config/kitty tools
+# up_dir ~/.config/kitty tools
 up_dir ~/.config/mpv tools
 up_dir ~/.config/nvim tools
 up_dir ~/.config/ranger tools

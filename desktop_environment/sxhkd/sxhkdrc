@@ -19,7 +19,7 @@ super + e
 
 # Calculator
 XF86Calculator
-	kitty --class calc_term ~/scripts/calc.sh
+	wezterm start --class calc_term ~/scripts/calc.sh
 
 # ===== Desktop Environment =====
 # Lock screen
