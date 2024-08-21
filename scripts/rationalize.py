@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 
-def rationalize(decimal, max_denom=1000, max_error=0):
+def rationalize(decimal, max_denom=1000, max_error=0.000001):
     # Split the decimal so that we operate on a number between 0 and 1
     ipart, decimal = divmod(decimal, 1)
 
@@ -26,7 +26,7 @@ def main():
     parser.add_argument("decimal", type=float, help="The decimal number to convert.")
     parser.add_argument("-m", "--max_denominator", type=int, default=1000,
                       help="Maximum allowed denominator (default: 1000).")
-    parser.add_argument("-e", "--max_error", type=float, default=0.0,
+    parser.add_argument("-e", "--max_error", type=float, default=0.000001,
                       help="Error at which to stop the search (default: 0).")
 
     args = parser.parse_args()
