@@ -324,14 +324,14 @@ super + alt + v
 
 # Emoji picker
 super + semicolon
-	/usr/bin/rofimoji
+	/usr/bin/rofimoji --selector-args="-monitor -1"
 
 # Unicode picker
 super + shift + u
-	/usr/bin/rofimoji --files all
+	/usr/bin/rofimoji --selector-args="-monitor -1" --files all
 # Unicode picker copy code point
 super + alt + u
-	/usr/bin/rofimoji --files all --action copy-unicode
+	/usr/bin/rofimoji --selector-args="-monitor -1" --files all --action copy-unicode
 
 # Show help
 super + slash
