@@ -1,3 +1,4 @@
+#!/bin/zsh
 # Monitor names
 LAPTOP="eDP"
 EXTERNAL="DisplayPort-3"
@@ -12,16 +13,16 @@ fi
 ~/.config/bspwm/desktops.sh
 case $ar_conf in
 	laptop) # Name of the one-screen config
-		start_desk="$LAPTOP_$(bspc query -D -d focused --names | cut -d'_' -f 2)"
+		start_desk="$LAPTOP"_"$(bspc query -D -d focused --names | cut -d'_' -f 2)"
 
 		# Move all nodes to the primary monitor
 		for d in {01..10}; do
 			# Focus next desktop
-			bspc desktop $EXTERNAL_$d -f &&\
+			bspc desktop "$EXTERNAL"_$d -f &&\
 			# Select all nodes
 			bspc node -f @/ &&\
 			# Move the nodes
-			bspc node -d $LAPTOP_$d --follow &&\
+			bspc node -d "$LAPTOP"_$d --follow &&\
 			# Unselect the nodes
 			bspc node -f @first
 		done
@@ -45,10 +46,10 @@ case $ar_conf in
 		# but only if there are no nodes already on the external monitor
 		if [[ -z "$(bspc query -N -m "$EXTERNAL")" ]]; then
 			# Update the start desktops
-			start_desk="$EXTERNAL_$(echo "$start_desk" | cut -d'_' -f 2)"
+			start_desk="$EXTERNAL"_"$(echo "$start_desk" | cut -d'_' -f 2)"
 			# Swap all desktops to the external monitor
 			for d in {01..10}; do
-				bspc desktop $LAPTOP_$d -s $EXTERNAL_$d
+				bspc desktop "$LAPTOP"_$d -s "$EXTERNAL"_$d
 			done
 		fi
 		# Reset the desktop names
@@ -59,16 +60,16 @@ case $ar_conf in
 		;;
 	monitor) # Name of the external monitor only config
 		# Remember which desktop we started on
-		start_desk="$EXTERNAL_$(bspc query -D -d focused --names | cut -d'_' -f 2)"
+		start_desk="$EXTERNAL"_"$(bspc query -D -d focused --names | cut -d'_' -f 2)"
 
 		# Move all nodes to the external monitor
 		for d in {01..10}; do
 			# Focus next desktop
-			bspc desktop $LAPTOP_$d -f &&\
+			bspc desktop "$LAPTOP"_$d -f &&\
 			# Select all nodes
 			bspc node -f @/ &&\
 			# Move the nodes
-			bspc node -d $EXTERNAL_$d --follow &&\
+			bspc node -d "$EXTERNAL"_$d --follow &&\
 			# Unselect the nodes
 			bspc node -f @first
 		done
