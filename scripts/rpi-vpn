@@ -10,12 +10,12 @@ user=zhur7
 pass=$(bw get password e86da553-b4c9-49aa-b6e7-aea500b48dd6 || notify-send "Invalid Master Password")
 
 
-# Test if running from terminal or from rofi
-if [ $KITTY_WINDOW_ID ]; then
+# Test if running from terminal
+if [[ $DISPLAY ]]; then
 	# Running from terminal
 	sudo -v && printf "$pass\npush" | sudo openconnect --protocol=$protocol "$vpn_url" -u $user|| notify-send "VPN Connection Failed"
 else
 	# Running from rofi
-	kitty --class=floating_kitty -- bash -c 'sudo -v && printf "$pass\npush" | sudo openconnect --protocol=$protocol $vpn_url -u $user || notify-send "VPN Connection Failed"'
+	wezterm start --class=floating_term -- bash -c 'sudo -v && printf "$pass\npush" | sudo openconnect --protocol=$protocol $vpn_url -u $user || notify-send "VPN Connection Failed"'
 fi
 
