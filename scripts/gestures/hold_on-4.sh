@@ -5,7 +5,8 @@
 
 # case "$app" in
 	# *)
-		xdotool key super+alt+r
+		# xdotool key super+alt+r
+		xdotool key super+Tab
 		# ;;
 # esac
 

@@ -9,17 +9,17 @@ case "$app" in
 	firefox|Chromium|Google-chrome)
 		xdotool key ctrl+w
 		;;
-	*kitty|*wezterm)
+	*kitty|*wezterm|calc_term)
 		case "$name" in
-			*nvim*|*"make edit"|*lf)
+			*nvim*|*"make edit"|*ranger)
 				xdotool key Escape shift+z shift+z
 				;;
 			*lazygit|*less|*man*|*btop)
 				xdotool key q
 				;;
 			*)
-				# xdotool key ctrl+u key ctrl+d
-				xdotool key ctrl+shift+h
+				xdotool key ctrl+u key ctrl+d
+				# xdotool key ctrl+shift+h
 				;;
 		esac
 		;;
