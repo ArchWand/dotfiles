@@ -2,6 +2,7 @@
 
 python3 -qic "$(cat <<EOF
 from math import *
+from random import *
 from statistics import *
 
 def rationalize(decimal, max_denom=1000, max_error=0.00000001):
