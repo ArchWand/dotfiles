@@ -178,12 +178,12 @@
             "invertScroll": true,
             "nearestNeighbour": false,
             "square": true,
-            "zoom": 3.2913098549842843,
+            "zoom": 1.6,
             "size": 1000,
             "zoomSpeed": 0.5
         },
         "InvisibleChat": {
-            "enabled": false,
+            "enabled": true,
             "savedPasswords": "password, Password"
         },
         "KeepCurrentChannel": {
@@ -347,14 +347,6 @@
             "badges": true,
             "messages": true
         },
-        "PronounDB": {
-            "enabled": false,
-            "showInMessages": true,
-            "showSelf": true,
-            "pronounSource": 0,
-            "pronounsFormat": "LOWERCASE",
-            "showInProfile": true
-        },
         "QuickMention": {
             "enabled": false
         },
@@ -392,10 +384,8 @@
             "chatMentions": true,
             "memberList": true,
             "voiceUsers": true,
-            "reactorsList": true
-        },
-        "SearchReply": {
-            "enabled": true
+            "reactorsList": true,
+            "colorChatMessages": false
         },
         "SendTimestamps": {
             "enabled": true,
@@ -432,7 +422,8 @@
         "SilentTyping": {
             "enabled": true,
             "showIcon": true,
-            "isEnabled": true
+            "isEnabled": true,
+            "contextMenu": true
         },
         "SortFriendRequests": {
             "enabled": false
@@ -482,7 +473,10 @@
             "enabled": false
         },
         "UserVoiceShow": {
-            "enabled": true
+            "enabled": true,
+            "showInUserProfileModal": true,
+            "showInMemberList": true,
+            "showInMessages": true
         },
         "USRBG": {
             "enabled": false
@@ -512,7 +506,8 @@
             "enabled": true
         },
         "VolumeBooster": {
-            "enabled": true
+            "enabled": true,
+            "multiplier": 2
         },
         "GreetStickerPicker": {
             "enabled": true,
@@ -704,9 +699,6 @@
         "UserSettingsAPI": {
             "enabled": true
         },
-        "ShowAllRoles": {
-            "enabled": false
-        },
         "ConsoleJanitor": {
             "enabled": false
         },
@@ -714,6 +706,38 @@
             "enabled": false
         },
         "YoutubeAdblock": {
+            "enabled": false
+        },
+        "NoMaskedUrlPaste": {
+            "enabled": false
+        },
+        "AlwaysExpandRoles": {
+            "enabled": false
+        },
+        "CopyFileContents": {
+            "enabled": false
+        },
+        "StickerPaste": {
+            "enabled": false
+        },
+        "FullSearchContext": {
+            "enabled": true
+        },
+        "AccountPanelServerProfile": {
+            "enabled": false
+        },
+        "UserMessagesPronouns": {
+            "enabled": false,
+            "showInMessages": true,
+            "showSelf": true,
+            "pronounSource": 0,
+            "pronounsFormat": "LOWERCASE",
+            "showInProfile": true
+        },
+        "DynamicImageModalAPI": {
+            "enabled": true
+        },
+        "FixImagesQuality": {
             "enabled": false
         }
     },
@@ -727,7 +751,7 @@
         "authenticated": true,
         "url": "https://api.vencord.dev/",
         "settingsSync": true,
-        "settingsSyncVersion": 1724294918738
+        "settingsSyncVersion": 1729956182094
     },
     "enabledThemes": []
 }
