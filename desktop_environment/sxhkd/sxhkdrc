@@ -257,7 +257,7 @@ XF86AudioPlay
 
 # ===== Notifications =====
 # Close notifications
-super + n; {super + ,_}{x,q}
+super + n; {super + ,_}{x,c}
 	{_,_}wired --drop {latest,all}
 
 # Change number of notifications displayed

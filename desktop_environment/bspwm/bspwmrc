@@ -62,8 +62,6 @@ bspc rule -a Zathura state=tiled
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # Bar
 $HOME/.config/polybar/launch.sh &
-# Wallpaper
-nitrogen --restore &
 # Compositor
 picom &
 # Gestures
@@ -74,6 +72,8 @@ pkill -9 wired; wired &
 fcitx5 -r &
 # Clipboard history
 pkill -9 greenclip; greenclip daemon &
+# Wallpaper
+nitrogen --restore &
 # Auto-suspend
 pkill -9 xautolock
 xautolock -time 30 -locker 'systemctl suspend' -detectsleep &
