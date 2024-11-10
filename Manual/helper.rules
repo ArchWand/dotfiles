@@ -847,6 +847,25 @@ IGNORE-MISMATCH=[
     https://open.spotify.com/track/45OflED18VsURGw2z0Y6Cv,
     https://open.spotify.com/track/1T0hdoMSjzoKUPbKRmrDg3,
     https://open.spotify.com/track/3x4378ztiLvFmm2nuzEI0C,
+    https://open.spotify.com/track/3i6vV5Z2P9uMlxf8wdm2WK,
+    https://open.spotify.com/track/3y7ByLZ05tluscOTRgEJ9Y,
+    https://open.spotify.com/track/7MCalyylbGRqq4KNlYwGkx,
+    https://open.spotify.com/track/2MeEPaL5HsW9njvrtP0Agj,
+    https://open.spotify.com/track/7EQGXaVSyEDsCWKmUcfpLk,
+    https://open.spotify.com/track/40riOy7x9W7GXjyGp4pjAv,
+    https://open.spotify.com/track/158kubraiqKrcYpRsDHrBU,
+    https://open.spotify.com/track/7FXj7Qg3YorUxdrzvrcY25,
+    https://open.spotify.com/track/3ELLtSclCBRIJKhiTRF7Y8,
+    https://open.spotify.com/track/3vu8NXAryXrNG8ICj71Buq,
+    https://open.spotify.com/track/5ZferkYdwqUkvoh7Z92bhb,
+    https://open.spotify.com/track/0lHAMNU8RGiIObScrsRgmP,
+    https://open.spotify.com/track/5rel7L0UVWzW0aUsbzWgR8,
+    https://open.spotify.com/track/6S2gYweMmT6xygVh5q3QLa,
+    https://open.spotify.com/track/5DQc9DipgMf8sTBmW20rb7,
+    https://open.spotify.com/track/1scswYxDmooSV19whJfGYI,
+    https://open.spotify.com/track/3lYvepDz6yYj29z7e4r5z0,
+    https://open.spotify.com/track/3YQkC6dE9YE9sH1751qqEr,
+    https://open.spotify.com/track/3IzHfzxOoXMmdT4OptBOli,
 ]
 
 # Manual song replacements
@@ -923,6 +942,7 @@ REPLACE=[
     https://www.youtube.com/watch?v=PUwWmwPpaPc | https://open.spotify.com/track/7cAPjgMg1EkMvhek6W2PuY,
     https://www.youtube.com/watch?v=_bi4NXB0i70 | https://open.spotify.com/track/1uOFPJmg1yx3sfBqgv1JAS?si=227fe179cbe64539,
     https://www.youtube.com/watch?v=KeMq2QKhcTE | https://open.spotify.com/track/5dv9gqcgEs1Yj36AJQ5NID,
+    https://www.youtube.com/watch?v=85-uSmliriI | https://open.spotify.com/track/5EaVikAxSRponyifRP6Fhp,
 ]
 
 # Buffer for manual songs
@@ -1101,6 +1121,12 @@ RENAME=[
     熱愛フローズン - VALIS.mp3 : Netsuai Frozen (熱愛フローズン) - VALIS.mp3,
     ตึกตัก (Skip a Beat) - Celeste.mp3 : Skip a Beat (ตึกตัก) - Celeste.mp3,
     Long Chat (#♥) - aespa.mp3 : Long Chat (#♥) - aespa.mp3,
+    You’re pitiful - FIESTAR.mp3 : You’re pitiful - FIESTAR.mp3,
+    La Señorita - MustB.mp3 : La Señorita - MustB.mp3,
+    Down Down - BeMAX (비맥스).mp3 : Down Down - BeMAX (비맥스).mp3,
+    보여줄게 - AILEE.mp3 : I Will Show You (보여줄게) - AILEE.mp3,
+    너라고 It's You - SUPER JUNIOR.mp3 : It's You (너라고) - SUPER JUNIOR.mp3,
+    APT. - ROSÉ, Bruno Mars.mp3 : APT. - ROSÉ, Bruno Mars.mp3,
 ]
 
 # Determines how strict verification is. Files that fail verification
