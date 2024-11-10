@@ -13,6 +13,10 @@ alt + F3
 alt + F4
 	firefox file:///home/arcwand/Class/Schedule/schedule.png
 
+# Global LinkedIn (the best Windows feature, now in sxhkd)
+super + ctrl + alt + shift + l:
+	firefox https://linkedin.com
+
 # File Explorer
 super + e
 	thunar
@@ -50,6 +54,10 @@ super + Escape
 # Terminal emulator
 super + Return
 	wezterm
+
+# New (non-daemon client) instance.
+super + alt + Return
+	wezterm start --always-new-process
 
 # Floating terminal
 super + shift + Return
