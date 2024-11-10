@@ -1,9 +1,11 @@
 
-/* Hide Nitro, GIF, Stickers, and Emoji buttons */
-[class*="buttons"]>button[class*="button"],
-[class*="buttons"]>div[class*="expression-picker-chat-input-button"]:nth-child(4),
-[class*="buttons"]>div[class*="expression-picker-chat-input-button"]:nth-child(6),
-[class*="buttons"]>div[class*="expression-picker-chat-input-button"]:nth-child(7),
-[class*="buttons"]>div[class*="expression-picker-chat-input-button"]:nth-child(8) {
+/* Hide char bar buttons */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(1), /* InvisibleChat */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(5), /* Translate */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(6), /* Gift */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(7), /* GIFs */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(8), /* Stickers */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(9)  /* Emojis */
+{
     display: none;
 }
