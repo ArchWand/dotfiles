@@ -135,7 +135,10 @@
             "transformEmojis": true,
             "transformCompoundSentence": false,
             "emojiSize": 48,
-            "stickerSize": 160
+            "stickerSize": 160,
+            "hyperLinkText": "{{NAME}}",
+            "useHyperLinks": true,
+            "disableEmbedPermissionCheck": false
         },
         "FakeProfileThemes": {
             "enabled": true,
@@ -178,7 +181,7 @@
             "invertScroll": true,
             "nearestNeighbour": false,
             "square": true,
-            "zoom": 1.6,
+            "zoom": 2.0386114406585696,
             "size": 1000,
             "zoomSpeed": 0.5
         },
@@ -385,7 +388,8 @@
             "memberList": true,
             "voiceUsers": true,
             "reactorsList": true,
-            "colorChatMessages": false
+            "colorChatMessages": false,
+            "pollResults": true
         },
         "SendTimestamps": {
             "enabled": true,
@@ -751,7 +755,7 @@
         "authenticated": true,
         "url": "https://api.vencord.dev/",
         "settingsSync": true,
-        "settingsSyncVersion": 1729956182094
+        "settingsSyncVersion": 1734670169475
     },
     "enabledThemes": []
 }

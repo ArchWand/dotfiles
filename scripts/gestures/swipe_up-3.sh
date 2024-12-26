@@ -11,10 +11,10 @@ case "$app" in
 		;;
 	*kitty|*wezterm|calc_term)
 		case "$name" in
-			*nvim*|*"make edit"|*ranger)
+			nvim*|"make edit"|lf|ranger)
 				xdotool key Escape shift+z shift+z
 				;;
-			*lazygit|*less|*man*|*btop)
+			lazygit|lg|less|man*|btop)
 				xdotool key q
 				;;
 			*)
