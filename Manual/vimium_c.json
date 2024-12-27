@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "8/13/2024, 11:33:16 AM",
-	"time": 1723563196571,
+	"@time": "12/27/2024, 6:08:17 PM",
+	"time": 1735340897245,
 	"environment": {
 		"extension": "1.99.997",
 		"platform": "linux",
-		"firefox": 128
+		"firefox": 133
 	},
 	"exclusionRules": [
 		{
@@ -13,12 +13,28 @@
 			"pattern": "^(https?:\\/\\/)?(www\\.)?reddit.com/"
 		},
 		{
-			"passKeys": "/ 0 < > c g i r x z ",
+			"passKeys": "/ 0 < > c d g r x z ",
 			"pattern": "^(https?:\\/\\/)?(www\\.|m\\.)?(youtube\\.com|youtu\\.be)"
 		},
 		{
 			"passKeys": "^ H L ",
 			"pattern": "^(https?:\\/\\/)(www\\.)?trello.com"
+		},
+		{
+			"passKeys": "",
+			"pattern": "^(https?:\\/\\/)(www\\.)?monkeytype.com"
+		},
+		{
+			"passKeys": "a c d e g j k m n p t w y ",
+			"pattern": "^(https?:\\/\\/)calendar.google.com"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://madebyevan.com/fsm/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://shellshock.io/"
 		}
 	],
 	"keyLayout": 18,
@@ -48,6 +64,7 @@
 		"map L nextTab",
 		"map H previousTab",
 		"map dl removeRightTab",
+		"run dh -1dl",
 		"map <a-x> restoreGivenTab",
 		"map w moveTabToNewWindow",
 		"",
