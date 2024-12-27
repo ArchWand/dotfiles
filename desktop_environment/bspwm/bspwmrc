@@ -63,7 +63,7 @@ bspc rule -a Zathura state=tiled
 # Bar
 $HOME/.config/polybar/launch.sh &
 # Compositor
-picom &
+pkill -9 picom; picom &
 # Gestures
 libinput-gestures-setup stop start &
 # Notifications
