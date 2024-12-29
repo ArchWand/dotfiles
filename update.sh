@@ -15,6 +15,7 @@ function up_file {
 # phone
 
 up_dir ~/.config/bspwm desktop_environment
+up_dir ~/.config/fcitx5 desktop_environment
 up_dir ~/.config/gtk-3.0 desktop_environment
 up_dir ~/.config/polybar desktop_environment
 up_dir ~/.config/rofi desktop_environment
