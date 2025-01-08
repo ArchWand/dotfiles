@@ -5,7 +5,7 @@
 
 vpn_url=vpn.gatech.edu
 protocol=gp
-gateway="NI Gateway"
+gateway="DC Gateway"
 
 user=rzhu302
 pass=$(bw get password dddddfae-0f34-4996-ba19-af99016d300b || notify-send "Invalid Master Password")
@@ -17,6 +17,6 @@ if [[ $DISPLAY ]]; then
 	sudo -v && printf "$pass\npush\n$gateway\n" | sudo openconnect --protocol=$protocol "$vpn_url" -u $user|| notify-send "VPN Connection Failed"
 else
 	# Running from rofi
-	wezterm start --class=floating_term -- bash -c 'sudo -v && printf "$pass\npush\n$gateway\n" | sudo openconnect --protocol=$protocol $vpn_url -u $user || notify-send "VPN Connection Failed"'
+	kitty --class=floating_term -- bash -c 'sudo -v && printf "$pass\npush\n$gateway\n" | sudo openconnect --protocol=$protocol $vpn_url -u $user || notify-send "VPN Connection Failed"'
 fi
 
