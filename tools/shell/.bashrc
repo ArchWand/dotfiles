@@ -75,3 +75,5 @@ alias init-nvm='source /usr/share/nvm/init-nvm.sh'
 alias xev-keyboard='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'\'
 alias startx11vnc="x11vnc -display :0 -usepw"
 
+
+export QSYS_ROOTDIR="/home/arcwand/intelFPGA_lite/19.1/quartus/sopc_builder/bin"
