@@ -181,7 +181,7 @@
             "invertScroll": true,
             "nearestNeighbour": false,
             "square": true,
-            "zoom": 2.0386114406585696,
+            "zoom": 1.7508737003803234,
             "size": 1000,
             "zoomSpeed": 0.5
         },
@@ -404,7 +404,7 @@
             "theme": "https://raw.githubusercontent.com/shikijs/shiki/0b28ad8ccfbf2615f2d9d38ea8255416b8ac3043/packages/shiki/themes/dark-plus.json"
         },
         "ShowAllMessageButtons": {
-            "enabled": true
+            "enabled": false
         },
         "ShowConnections": {
             "enabled": false
@@ -743,6 +743,9 @@
         },
         "FixImagesQuality": {
             "enabled": false
+        },
+        "FullUserInChatbox": {
+            "enabled": false
         }
     },
     "notifications": {
@@ -755,7 +758,7 @@
         "authenticated": true,
         "url": "https://api.vencord.dev/",
         "settingsSync": true,
-        "settingsSyncVersion": 1734670169475
+        "settingsSyncVersion": 1737645743691
     },
     "enabledThemes": []
 }
