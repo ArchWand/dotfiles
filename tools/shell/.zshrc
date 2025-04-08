@@ -163,6 +163,7 @@ alias cdj=cdjournal
 
 alias rm=trash-put
 alias nv=nvim
+alias hx=helix
 alias plover="~/Applications/plover-4.0.0.dev12-x86_64_1117a3034f0a02c8898a2bccdcb0a905.AppImage"
 alias py='python3 -q'
 alias lf=". ranger"
@@ -174,3 +175,5 @@ alias ghcp="gh copilot suggest"
 # source ~/.local/share/oh-my-zsh/custom/plugins/themes/arcwand-zsh-syntax-highlighting.zsh
 # source ~/.local/share/oh-my-zsh/custom/plugins/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
+
+export QSYS_ROOTDIR="/home/arcwand/.cache/paru/clone/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/24.1/quartus/sopc_builder/bin"
