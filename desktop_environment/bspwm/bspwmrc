@@ -33,16 +33,17 @@ function half_dimension() {
 # 4 5 6
 # 7 8 9
 function position() {
-	local pos="$1" offx="$2" offy="$3" mon="$4" x=0 y=0 width height
-	read width height < <(bspc query -T -m "$mon" | jq -r '.rectangle | .width, .height' | xargs echo)
-	x=$((((pos - 1) % 3) *  width / 2 + offx))
-	y=$((((pos - 1) / 3) * height / 2 + offy))
+	local pos="$1" offx="$2" offy="$3" mon="$4" x=0 y=0 monx mony width height
+	read monx mony width height < <(bspc query -T -m "$mon" | jq -r '.rectangle | .x, .y, .width, .height' | xargs echo)
+	x=$((monx + ((pos - 1) % 3) *  width / 2 + offx))
+	y=$((mony + ((pos - 1) / 3) * height / 2 + offy))
 	echo "$x+$y"
 }
 
 # Floating terminal rules
 bspc rule -a floating_term state=floating rectangle=$(half_dimension "$(bspc query -M --names | head -n 1)")+0+0 center=true
 bspc rule -a calc_term state=floating rectangle=400x500+1000+500
+bspc rule -a network_term state=floating rectangle=400x500+$(position 9 -414 -537 focused)
 
 # General floating rules
 bspc rule -a '*:Toolkit:Picture-in-Picture' state=floating sticky=on focus=on
@@ -52,6 +53,7 @@ bspc rule -a Blueman-manager state=floating
 bspc rule -a Pavucontrol state=floating
 bspc rule -a ripdrag state=floating
 bspc rule -a 'com.ra4king.circuitsim.gui.CircuitSim:*:Rename circuit' state=floating
+bspc rule -a feh state=floating
 
 # Tiling rules
 # Zathura

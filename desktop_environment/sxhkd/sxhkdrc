@@ -25,6 +25,9 @@ super + e
 XF86Calculator
 	kitty --class calc_term ~/scripts/calc.sh
 
+# F12
+# 	kitty --class network_term nmtui
+
 # ===== Desktop Environment =====
 # Lock screen
 super + shift + x
@@ -126,8 +129,10 @@ super + alt + shift + {h,j,k,l}
 # Focus, send to, or swap adjacent desktops
 super + {_,shift + ,ctrl + }bracket{left,right}
 	bspc {desktop -f,node -d,desktop -s} {prev,next}.local --follow
+super + {_,shift + ,ctrl + }button{4,5}
+	bspc {desktop -f,node -d,desktop -s} {prev,next}.local --follow
 
-# Focus, send to, or swap to the given desktop or tothe desktop on the next monitor
+# Focus, send to, or swap to the given desktop or to the desktop on the next monitor
 super + {_,shift + ,ctrl + }{_,alt + }{1-9,0}
 	bspc {desktop -f,node -d,desktop -s} {focused,next}:'^{1-9,10}'
 
