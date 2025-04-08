@@ -106,7 +106,7 @@ while [[ $? != 0 ]]; do
 done
 
 # Get the data
-data=$(grep -A $total_time "^$(date -d "$total_time minutes ago" +"%F %H:%M") | " $log_file)
+data=$(grep -aA $total_time "^$(date -d "$total_time minutes ago" +"%F %H:%M") | " $log_file)
 
 # Filter for the keywords
 if [[ ! -z $keywords ]]; then
