@@ -81,11 +81,17 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zoxide virtualenv)
+plugins=(git z virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# Override Shortcuts
+# By default, OMZ will `kill-whole-line`
+bindkey '' backward-kill-line
+# Make line into comment
+bindkey '#' pound-insert
 
 # Options
 # Expand glob to empty string when no matches are found
@@ -142,7 +148,7 @@ alias ll="ls -lAh"
 alias lc="ls -rct"
 alias cdnew='cd "$(ls -ctd */ | head -n 1)"'
 
-alias icat="wezterm imgcat"
+alias icat="kitty +kitten icat"
 alias clip="xsel -b"
 
 autoload zcalc
