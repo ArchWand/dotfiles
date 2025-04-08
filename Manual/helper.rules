@@ -866,6 +866,17 @@ IGNORE-MISMATCH=[
     https://open.spotify.com/track/3lYvepDz6yYj29z7e4r5z0,
     https://open.spotify.com/track/3YQkC6dE9YE9sH1751qqEr,
     https://open.spotify.com/track/3IzHfzxOoXMmdT4OptBOli,
+    https://open.spotify.com/track/5oUggqlg7zOto1unBbj393,
+    https://open.spotify.com/track/540k1IRl5UPMhVhpu1LRQ3,
+    https://open.spotify.com/track/0i77506epd8NgmHxZwMOwS,
+    https://open.spotify.com/track/2IMPPA9UZpqTnnVIy9lDHU,
+    https://open.spotify.com/track/39wNZpYE66vs3FlqMyhMYA,
+    https://open.spotify.com/track/1iGNZerzZHm2GLu7k1OS3J,
+    https://open.spotify.com/track/0kXAes90xxL3Ps3VPo8Erv,
+    https://open.spotify.com/track/7LFwi4RolcCPnVEXXXVfQP,
+    https://open.spotify.com/track/6ZMO0DmZytEvD8D0dwDHhm,
+    https://open.spotify.com/track/4Urzzw1jtNZNQFeLdhxtLG,
+    https://open.spotify.com/track/4YRTsmrGk2Y8uVkTuGbdJj,
 ]
 
 # Manual song replacements
@@ -943,6 +954,7 @@ REPLACE=[
     https://www.youtube.com/watch?v=_bi4NXB0i70 | https://open.spotify.com/track/1uOFPJmg1yx3sfBqgv1JAS?si=227fe179cbe64539,
     https://www.youtube.com/watch?v=KeMq2QKhcTE | https://open.spotify.com/track/5dv9gqcgEs1Yj36AJQ5NID,
     https://www.youtube.com/watch?v=85-uSmliriI | https://open.spotify.com/track/5EaVikAxSRponyifRP6Fhp,
+    https://www.youtube.com/watch?v=5KaETx5POOY | https://open.spotify.com/track/0kXAes90xxL3Ps3VPo8Erv,
 ]
 
 # Buffer for manual songs
@@ -1127,6 +1139,8 @@ RENAME=[
     보여줄게 - AILEE.mp3 : I Will Show You (보여줄게) - AILEE.mp3,
     너라고 It's You - SUPER JUNIOR.mp3 : It's You (너라고) - SUPER JUNIOR.mp3,
     APT. - ROSÉ, Bruno Mars.mp3 : APT. - ROSÉ, Bruno Mars.mp3,
+    I’m Not That Girl - Cynthia Erivo.mp3 : I’m Not That Girl - Cynthia Erivo.mp3,
+    アイドル - YOASOBI.mp3 : Idol (アイドル) - YOASOBI.mp3,
 ]
 
 # Determines how strict verification is. Files that fail verification
