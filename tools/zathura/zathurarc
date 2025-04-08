@@ -1,3 +1,6 @@
+map j feedkeys "<C-Down>"
+map k feedkeys "<C-Up>"
+
 # Lighthaus Color theme for Zathura
 # GIT: https://github.com/lighthaus-theme/zathura
 # Author: Adhiraj Sirohi (https://github.com/brutuski)
