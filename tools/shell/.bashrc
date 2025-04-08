@@ -76,4 +76,4 @@ alias xev-keyboard='xev | awk -F'\''[ )]+'\'' '\''/^KeyPress/ { a[NR+2] } NR in 
 alias startx11vnc="x11vnc -display :0 -usepw"
 
 
-export QSYS_ROOTDIR="/home/arcwand/intelFPGA_lite/19.1/quartus/sopc_builder/bin"
+export QSYS_ROOTDIR="/home/arcwand/.cache/paru/clone/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/24.1/quartus/sopc_builder/bin"

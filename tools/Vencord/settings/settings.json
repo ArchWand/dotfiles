@@ -1,6 +1,6 @@
 {
     "notifyAboutUpdates": true,
-    "autoUpdate": false,
+    "autoUpdate": true,
     "autoUpdateNotification": true,
     "useQuickCss": true,
     "themeLinks": [
@@ -165,9 +165,6 @@
         "GifPaste": {
             "enabled": false
         },
-        "HideAttachments": {
-            "enabled": false
-        },
         "iLoveSpam": {
             "enabled": false
         },
@@ -181,7 +178,7 @@
             "invertScroll": true,
             "nearestNeighbour": false,
             "square": true,
-            "zoom": 1.7508737003803234,
+            "zoom": 2.1905829811096185,
             "size": 1000,
             "zoomSpeed": 0.5
         },
@@ -286,7 +283,8 @@
         },
         "NoBlockedMessages": {
             "enabled": true,
-            "ignoreBlockedMessages": false
+            "ignoreMessages": false,
+            "applyToIgnoredUsers": true
         },
         "NoDevtoolsWarning": {
             "enabled": false
@@ -337,8 +335,12 @@
         },
         "PinDMs": {
             "enabled": true,
-            "dmSectioncollapsed": false,
-            "pinOrder": 0
+            "pinOrder": 0,
+            "dmSectionCollapsed": false,
+            "canCollapseDmSection": false,
+            "userBasedCategoryList": {
+                "474008865600438292": []
+            }
         },
         "PlainFolderIcon": {
             "enabled": false
@@ -380,7 +382,9 @@
         },
         "ReviewDB": {
             "enabled": true,
-            "notifyReviews": true
+            "notifyReviews": true,
+            "showWarning": true,
+            "hideBlockedUsers": true
         },
         "RoleColorEverywhere": {
             "enabled": true,
@@ -746,6 +750,12 @@
         },
         "FullUserInChatbox": {
             "enabled": false
+        },
+        "IrcColors": {
+            "enabled": false
+        },
+        "HideMedia": {
+            "enabled": false
         }
     },
     "notifications": {
@@ -758,7 +768,8 @@
         "authenticated": true,
         "url": "https://api.vencord.dev/",
         "settingsSync": true,
-        "settingsSyncVersion": 1737645743691
+        "settingsSyncVersion": 1743375875835
     },
-    "enabledThemes": []
+    "enabledThemes": [],
+    "eagerPatches": false
 }
