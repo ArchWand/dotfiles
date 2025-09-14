@@ -35,6 +35,7 @@ up_dir ~/scripts
 # up_dir ~/.config/kitty tools
 up_dir ~/.config/mpv tools
 up_dir ~/.config/nvim tools
+up_dir ~/.config/yazi tools
 up_dir ~/.config/ranger tools
 up_dir ~/.config/Vencord/settings tools/Vencord
 up_dir ~/.config/wezterm tools
@@ -45,7 +46,8 @@ up_file ~/.bashrc tools/shell/.bashrc
 up_file ~/.zprofile tools/shell/.zprofile
 up_file ~/.zshrc tools/shell/.zshrc
 up_file ~/.zshenv tools/shell/.zshenv
-up_file ~/.local/share/oh-my-zsh/custom/themes/arcwand.zsh-theme tools/shell/arcwand.zsh-theme
+up_file /home/arcwand/.p10k.256.zsh tools/shell/p10k.256.zsh
+up_file /home/arcwand/.p10k.8.zsh tools/shell/p10k.8.zsh
 
 # If the script is called without parameters,
 # allow for manual committing
