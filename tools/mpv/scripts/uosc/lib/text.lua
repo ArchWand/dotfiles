@@ -69,7 +69,7 @@ end
 ---Iterates over utf-8 characters instead of bytes
 ---@param str string
 ---@return fun(): integer?, string?
-local function utf8_iter(str)
+function utf8_iter(str)
 	local byte_start = 1
 	return function()
 		local start = byte_start
@@ -78,6 +78,44 @@ local function utf8_iter(str)
 		byte_start = start + byte_count
 		return start, str:sub(start, start + byte_count - 1)
 	end
+end
+
+---Estimating string length based on the number of characters
+---@param char string
+---@return number
+function utf8_length(str)
+	local str_length = 0
+	for _, c in utf8_iter(str) do
+		str_length = str_length + 1
+	end
+	return str_length
+end
+
+---Get the next character in an utf-8 encoded string
+---@param str string
+---@param i integer
+---@return integer
+function utf8_next(str, i)
+	if i >= #str then return #str end
+	local len = utf8_char_bytes(str, i + 1)
+	return math.min(i + len, #str)
+end
+
+---Get the previous character in an utf-8 encoded string
+---@param str string
+---@param i integer
+---@return integer
+function utf8_prev(str, i)
+	if i <= 0 then return 0 end
+	local pos = 1
+	local last_valid = 0
+	while pos <= #str do
+		local len = utf8_char_bytes(str, pos)
+		if pos > i then break end
+		last_valid = pos - 1
+		pos = pos + len
+	end
+	return last_valid
 end
 
 ---Extract Unicode code point from utf-8 character at index i in str
@@ -371,7 +409,7 @@ do
 		---@type boolean, boolean
 		local bold, italic = opts.bold or options.font_bold, opts.italic or false
 
-		if options.text_width_estimation then
+		if not config.refine.text_width then
 			---@type {[string|number]: {[1]: number, [2]: integer}}
 			local text_width = get_cache_stage(width_cache, bold)
 			local width_px = text_width[text]
@@ -396,6 +434,10 @@ end
 do
 	---@type {[string]: string}
 	local cache = {}
+
+	function timestamp_zero_rep_clear_cache()
+		cache = {}
+	end
 
 	---Replace all timestamp digits with 0
 	---@param timestamp string
@@ -477,9 +519,10 @@ do
 end
 
 do
-	local word_separators = {
+	local word_separators = create_set({
 		' ', '　', '\t', '-', '–', '_', ',', '.', '+', '&', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\',
-	}
+		'（', '）', '【', '】', '；', '：', '《', '》', '“', '”', '‘', '’', '？', '！',
+	})
 
 	---Get the first character of each word
 	---@param str string
@@ -487,7 +530,7 @@ do
 	function initials(str)
 		local initials, is_word_start, word_separators = {}, true, word_separators
 		for _, char in utf8_iter(str) do
-			if itable_has(word_separators, char) then
+			if word_separators[char] then
 				is_word_start = true
 			elseif is_word_start then
 				initials[#initials + 1] = char
@@ -495,5 +538,36 @@ do
 			end
 		end
 		return initials
+	end
+end
+
+-- Returns the index of the beginning or end of the current word/segment in a string.
+---@param str string String to search in.
+---@param cursor number Where in the string to start searching.
+---@param direction number `1` to search forward, `-1` backward.
+function find_string_segment_bound(str, cursor, direction)
+	if #str < 2 then return #str end
+	cursor = math.max(1, math.min(cursor, #str))
+	local head, tail = string.sub(str, 1, cursor), string.sub(str, cursor + 1)
+	if direction < 0 then
+		local word_pat, other_pat = '[^%c%s%p]+$', '[%c%s%p]+$'
+		local pat = head:sub(#head):match(word_pat) and word_pat or other_pat
+		-- First we match all same type consecutive chars starting at cursor
+		local segment = head:match(pat) or ''
+		-- If there's only one, we extend the segment with opposite type chars
+		if segment and #segment == 1 then
+			local match = head:sub(1, #head - #segment):match(pat == word_pat and other_pat or word_pat)
+			segment = (match or '') .. segment
+		end
+		return cursor - #segment + 1
+	else
+		local word_pat, other_pat = '^[^%c%s%p]+', '^[%c%s%p]+'
+		local pat = tail:sub(1, 1):match(word_pat) and word_pat or other_pat
+		local segment = tail:match(pat) or ''
+		if segment and #segment == 1 then
+			local match = tail:sub(#segment):match(pat == word_pat and other_pat or word_pat)
+			segment = segment .. (match or '')
+		end
+		return cursor + #segment
 	end
 end
