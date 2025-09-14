@@ -1,0 +1,117 @@
+# Close input by once `Esc` press
+[[input.prepend_keymap]]
+on   = "<Esc>"
+run  = "close"
+desc = "Cancel input"
+
+# Drop to the shell
+[[mgr.prepend_keymap]]
+on   = "!"
+for  = "unix"
+run  = 'shell "$SHELL" --block'
+desc = "Open $SHELL here"
+
+# If you also using Yazi on Windows:
+[[mgr.prepend_keymap]]
+on   = "!"
+for  = "windows"
+run  = 'shell "powershell.exe" --block'
+desc = "Open PowerShell here"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "i" ]
+run  = "plugin lazygit"
+desc = "run lazygit"
+
+[[mgr.prepend_keymap]]
+on = "<A-y>"
+run = ["plugin copy-file-contents"]
+desc = "Copy contents of file"
+
+[[mgr.prepend_keymap]]
+on = [ "1" ]
+run = "plugin relative-motions 1"
+desc = "Move in relative steps"
+
+[[mgr.prepend_keymap]]
+on = [ "2" ]
+run = "plugin relative-motions 2"
+desc = "Move in relative steps"
+
+[[mgr.prepend_keymap]]
+on = [ "3" ]
+run = "plugin relative-motions 3"
+desc = "Move in relative steps"
+
+[[mgr.prepend_keymap]]
+on = [ "4" ]
+run = "plugin relative-motions 4"
+desc = "Move in relative steps"
+
+[[mgr.prepend_keymap]]
+on = [ "5" ]
+run = "plugin relative-motions 5"
+desc = "Move in relative steps"
+
+[[mgr.prepend_keymap]]
+on = [ "6" ]
+run = "plugin relative-motions 6"
+desc = "Move in relative steps"
+
+[[mgr.prepend_keymap]]
+on = [ "7" ]
+run = "plugin relative-motions 7"
+desc = "Move in relative steps"
+
+[[mgr.prepend_keymap]]
+on = [ "8" ]
+run = "plugin relative-motions 8"
+desc = "Move in relative steps"
+
+[[mgr.prepend_keymap]]
+on = [ "9" ]
+run = "plugin relative-motions 9"
+desc = "Move in relative steps"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "j" ]
+run  = "plugin first-non-directory"
+desc = "Jumps to the first file"
+
+[[mgr.prepend_keymap]]
+on = [ "m" ]
+run = "plugin bookmarks save"
+desc = "Save current position as a bookmark"
+
+[[mgr.prepend_keymap]]
+on = [ "'" ]
+run = "plugin bookmarks jump"
+desc = "Jump to a bookmark"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "d" ]
+run = "plugin bookmarks delete"
+desc = "Delete a bookmark"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "D" ]
+run = "plugin bookmarks delete_all"
+desc = "Delete all bookmarks"
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "m" ]
+run  = "plugin chmod"
+desc = "Chmod on selected files"
+
+[[mgr.prepend_keymap]]
+on = ["C"]
+run = "plugin ouch"
+desc = "Compress with ouch"
+
+[[mgr.prepend_keymap]]
+on  = "("
+run = "plugin parent-arrow -1"
+
+[[mgr.prepend_keymap]]
+on  = ")"
+run = "plugin parent-arrow 1"
