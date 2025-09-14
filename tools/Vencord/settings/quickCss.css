@@ -1,11 +1,12 @@
 
 /* Hide char bar buttons */
 [class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(1), /* InvisibleChat */
-[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(5), /* Translate */
-[class*="channelBottomBarArea"] [class*="buttons"]>button, /* Gift */
-[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(7), /* GIFs */
-[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(8), /* Stickers */
-[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(9)  /* Emojis */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(9), /* Translate */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(11), /* Gift */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(12), /* Stickers */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(13), /* GIFs */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(14),  /* Emojis */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(15)  /* Activities */
 {
     display: none;
 }

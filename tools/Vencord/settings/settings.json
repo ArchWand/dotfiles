@@ -4,7 +4,7 @@
     "autoUpdateNotification": true,
     "useQuickCss": true,
     "themeLinks": [
-        "https://catppuccin.github.io/discord/dist/catppuccin-mocha-sapphire.theme.css"
+        "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css"
     ],
     "enableReactDevtools": false,
     "frameless": false,
@@ -114,9 +114,6 @@
         "CustomRPC": {
             "enabled": false
         },
-        "EmoteCloner": {
-            "enabled": true
-        },
         "Experiments": {
             "enabled": true,
             "enableIsStaff": false,
@@ -178,7 +175,7 @@
             "invertScroll": true,
             "nearestNeighbour": false,
             "square": true,
-            "zoom": 2.1905829811096185,
+            "zoom": 2.2,
             "size": 1000,
             "zoomSpeed": 0.5
         },
@@ -756,6 +753,9 @@
         },
         "HideMedia": {
             "enabled": false
+        },
+        "ExpressionCloner": {
+            "enabled": true
         }
     },
     "notifications": {
@@ -768,7 +768,7 @@
         "authenticated": true,
         "url": "https://api.vencord.dev/",
         "settingsSync": true,
-        "settingsSyncVersion": 1743375875835
+        "settingsSyncVersion": 1752691094482
     },
     "enabledThemes": [],
     "eagerPatches": false
