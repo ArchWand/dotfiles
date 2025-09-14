@@ -7,7 +7,17 @@ TIMEOUT=1000
 
 # When changing the volume, round to the nearest multiple
 # set to 1 to disable
-round=5
+ROUND=5
+
+# Get current volume level
+get_volume() {
+    amixer get Master | awk -F'[][[%]' '/%/{print $2}' | head -1
+}
+
+# Check if audio is muted
+is_muted() {
+    amixer get Master | grep '%' | awk '{print $6}' | grep off > /dev/null
+}
 
 send_notification() {
 	notify-send -a "volume" \
@@ -16,36 +26,29 @@ send_notification() {
 		"Volume: $1"
 }
 
-vol() {
-	amixer get Master | awk -F'[][[%]' '/%/{print $2}' | head -1
-}
-
-is_mute() {
-	amixer get Master | grep '%' | awk '{print $6}' | grep off > /dev/null
-}
-
 volume_change() {
+	local change=$1
+	local volume=$(get_volume)
+
 	# Automatically unmute upon volume adjustment
-	if is_mute; then
+	if is_muted; then
 		amixer set Master unmute
 	fi
 
-	volume=$(vol)
-	# Change the volume appropriately
-	# (rounding to the nearest multiple)
-	if [[ $volume -eq $volume/${round}*${round} ]]; then
-		volume=$(($volume + $1))
-	else
-		# Find nearest multiple of ${round}
-		# volume=$((rounded volume + { $1 if $1 > 0, else 0 }))
-		# Because we are rounding down
-		volume=$(($volume/${round}*${round} + ($1>0)*$1))
-	fi
+	volume=$(get_volume)
+    # Check if volume is already at a multiple of ROUND
+    if [[ $((volume % ROUND)) -eq 0 ]]; then
+        volume=$((volume + change))
+    else
+        # Find nearest multiple of ROUND and add change if positive
+        volume=$((volume / ROUND * ROUND + (change > 0 ? change : 0)))
+    fi
 
-	amixer set Master $volume%
+	amixer set Master ${volume}%
 
 	# Fetch the appropriate symbol for the new volume level
-	volume=$(vol)
+	volume=$(get_volume)
+	local level
 	if [[ $volume -le 33 ]]; then
 		level="audio-volume-low-symbolic"
 	elif [[ $volume -le 66 ]]; then
@@ -64,7 +67,7 @@ case $1 in
 	mute)
 		# toggle
 		amixer set Master toggle
-		if is_mute; then
+		if is_muted; then
 			send_notification "Muted" 0 "audio-volume-muted-symbolic"
 		else
 			volume_change 0 args
@@ -72,11 +75,11 @@ case $1 in
 		fi
 		;;
 	up)
-		volume_change $round args
+		volume_change $ROUND args
 		send_notification ${args[@]}
 		;;
 	down)
-		volume_change -$round args
+		volume_change -$ROUND args
 		send_notification ${args[@]}
 		;;
 	*)
