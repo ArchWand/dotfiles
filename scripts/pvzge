@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cleanup() {
+  echo "⏹  Stopping container 'pvzge'..."
+  docker stop pvzge >/dev/null 2>&1 || true
+}
+trap cleanup EXIT
+
+# 1) Always pull the latest image
+echo "⬇️  Pulling gaozih/pvzge:latest…"
+docker pull gaozih/pvzge:latest
+
+# 2) Ensure container is running
+if docker ps --filter "name=^/pvzge$" --format '{{.Names}}' | grep -q '^pvzge$'; then
+  echo "✅  Container 'pvzge' already running."
+elif docker ps -a --filter "name=^/pvzge$" --format '{{.Names}}' | grep -q '^pvzge$'; then
+  echo "🔄  Starting stopped container 'pvzge'..."
+  docker start pvzge
+else
+  echo "🚀  Creating & starting container 'pvzge'..."
+  docker run --name pvzge -d -p 8080:80 gaozih/pvzge:latest
+fi
+
+# 3) Ensure Firefox profile exists
+PROFILES_INI="$HOME/.mozilla/firefox/profiles.ini"
+PROFILE_NAME="PvZ_Gardenless"
+
+if ! grep -q "^Name=${PROFILE_NAME}$" "$PROFILES_INI" 2>/dev/null; then
+  echo "🆕  Creating Firefox profile '${PROFILE_NAME}'…"
+  firefox -CreateProfile "${PROFILE_NAME}"
+fi
+
+# 4) Launch Firefox with that profile
+echo "🌐  Opening Firefox (${PROFILE_NAME}) at http://localhost:8080 …"
+firefox --new-instance -P "${PROFILE_NAME}" --new-window "http://localhost:8080"
+
+echo "🖥️  Firefox closed — exiting."
+# trap on EXIT will stop the container
