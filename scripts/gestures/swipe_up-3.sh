@@ -17,6 +17,9 @@ case "$app" in
 			lazygit|lg|less|man*|btop)
 				xdotool key q
 				;;
+			Yazi*)
+				xdotool key ctrl+c
+				;;
 			*)
 				xdotool key ctrl+u key ctrl+d
 				# xdotool key ctrl+shift+h

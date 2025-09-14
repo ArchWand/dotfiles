@@ -877,6 +877,19 @@ IGNORE-MISMATCH=[
     https://open.spotify.com/track/6ZMO0DmZytEvD8D0dwDHhm,
     https://open.spotify.com/track/4Urzzw1jtNZNQFeLdhxtLG,
     https://open.spotify.com/track/4YRTsmrGk2Y8uVkTuGbdJj,
+    https://open.spotify.com/track/5DxDLsW6PsLz5gkwC7Mk5S,
+    https://open.spotify.com/track/7AKwWqnoMmvCqBQtcdIECG,
+    https://open.spotify.com/track/0MHStU0muAIEMbwdnebYu2,
+    https://open.spotify.com/track/1I37Zz2g3hk9eWxaNkj031,
+    https://open.spotify.com/track/2QTDuJIGKUjR7E2Q6KupIh,
+    https://open.spotify.com/track/69xohKu8C1fsflYAiSNbwM,
+    https://open.spotify.com/track/02sy7FAs8dkDNYsHp4Ul3f,
+    https://open.spotify.com/track/5weiiKJieLj9jOL9u2F34z,
+    https://open.spotify.com/track/37ozVDmL5b6NNVWFYgAlkz,
+    https://open.spotify.com/track/7KU3A1fotuV0GXY1doHFT8,
+    https://open.spotify.com/track/5sBDrrtLGbV64QJnEqfjer,
+    https://open.spotify.com/track/1CPZ5BxNNd0n0nF4Orb9JS,
+    https://open.spotify.com/track/3RXUgPNIbUgFxsDWuBQEt6,
 ]
 
 # Manual song replacements
@@ -1141,6 +1154,8 @@ RENAME=[
     APT. - ROSÉ, Bruno Mars.mp3 : APT. - ROSÉ, Bruno Mars.mp3,
     I’m Not That Girl - Cynthia Erivo.mp3 : I’m Not That Girl - Cynthia Erivo.mp3,
     アイドル - YOASOBI.mp3 : Idol (アイドル) - YOASOBI.mp3,
+    How It’s Done - HUNTRX, EJAE, AUDREY NUNA, REI AMI, KPop Demon Hunters Cast.mp3 : How It’s Done - HUNTRX, EJAE, AUDREY NUNA, REI AMI, KPop Demon Hunters Cast.mp3,
+    사랑인가 봐 Love, Maybe - MeloMance.mp3 : Love, Maybe (사랑인가 봐) - MeloMance.mp3,
 ]
 
 # Determines how strict verification is. Files that fail verification
