@@ -25,6 +25,8 @@ def prime_factor(n):
             while n % f == 0:
                 n, i = n // f, i+1
             facts.append((f, i))
+    if n != 1:
+        facts.append((n, 1))
     return facts
 
 EOF
