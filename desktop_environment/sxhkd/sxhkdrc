@@ -35,10 +35,14 @@ super + shift + x
 
 # Screenshot
 super + shift + s
+	flameshot gui --region $(slop -f "%wx%h+%x+%y")
+super + ctrl + shift + s
 	flameshot gui
-# Screenshot
+super + ctrl + s
+	flameshot gui --region $(~/scripts/select_monitor.sh)
+# Screenshot entire screen
 Print
-	flameshot gui
+	flameshot full -c
 
 # Close/kill current window
 super + {_,shift + }w
