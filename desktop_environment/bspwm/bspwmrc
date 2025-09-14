@@ -54,12 +54,15 @@ bspc rule -a Pavucontrol state=floating
 bspc rule -a ripdrag state=floating
 bspc rule -a 'com.ra4king.circuitsim.gui.CircuitSim:*:Rename circuit' state=floating
 bspc rule -a feh state=floating
+bspc rule -a matplotlib state=floating
 
 # Tiling rules
 # Zathura
 bspc rule -a Zathura state=tiled
 
 # Autostart
+# Num lock on initially
+numlockx &
 # Policy Kit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # Bar
@@ -77,6 +80,8 @@ pkill -9 greenclip; greenclip daemon &
 # Wallpaper
 nitrogen --restore &
 # Auto-suspend
-pkill -9 xautolock
-xautolock -time 30 -locker 'systemctl suspend' -detectsleep &
-
+# pkill -9 xautolock
+# xautolock -time 30 -locker 'systemctl suspend-then-hibernate' -detectsleep &
+xset -dpms
+# Syncthing
+pkill -9 syncthing; syncthing --no-browser &
