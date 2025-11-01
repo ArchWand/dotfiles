@@ -4,14 +4,13 @@ alt + F1
 	firefox
 # Discord
 alt + F2
-	discord
-	# vencord
+	gtk-launch discord
 # Neovim
 alt + F3
 	kitty nvim
-# Schedule
+# Obsidian
 alt + F4
-	firefox file:///home/arcwand/Class/Schedule/schedule.png
+	obsidian
 
 # Global LinkedIn (the best Windows feature, now in sxhkd)
 super + ctrl + alt + shift + l:
@@ -329,7 +328,7 @@ alt + shift + Tab
 	~/.config/rofi/window_global.sh
 
 # Clipboard history
-super + alt + v
+super + v
 	rofi -modi "clipboard:greenclip print" -show clipboard -theme-str '#window \{y-offset: 200; \}'
 
 # Emoji picker

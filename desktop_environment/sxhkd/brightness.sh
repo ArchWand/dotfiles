@@ -21,14 +21,12 @@ brightness_change() {
     
     # Check if brightness is already at a multiple of ROUND
     brightness=$(get_brightness)
-	echo $brightness > out
     if [[ $((brightness % ROUND)) -eq 0 ]]; then
 		brightness=$((brightness + change))
     else
         # Find nearest multiple of ROUND and add change if positive
         brightness=$((brightness / ROUND * ROUND + (change > 0 ? change : 0)))
 	fi
-	echo $brightness >> out
     
     # Adjust the brightness
     xbacklight -set $brightness || exit
