@@ -3,10 +3,10 @@
 [class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(1), /* InvisibleChat */
 [class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(9), /* Translate */
 [class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(11), /* Gift */
-[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(12), /* Stickers */
 [class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(13), /* GIFs */
-[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(14),  /* Emojis */
-[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(15)  /* Activities */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(14), /* Stickers */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(15),  /* Emojis */
+[class*="channelBottomBarArea"] [class*="buttons"]>div:nth-child(16)  /* Activities */
 {
     display: none;
 }

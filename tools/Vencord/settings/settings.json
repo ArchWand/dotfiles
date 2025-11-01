@@ -195,7 +195,8 @@
         "MemberCount": {
             "enabled": true,
             "memberList": true,
-            "toolTip": true
+            "toolTip": true,
+            "voiceActivity": true
         },
         "MessageClickActions": {
             "enabled": true,
@@ -756,6 +757,15 @@
         },
         "ExpressionCloner": {
             "enabled": true
+        },
+        "CopyStickerLinks": {
+            "enabled": false
+        },
+        "ImageFilename": {
+            "enabled": false
+        },
+        "AutoDNDWhilePlaying": {
+            "enabled": false
         }
     },
     "notifications": {
@@ -768,7 +778,7 @@
         "authenticated": true,
         "url": "https://api.vencord.dev/",
         "settingsSync": true,
-        "settingsSyncVersion": 1752691094482
+        "settingsSyncVersion": 1761486793720
     },
     "enabledThemes": [],
     "eagerPatches": false
