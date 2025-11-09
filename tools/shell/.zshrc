@@ -10,9 +10,9 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.*.zsh.
 if [[ $terminfo[colors] -ge 256 ]]; then
-	p10k_file="/home/arcwand/.p10k.256.zsh"
+	p10k_file="$HOME/.p10k.256.zsh"
 else
-	p10k_file="/home/arcwand/.p10k.8.zsh"
+	p10k_file="$HOME/.p10k.8.zsh"
 fi
 [[ ! -f "$p10k_file" ]] || source "$p10k_file"
 unset p10k_file
