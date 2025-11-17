@@ -1,0 +1,3 @@
+[submodule "tools/nvim"]
+	path = tools/nvim
+	url = https://github.com/ArchWand/nvim
