@@ -1,9 +1,0 @@
-[submodule "tools/nvim"]
-	path = tools/nvim
-	url = https://github.com/ArchWand/nvim
-[submodule "desktop_environment/polybar"]
-	path = desktop_environment/polybar
-	url = https://github.com/ArchWand/polybar/
-[submodule "desktop_environment/rofi"]
-	path = desktop_environment/rofi
-	url = https://github.com/ArchWand/rofi
