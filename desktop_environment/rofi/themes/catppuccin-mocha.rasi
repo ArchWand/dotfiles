@@ -1,0 +1,140 @@
+/*****----- Configuration -----*****/
+configuration {
+	modi:                       "drun,window";
+    show-icons:                 true;
+    display-drun:               "";
+	drun-display-format:        "{name}";
+}
+
+/*****----- Global Properties -----*****/
+* {
+    bg-col:  #1e1e2e;
+    bg-col-light: #1e1e2e;
+    blue: #89b4fa;
+    fg-col: #cdd6f4;
+    fg-col2: #f38ba8;
+    grey: #6c7086;
+	white: #ffffff;
+	black: #000000;
+	red: #ff0000;
+
+    font: "JetBrainsMono Nerd Font 14";
+}
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+/*****----- Main Window -----*****/
+window {
+    width: 1000px;
+    border: 2px;
+    border-color: @blue;
+	border-radius: 10px;
+    background-color: @bg-col;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    background-color: @bg-col;
+	padding: 10px;
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    children: [prompt,entry];
+    background-color: @bg-col;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @blue;
+    padding: 6px;
+    text-color: @bg-col;
+    border-radius: 3px;
+    margin: 20px 0px 0px 20px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+entry {
+    padding: 6px;
+    margin: 20px 400px 0px 10px;
+    text-color: @white;
+	border-radius: 5px;
+    background-color: @grey;
+    placeholder: "Search...";
+	placeholder-color: @fg-col;
+}
+
+/*****----- Listview -----*****/
+listview {
+    scrollbar: true;
+    border: 0px 0px 0px;
+    padding: 6px 0px 0px 0px;
+    margin: 0px 0px 0px 10px;
+    columns: 3;
+    lines: 7;
+    background-color: @bg-col;
+	fixed-height: false;
+}
+
+scrollbar {
+    handle-width: 5px ;
+    handle-color: @blue;
+    border-radius: 0px;
+    background-color: @black;
+}
+
+element {
+    padding: 5px;
+	margin: 0px 10px 0px 0px;
+	border-radius: 5px;
+    background-color: @bg-col;
+    text-color: @fg-col  ;
+}
+
+element-icon {
+    size: 25px;
+}
+
+element selected {
+    background-color:  @blue;
+    text-color: @bg-col;
+}
+
+mode-switcher {
+    spacing: 0;
+  }
+
+button {
+    padding: 10px;
+    background-color: @bg-col-light;
+    text-color: @grey;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+  background-color: @bg-col;
+  text-color: @blue;
+}
+
+message {
+    background-color: @bg-col-light;
+    margin: 2px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+textbox {
+    padding: 6px;
+    margin: 20px 0px 0px 20px;
+    text-color: @blue;
+    background-color: @bg-col-light;
+}

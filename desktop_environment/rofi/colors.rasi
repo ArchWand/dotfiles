@@ -1,0 +1,10 @@
+* {
+    trans-turqoise:     #1C2833DD;
+	trans-navyblue:     #202133F5;
+    light-black:        #101010FF;
+    white:              #FFFFFFFF;
+    teal:               #45B39DFF;
+    lime-green:         #98EF79FF;
+    pastel-red:         #E06B74FF;
+	blue-grey:          #8FBABCFF;
+}
