@@ -1,6 +1,9 @@
 import decman
 from decman import File, Directory, prg
 
+from desktop_environment import *
+from fonts import Fonts
+
 decman.aur_packages += [
     "decman",
 ]
@@ -11,7 +14,6 @@ decman.packages += [
     "base",
     "base-devel",
     "efibootmgr",
-    "libpulse",
     "linux",
     "linux-firmware",
     "networkmanager",
@@ -23,6 +25,7 @@ decman.packages += [
 
 # Terminal tools
 decman.packages += [
+    "acpi",
     "btop",
     "ed",
     "fastfetch",
@@ -41,7 +44,6 @@ decman.packages += [
     "nano",
     "neovim",
     "npm",
-    "openssh",
     "plocate",
     "python",
     "ripgrep",
@@ -49,7 +51,6 @@ decman.packages += [
     "tailscale",
     "trash-cli",
     "tree",
-    "ufw",
     "vi",
     "vim",
     "wget",
@@ -72,9 +73,11 @@ decman.packages += [
 decman.packages += [
     "bluez",
     "bluez-utils",
+    "brightnessctl",
     "cava",
     "cliphist",
     "gst-plugin-pipewire",
+    "libpulse",
     "matugen",
     "niri",
     "pipewire",
@@ -92,47 +95,25 @@ decman.aur_packages += [
     "appimagelauncher",
     "dms-shell-bin",
 ]
+decman.modules += [Syncthing(), Ufw(), Ssh()]
 
 # GUI Apps
 decman.packages += [
     "baobab",
-    "discord", # Put Vencord in here somehow!
+    "discord", # Put Vencord+OpenASAR in here somehow!
     "firefox",
     "fuzzel",
     "kitty",
+    "obsidian",
     "prismlauncher",
     "thunderbird",
 ] # Put Osu in here
 
 # Fonts
-decman.packages += [
-    "adobe-source-code-pro-fonts",
-    "adobe-source-han-sans-otc-fonts",
-    "adobe-source-han-serif-otc-fonts",
-    "adobe-source-sans-fonts",
-    "adobe-source-serif-fonts",
-    "noto-fonts",
-    "noto-fonts-cjk",
-    "noto-fonts-emoji",
-    "noto-fonts-extra",
-    "ttf-dejavu",
-    "ttf-hanazono",
-    "ttf-liberation",
-    "ttf-iosevka-nerd",
-    "ttf-sourcecodepro-nerd",
-]
+decman.modules += [Fonts()]
 
 # Reflector
 decman.enabled_systemd_units += ["reflector.timer"]
-
-# OpenSSH hooks
-decman.enabled_systemd_units += ["sshd"]
-prg(["ufw","allow","22"])
-
-# ufw hooks
-prg(["ufw","default","deny","incoming"])
-prg(["ufw","default","allow","outgoing"])
-prg(["ufw","enable"])
 
 # Tailscale hooks
 decman.enabled_systemd_units += ["tailscaled"]
